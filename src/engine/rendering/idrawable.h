@@ -11,4 +11,4 @@ public:
 	virtual void draw() = 0;
 };
 
-}
+} // end namespace hctr

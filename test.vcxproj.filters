@@ -40,6 +40,9 @@
     <ClCompile Include="src\engine\rendering\idrawable.cpp">
       <Filter>Source Files\engine\rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\math\ishape.cpp">
+      <Filter>Source Files\engine\math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -56,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="src\engine\rendering\idrawable.h">
       <Filter>Source Files\engine\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\math\ishape.h">
+      <Filter>Source Files\engine\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
