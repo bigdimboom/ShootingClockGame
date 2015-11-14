@@ -9,11 +9,15 @@
 
 // Global variables
 
+
+using namespace hctg;
+
 C_Application::T_PressedKey g_PressedKeys = 0;
 
 
-const int k_ScreenWidth  = 800;
+const int k_ScreenWidth = 800;
 const int k_ScreenHeight = 600;
+const int k_FrameRate = 50;
 
 
 //----------------------------
@@ -22,39 +26,39 @@ const int k_ScreenHeight = 600;
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	switch(msg)
+	switch (msg)
 	{
-	case WM_CLOSE:
-		PostQuitMessage(0);
-		break;
-	case WM_PAINT:
-		FillRect(0, 0, k_ScreenWidth, k_ScreenHeight, 0);
-		break;
-	case WM_KEYDOWN:
-		switch(wParam)
-		{
-		case VK_LEFT:  g_PressedKeys |= C_Application::s_KeyLeft;  break;
-		case VK_UP:    g_PressedKeys |= C_Application::s_KeyUp;    break;
-		case VK_RIGHT: g_PressedKeys |= C_Application::s_KeyRight; break;
-		case VK_DOWN:  g_PressedKeys |= C_Application::s_KeyDown;  break;
-		case VK_SPACE: g_PressedKeys |= C_Application::s_KeySpace; break;
-		case VK_ESCAPE:
+		case WM_CLOSE:
 			PostQuitMessage(0);
 			break;
-		}
-		break;
-	case WM_KEYUP:
-		switch(wParam)
-		{
-		case VK_LEFT:  g_PressedKeys &= ~C_Application::s_KeyLeft;  break;
-		case VK_UP:    g_PressedKeys &= ~C_Application::s_KeyUp;    break;
-		case VK_RIGHT: g_PressedKeys &= ~C_Application::s_KeyRight; break;
-		case VK_DOWN:  g_PressedKeys &= ~C_Application::s_KeyDown;  break;
-		case VK_SPACE: g_PressedKeys &= ~C_Application::s_KeySpace; break;
-		}
-		break;
+		case WM_PAINT:
+			FillRect(0, 0, k_ScreenWidth, k_ScreenHeight, 0);
+			break;
+		case WM_KEYDOWN:
+			switch (wParam)
+			{
+				case VK_LEFT:  g_PressedKeys |= C_Application::s_KeyLeft;  break;
+				case VK_UP:    g_PressedKeys |= C_Application::s_KeyUp;    break;
+				case VK_RIGHT: g_PressedKeys |= C_Application::s_KeyRight; break;
+				case VK_DOWN:  g_PressedKeys |= C_Application::s_KeyDown;  break;
+				case VK_SPACE: g_PressedKeys |= C_Application::s_KeySpace; break;
+				case VK_ESCAPE:
+					PostQuitMessage(0);
+					break;
+			}
+			break;
+		case WM_KEYUP:
+			switch (wParam)
+			{
+				case VK_LEFT:  g_PressedKeys &= ~C_Application::s_KeyLeft;  break;
+				case VK_UP:    g_PressedKeys &= ~C_Application::s_KeyUp;    break;
+				case VK_RIGHT: g_PressedKeys &= ~C_Application::s_KeyRight; break;
+				case VK_DOWN:  g_PressedKeys &= ~C_Application::s_KeyDown;  break;
+				case VK_SPACE: g_PressedKeys &= ~C_Application::s_KeySpace; break;
+			}
+			break;
 	}
-	
+
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
@@ -70,28 +74,31 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	s_init	init;
 	memset(&init, 0, sizeof(init));
 
-	init.captionText  = "test";
-	init.instance     = hInstance;
-	init.wndProc      = WndProc;
-	init.screenWidth  = k_ScreenWidth;
+	init.captionText = "test";
+	init.instance = hInstance;
+	init.wndProc = WndProc;
+	init.screenWidth = k_ScreenWidth;
 	init.screenHeight = k_ScreenHeight;
 
-	HWND hwndMain = InitializeGraphics( init );
-	
+	HWND hwndMain = InitializeGraphics(init);
+
 	// Clear screen
 	FillRect(0, 0, k_ScreenWidth, k_ScreenHeight, 0);
-	
+
 	{
 		C_Application app(k_ScreenWidth, k_ScreenHeight);
+
+		app.init();
+
 		DWORD lastTime = timeGetTime();
-		
+
 		// Main game loop
 
-		while(true)
+		while (true)
 		{
 			// Pause kSleepTimeMs milliseconds
 
-			const DWORD kSleepTimeMs = 20;			
+			const DWORD kSleepTimeMs = 20; // 50 fps
 			const DWORD currentTime = timeGetTime();
 			const DWORD timeSinceLast = currentTime - lastTime;
 
@@ -100,14 +107,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				Sleep(kSleepTimeMs - timeSinceLast);
 			}
 
-			lastTime = currentTime;			
+			lastTime = currentTime;
 
 			// Windows messaging
 			// *** do not remove ***
 			MSG msg;
-			if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+			if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 			{
-				if(msg.message==WM_QUIT)
+				if (msg.message == WM_QUIT)
 				{
 					break;
 				}
@@ -115,9 +122,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				DispatchMessage(&msg);
 			}
 
-
-			app.tick(g_PressedKeys);
-
+			app.handleInput(g_PressedKeys);
+			app.tick();
+			app.draw();
 		}
 	}
 

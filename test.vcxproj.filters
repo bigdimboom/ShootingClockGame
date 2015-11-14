@@ -14,6 +14,12 @@
     <Filter Include="Source Files\engine\math">
       <UniqueIdentifier>{96b73943-5de1-477f-8ebe-878a00d6f5d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\Input">
+      <UniqueIdentifier>{456f0a9c-9dca-475a-a887-1c63862d680e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\rendering">
+      <UniqueIdentifier>{b57d84d4-e515-4256-949a-b1a6896538b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\api\graphics.cpp">
@@ -22,14 +28,17 @@
     <ClCompile Include="src\engine\api\time.cpp">
       <Filter>Source Files\engine\api</Filter>
     </ClCompile>
-    <ClCompile Include="src\C_Application.cpp">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
     <ClCompile Include="src\engine\math\point2f.cpp">
       <Filter>Source Files\engine\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\C_Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\rendering\idrawable.cpp">
+      <Filter>Source Files\engine\rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,11 +48,14 @@
     <ClInclude Include="src\engine\api\time.h">
       <Filter>Source Files\engine\api</Filter>
     </ClInclude>
-    <ClInclude Include="src\C_Application.h">
-      <Filter>Source Files\engine</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\math\point2f.h">
       <Filter>Source Files\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\C_Application.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\rendering\idrawable.h">
+      <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
