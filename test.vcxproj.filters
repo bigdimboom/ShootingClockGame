@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{fc606d44-d79d-4e4b-ad83-279eaadebdf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\api">
+      <UniqueIdentifier>{67eea80c-135d-4538-b413-fd3d94ee83fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\math">
+      <UniqueIdentifier>{96b73943-5de1-477f-8ebe-878a00d6f5d7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\engine\api\graphics.cpp">
+      <Filter>Source Files\engine\api</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\api\time.cpp">
+      <Filter>Source Files\engine\api</Filter>
+    </ClCompile>
+    <ClCompile Include="src\C_Application.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\engine\api\graphics.h">
+      <Filter>Source Files\engine\api</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\api\time.h">
+      <Filter>Source Files\engine\api</Filter>
+    </ClInclude>
+    <ClInclude Include="src\C_Application.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
