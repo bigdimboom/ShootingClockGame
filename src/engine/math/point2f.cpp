@@ -118,7 +118,9 @@ float Point2f::length()
 
 Point2f& Point2f::normalize()
 {
-	(*this) /= length();
+	float factor = 1 / length();
+	d_x *= factor;
+	d_y *= factor;
 	return *this;
 }
 
@@ -140,4 +142,31 @@ void Point2f::rotate(const Point2f & pivot, float angleInDegree)
 }
 
 
-} // end namespace hctm - about 40 mins
+} // end namespace hctm - about 1 hour
+
+#ifdef UNIT_TEST
+
+void UTEST()
+{
+	using namespace hctm;
+	using namespace std;
+	Point2f p;
+	cout << p << endl;
+	p.setX(13.0f);
+	p.setY(15.0f);
+
+	float x = p.x();
+	float y = p.y();
+	float dp = p.dot(Point2f(2.0f, 3.0f));
+	float len = p.length();
+
+	Point2f tmp = -p;
+	p.normalize();
+
+	Point2f other = tmp;
+
+	other += other += Point2f(1.0f, 1.0f);
+
+}
+
+#endif // end of unit test
