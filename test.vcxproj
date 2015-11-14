@@ -14,12 +14,14 @@
     <ClCompile Include="src\C_Application.cpp" />
     <ClCompile Include="src\engine\api\graphics.cpp" />
     <ClCompile Include="src\engine\api\time.cpp" />
+    <ClCompile Include="src\engine\math\point2f.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\C_Application.h" />
     <ClInclude Include="src\engine\api\graphics.h" />
     <ClInclude Include="src\engine\api\time.h" />
+    <ClInclude Include="src\engine\math\point2f.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{19B58AE8-1901-46A0-9952-95E672EC86F5}</ProjectGuid>
