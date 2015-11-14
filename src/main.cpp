@@ -116,7 +116,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			}
 
 
-			app.Tick(g_PressedKeys);
+			app.tick(g_PressedKeys);
 
 		}
 	}
