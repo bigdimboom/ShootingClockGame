@@ -9,9 +9,10 @@ class IShape
 {
 public:
 	virtual ~IShape(){}
+
 	virtual void translate(float x, float y) = 0; 
 	  // move shape x by x, y by y.
-	virtual void translate(Point2f pos) = 0; 
+	virtual void translate(Point2f increment) = 0; 
 	  // move shape x by x, y by y.
 	virtual void rotate(const Point2f& pvt, float angleInDegree) = 0; 
 	  // rotate around some point by some angle in degree.

@@ -5,14 +5,6 @@ namespace hctm
 {
 
 // CONSTRUCTORS
-Rect::Rect()
-	: d_downLeft(0.0f)
-	, d_downRight(0.0f)
-	, d_topLeft(0.0f)
-	, d_topRight(0.0f)
-{
-}
-
 
 Rect::Rect(const Point2f& topLeft, float width, float height)
 	: d_topLeft(topLeft)

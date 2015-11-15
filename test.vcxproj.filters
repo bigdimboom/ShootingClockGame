@@ -46,6 +46,12 @@
     <ClCompile Include="src\engine\math\rect.cpp">
       <Filter>Source Files\engine\math</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\math\triangle.cpp">
+      <Filter>Source Files\engine\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\rendering\drawable_rect.cpp">
+      <Filter>Source Files\engine\rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -68,6 +74,12 @@
     </ClInclude>
     <ClInclude Include="src\engine\math\rect.h">
       <Filter>Source Files\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\math\triangle.h">
+      <Filter>Source Files\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\rendering\drawable_rect.h">
+      <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,10 +16,9 @@ public:
 	  // down right point.
 	Point2f d_downLeft;
 	  // down left point.
+	Rect() = delete;
 public:
 	// CONSTRUCTORS
-	Rect();
-	  // default constructor.
 	Rect(const Point2f& topLeft, float width, float height);
 	  // initiate rectangle from top left corner.
 	Rect(float xLeftTop, float yLeftTop, float width, float height);
