@@ -44,6 +44,9 @@ public:
 	void rotate(const Point2f& pvt, float angleInDegree) override;
 	void scale(float factor) override;
 	float area() const override;
+
+	float width() const;
+	float height() const;
 };
 
 } // end namespace hctm - about 1 hour

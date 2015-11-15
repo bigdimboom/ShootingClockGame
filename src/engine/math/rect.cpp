@@ -126,14 +126,24 @@ void Rect::scale(float factor)
 
 float Rect::area() const
 {
-	Point2f vec1 = d_topRight - d_topRight;
+	Point2f vec1 = d_topLeft - d_topRight;
 	Point2f vec2 = d_downLeft - d_topLeft;
 	float w = vec1.length();
 	float h = vec2.length();
 	return w * h;
 }
 
+float Rect::width() const
+{
+	Point2f vec1 = d_topLeft - d_topRight;
+	return vec1.length();
+}
 
+float Rect::height() const
+{
+	Point2f vec2 = d_downLeft - d_topLeft;
+	return vec2.length();
+}
 
 } // end namespace hctm
 
