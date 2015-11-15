@@ -133,4 +133,15 @@ float Rect::area() const
 	return w * h;
 }
 
+
+
 } // end namespace hctm
+
+#ifdef UNIT_TEST
+
+void UTEST()
+{
+	//tested in C_Application
+}
+
+#endif // end of unit test

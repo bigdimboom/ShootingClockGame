@@ -57,10 +57,10 @@ void C_Application::draw()
 {
 	FillRect(0, 0, m_ScreenWidth, m_ScreenHeight, 0);
 
-	DrawLine(d_rec.d_topLeft.x(), d_rec.d_topLeft.y(), d_rec.d_topRight.x(), d_rec.d_topRight.y(), GetRGB(255, 0, 0));
-	DrawLine(d_rec.d_downLeft.x(), d_rec.d_downLeft.y(), d_rec.d_downRight.x(), d_rec.d_downRight.y(), GetRGB(255, 0, 0));
-	DrawLine(d_rec.d_topLeft.x(), d_rec.d_topLeft.y(), d_rec.d_downLeft.x(), d_rec.d_downLeft.y(), GetRGB(255, 0, 0));
-	DrawLine(d_rec.d_topRight.x(), d_rec.d_topRight.y(), d_rec.d_downRight.x(), d_rec.d_downRight.y(), GetRGB(255, 0, 0));
+	//DrawLine(d_rec.d_topLeft.x(), d_rec.d_topLeft.y(), d_rec.d_topRight.x(), d_rec.d_topRight.y(), GetRGB(255, 0, 0));
+	//DrawLine(d_rec.d_downLeft.x(), d_rec.d_downLeft.y(), d_rec.d_downRight.x(), d_rec.d_downRight.y(), GetRGB(255, 0, 0));
+	//DrawLine(d_rec.d_topLeft.x(), d_rec.d_topLeft.y(), d_rec.d_downLeft.x(), d_rec.d_downLeft.y(), GetRGB(255, 0, 0));
+	//DrawLine(d_rec.d_topRight.x(), d_rec.d_topRight.y(), d_rec.d_downRight.x(), d_rec.d_downRight.y(), GetRGB(255, 0, 0));
 }
 
 } // end namespace hctg
