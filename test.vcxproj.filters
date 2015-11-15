@@ -26,6 +26,9 @@
     <Filter Include="Source Files\game">
       <UniqueIdentifier>{6cfdd345-1cf4-4ec5-8255-1604a3555f81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\events">
+      <UniqueIdentifier>{17aed1a3-2f0c-4c11-9e30-d459233cc8d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\api\graphics.cpp">
@@ -70,6 +73,15 @@
     <ClCompile Include="src\engine\scene\actor.cpp">
       <Filter>Source Files\engine\scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\events\event_bus.cpp">
+      <Filter>Source Files\engine\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\events\event_dispatcher.cpp">
+      <Filter>Source Files\engine\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\events\ievent.cpp">
+      <Filter>Source Files\engine\events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -110,6 +122,15 @@
     </ClInclude>
     <ClInclude Include="src\engine\scene\actor.h">
       <Filter>Source Files\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\events\event_bus.h">
+      <Filter>Source Files\engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\events\event_dispatcher.h">
+      <Filter>Source Files\engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\events\ievent.h">
+      <Filter>Source Files\engine\events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

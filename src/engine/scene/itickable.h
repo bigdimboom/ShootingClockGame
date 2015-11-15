@@ -8,7 +8,8 @@ class ITickable
 {
 public:
 	virtual ~ITickable(){}
-	virtual void tick(float dtime) = 0;
+	virtual void preTick() = 0;
+	virtual void tick() = 0;
 };
 
 } // end namespace sgds
