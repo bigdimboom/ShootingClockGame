@@ -20,6 +20,12 @@
     <Filter Include="Source Files\engine\rendering">
       <UniqueIdentifier>{b57d84d4-e515-4256-949a-b1a6896538b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\scene">
+      <UniqueIdentifier>{12b64873-06ca-4f43-acae-69efd63256a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{6cfdd345-1cf4-4ec5-8255-1604a3555f81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\api\graphics.cpp">
@@ -55,6 +61,15 @@
     <ClCompile Include="src\engine\rendering\renderer.cpp">
       <Filter>Source Files\engine\rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\scene\itickable.cpp">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\math\line.cpp">
+      <Filter>Source Files\engine\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\actor.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -86,6 +101,15 @@
     </ClInclude>
     <ClInclude Include="src\engine\rendering\renderer.h">
       <Filter>Source Files\engine\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\scene\itickable.h">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\math\line.h">
+      <Filter>Source Files\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\actor.h">
+      <Filter>Source Files\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
