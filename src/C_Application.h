@@ -1,8 +1,9 @@
 #ifndef TEST_C_APPLICATION_H
 #define TEST_C_APPLICATION_H
 
-#include "engine\math\rect.h"
+#include "engine\rendering\drawable_rect.h"
 
+using namespace hctr;
 using namespace hctm;
 
 namespace hctg
@@ -38,12 +39,7 @@ private:
 	int			m_CannonX;
 	int			m_CannonY;
 
-	//Point2f d_top;
-	//Point2f d_left;
-	//Point2f d_right;
-	//Point2f d_pvt;
-
-	Rect d_rec;
+	DrawableRect d_rec;
 
 };
 

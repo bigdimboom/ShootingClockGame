@@ -7,7 +7,7 @@ namespace hctm
 
 class Rect : public IShape
 {
-public:
+protected:
 	Point2f d_topLeft;
 	  // top left point.
 	Point2f d_topRight;
@@ -16,7 +16,6 @@ public:
 	  // down right point.
 	Point2f d_downLeft;
 	  // down left point.
-	Rect() = delete;
 public:
 	// CONSTRUCTORS
 	Rect(const Point2f& topLeft, float width, float height);

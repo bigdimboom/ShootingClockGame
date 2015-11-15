@@ -20,6 +20,7 @@
     <ClCompile Include="src\engine\math\triangle.cpp" />
     <ClCompile Include="src\engine\rendering\drawable_rect.cpp" />
     <ClCompile Include="src\engine\rendering\idrawable.cpp" />
+    <ClCompile Include="src\engine\rendering\renderer.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +33,7 @@
     <ClInclude Include="src\engine\math\triangle.h" />
     <ClInclude Include="src\engine\rendering\drawable_rect.h" />
     <ClInclude Include="src\engine\rendering\idrawable.h" />
+    <ClInclude Include="src\engine\rendering\renderer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{19B58AE8-1901-46A0-9952-95E672EC86F5}</ProjectGuid>

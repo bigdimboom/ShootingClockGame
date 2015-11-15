@@ -52,6 +52,9 @@
     <ClCompile Include="src\engine\rendering\drawable_rect.cpp">
       <Filter>Source Files\engine\rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\rendering\renderer.cpp">
+      <Filter>Source Files\engine\rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -79,6 +82,9 @@
       <Filter>Source Files\engine\math</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\rendering\drawable_rect.h">
+      <Filter>Source Files\engine\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\rendering\renderer.h">
       <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
   </ItemGroup>
