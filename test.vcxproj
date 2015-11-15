@@ -22,8 +22,8 @@
     <ClCompile Include="src\engine\rendering\drawable_rect.cpp" />
     <ClCompile Include="src\engine\rendering\idrawable.cpp" />
     <ClCompile Include="src\engine\rendering\renderer.cpp" />
+    <ClCompile Include="src\engine\scene\actor.cpp" />
     <ClCompile Include="src\engine\scene\itickable.cpp" />
-    <ClCompile Include="src\game\actor.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -38,8 +38,8 @@
     <ClInclude Include="src\engine\rendering\drawable_rect.h" />
     <ClInclude Include="src\engine\rendering\idrawable.h" />
     <ClInclude Include="src\engine\rendering\renderer.h" />
+    <ClInclude Include="src\engine\scene\actor.h" />
     <ClInclude Include="src\engine\scene\itickable.h" />
-    <ClInclude Include="src\game\actor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{19B58AE8-1901-46A0-9952-95E672EC86F5}</ProjectGuid>

@@ -67,8 +67,8 @@
     <ClCompile Include="src\engine\math\line.cpp">
       <Filter>Source Files\engine\math</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\actor.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="src\engine\scene\actor.cpp">
+      <Filter>Source Files\engine\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -108,8 +108,8 @@
     <ClInclude Include="src\engine\math\line.h">
       <Filter>Source Files\engine\math</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\actor.h">
-      <Filter>Source Files\game</Filter>
+    <ClInclude Include="src\engine\scene\actor.h">
+      <Filter>Source Files\engine\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
