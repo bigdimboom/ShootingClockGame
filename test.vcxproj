@@ -16,6 +16,7 @@
     <ClCompile Include="src\engine\api\time.cpp" />
     <ClCompile Include="src\engine\math\ishape.cpp" />
     <ClCompile Include="src\engine\math\point2f.cpp" />
+    <ClCompile Include="src\engine\math\rect.cpp" />
     <ClCompile Include="src\engine\rendering\idrawable.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
@@ -25,6 +26,7 @@
     <ClInclude Include="src\engine\api\time.h" />
     <ClInclude Include="src\engine\math\ishape.h" />
     <ClInclude Include="src\engine\math\point2f.h" />
+    <ClInclude Include="src\engine\math\rect.h" />
     <ClInclude Include="src\engine\rendering\idrawable.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

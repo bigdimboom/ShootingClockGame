@@ -13,7 +13,7 @@ public:
 	  // move shape x by x, y by y.
 	virtual void translate(Point2f pos) = 0; 
 	  // move shape x by x, y by y.
-	virtual void rotate(Point2f pvt, float angleInDegree) = 0; 
+	virtual void rotate(const Point2f& pvt, float angleInDegree) = 0; 
 	  // rotate around some point by some angle in degree.
 	virtual void scale(float factor) = 0; 
 	  // scale up or down shape by some factor.
