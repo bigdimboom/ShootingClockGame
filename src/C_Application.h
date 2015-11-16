@@ -2,6 +2,7 @@
 #define TEST_C_APPLICATION_H
 
 #include "engine\rendering\drawable_rect.h"
+#include "engine\collision\aabb.h"
 
 using namespace hctr;
 using namespace hctm;
@@ -39,8 +40,10 @@ private:
 	int			m_CannonX;
 	int			m_CannonY;
 
-	DrawableRect d_rec;
-
+	DrawableRect d_rec1;
+	DrawableRect d_rec2;
+	hctc::Aabb d_cd1;
+	hctc::Aabb d_cd2;
 };
 
 } // end namespace hctg

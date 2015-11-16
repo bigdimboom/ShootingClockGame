@@ -14,6 +14,7 @@
     <ClCompile Include="src\C_Application.cpp" />
     <ClCompile Include="src\engine\api\graphics.cpp" />
     <ClCompile Include="src\engine\api\time.cpp" />
+    <ClCompile Include="src\engine\collision\aabb.cpp" />
     <ClCompile Include="src\engine\events\event_bus.cpp" />
     <ClCompile Include="src\engine\events\event_dispatcher.cpp" />
     <ClCompile Include="src\engine\events\ievent.cpp" />
@@ -27,12 +28,14 @@
     <ClCompile Include="src\engine\rendering\renderer.cpp" />
     <ClCompile Include="src\engine\scene\actor.cpp" />
     <ClCompile Include="src\engine\scene\itickable.cpp" />
+    <ClCompile Include="src\engine\scene\tickable_actor.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\C_Application.h" />
     <ClInclude Include="src\engine\api\graphics.h" />
     <ClInclude Include="src\engine\api\time.h" />
+    <ClInclude Include="src\engine\collision\aabb.h" />
     <ClInclude Include="src\engine\events\event_bus.h" />
     <ClInclude Include="src\engine\events\event_dispatcher.h" />
     <ClInclude Include="src\engine\events\ievent.h" />
@@ -46,6 +49,7 @@
     <ClInclude Include="src\engine\rendering\renderer.h" />
     <ClInclude Include="src\engine\scene\actor.h" />
     <ClInclude Include="src\engine\scene\itickable.h" />
+    <ClInclude Include="src\engine\scene\tickable_actor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{19B58AE8-1901-46A0-9952-95E672EC86F5}</ProjectGuid>

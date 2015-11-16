@@ -14,9 +14,6 @@
     <Filter Include="Source Files\engine\math">
       <UniqueIdentifier>{96b73943-5de1-477f-8ebe-878a00d6f5d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\Input">
-      <UniqueIdentifier>{456f0a9c-9dca-475a-a887-1c63862d680e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\engine\rendering">
       <UniqueIdentifier>{b57d84d4-e515-4256-949a-b1a6896538b5}</UniqueIdentifier>
     </Filter>
@@ -28,6 +25,12 @@
     </Filter>
     <Filter Include="Source Files\engine\events">
       <UniqueIdentifier>{17aed1a3-2f0c-4c11-9e30-d459233cc8d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\input">
+      <UniqueIdentifier>{456f0a9c-9dca-475a-a887-1c63862d680e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\collision">
+      <UniqueIdentifier>{a63ea449-1394-4fc3-b33e-45b850ed2c9c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +85,12 @@
     <ClCompile Include="src\engine\events\ievent.cpp">
       <Filter>Source Files\engine\events</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\scene\tickable_actor.cpp">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\collision\aabb.cpp">
+      <Filter>Source Files\engine\collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -131,6 +140,12 @@
     </ClInclude>
     <ClInclude Include="src\engine\events\ievent.h">
       <Filter>Source Files\engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\scene\tickable_actor.h">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\collision\aabb.h">
+      <Filter>Source Files\engine\collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -37,9 +37,9 @@ public:
 	~Rect();
 
 	// MEMBER FUCNTIONS
-	void translate(float x, float y) override;
-	void translate(Point2f increment) override;
-	void rotate(const Point2f& pvt, float angleInDegree) override;
+	virtual void translate(float x, float y) override;
+	virtual void translate(Point2f increment) override;
+	virtual void rotate(const Point2f& pvt, float angleInDegree) override; // aabb doesn't need rotate.
 	void scale(float factor) override;
 	float area() const override;
 

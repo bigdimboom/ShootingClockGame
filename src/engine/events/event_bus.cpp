@@ -40,11 +40,13 @@ bool EventBus::deQueueEvent(const IEvent & ev)
 	bool ret = false;
 	for (auto iter = d_eventQ.begin(); iter != d_eventQ.end(); ++iter)
 	{
-		if ((*iter)->name() == ev.name())
+		if ((*iter)->name() == ev.name()) 
 		{
 			d_eventQ.erase(iter);
 			ret = true;
 		}
+		// if I implement type() in IEvent in stead of comparing names,
+		// then it would compare numbers, faster than comparing strings.
 	}
 	return ret;
 }
