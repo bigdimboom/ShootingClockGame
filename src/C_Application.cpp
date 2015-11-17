@@ -15,9 +15,9 @@ C_Application::C_Application(int screenWidth, int screenHeight)
 	, m_CannonX(m_ScreenWidth / 2)
 	, m_CannonY(m_ScreenHeight / 2)
 	, d_rec1(Point2f(100.0f, 100.f), 20.0f, 20.0f, 255, 255, 255)
-	, d_rec2(Point2f(200.0f, 200.f), 20.0f, 20.0f, 255, 0, 0)
+	, d_rec2(Point2f(200.0f, 200.f), 200.0f, 200.0f, 255, 0, 0)
 	, d_cd1(Point2f(100.0f, 100.f), 20.0f, 20.0f)
-	, d_cd2(Point2f(200.0f, 200.f), 20.0f, 20.0f)
+	, d_cd2(Point2f(200.0f, 200.f), 200.0f, 200.0f)
 {
 	init();
 }

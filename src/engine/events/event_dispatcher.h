@@ -17,7 +17,7 @@ typedef std::vector<EventListenerCallbacksPtr> EventListenerPtrList;
 class EventDispatcher : public hcts::ITickable
 {
 private:
-	std::unordered_map<std::string, EventListenerPtrList> d_listeners;
+	std::unordered_map<EventType, EventListenerPtrList> d_listeners;
 	  // store a map of listeners ready for exec.
 	  // listeners have to manage themslves.
 
@@ -34,10 +34,8 @@ public:
 	// MEMBER FUNCTIONS
 	void dispatch(const IEvent & ev);
 	  // called as part of tick, synchronous.
-	void add(const std::string& eventName, 
-			 EventListenerCallbacksPtr listener);
-	void remove(const std::string& eventName, 
-				EventListenerCallbacksPtr listener);
+	void add(const IEvent & ev, EventListenerCallbacksPtr listener);
+	void remove(const IEvent & ev, EventListenerCallbacksPtr listener);
 
 	void preTick() override;
 	void tick() override;

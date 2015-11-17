@@ -23,24 +23,25 @@ void EventBus::setQueueSize(unsigned int size)
 }
 
 // MEMBER FUNCTIONDS
-bool EventBus::enQueueEvent(const IEvent & ev)
+bool EventBus::enQueueEvent(const BasicEvent & ev)
 {
 	if (d_qSize == d_eventQ.size())
 	{
 		// this makes d_eventQ fixed size.
 		return false;
 	}
-	d_eventQ.push_back(&ev);
+	d_eventQ.push_back(ev);
 	return true;
 }
 
-bool EventBus::deQueueEvent(const IEvent & ev)
+bool EventBus::deQueueEvent(const BasicEvent & ev)
 {
+
 	unsigned int size = d_eventQ.size();
 	bool ret = false;
 	for (auto iter = d_eventQ.begin(); iter != d_eventQ.end(); ++iter)
 	{
-		if ((*iter)->name() == ev.name()) 
+		if ((*iter).type() == ev.type())
 		{
 			d_eventQ.erase(iter);
 			ret = true;
@@ -54,13 +55,13 @@ bool EventBus::deQueueEvent(const IEvent & ev)
 void EventBus::registerListener(const IEvent & ev,
 					  EventListenerCallbacksPtr listener)
 {
-	d_evDispatcher.add(ev.name(), listener);
+	d_evDispatcher.add(ev, listener);
 }
 
 void EventBus::deRegisterListener(const IEvent & ev,
 						EventListenerCallbacksPtr listener)
 {
-	d_evDispatcher.remove(ev.name(), listener);
+	d_evDispatcher.remove(ev, listener);
 }
 
 void EventBus::triggerEvent(const IEvent & ev)
@@ -77,7 +78,7 @@ void EventBus::tick()
 	unsigned int size = d_eventQ.size();
 	for (unsigned int i = 0; i < size; ++i)
 	{
-		d_evDispatcher.dispatch(*(d_eventQ[i]));
+		d_evDispatcher.dispatch(d_eventQ[i]);
 	}
 	d_eventQ.clear();
 }

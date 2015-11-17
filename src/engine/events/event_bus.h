@@ -1,8 +1,9 @@
 // event_bus.h
 // A singleton wrapper for EventDispatcher 
-// or should I call it EventManager.
+// you can define your own EventBus
 #pragma once
 #include "event_dispatcher.h"
+#include "basic_event.h"
 
 namespace hcte
 {
@@ -14,7 +15,9 @@ class EventBus : public hcts::ITickable
 private:
 	unsigned int d_qSize;
 	EventDispatcher d_evDispatcher;
-	std::vector<const IEvent*> d_eventQ;
+	std::vector<BasicEvent> d_eventQ;
+	  // if it is an online game, then it is better define an Event Object
+	  // instead of IEvent interface. Becuase it is good for serilization.
 
 	// DELETED
 	EventBus();
@@ -30,10 +33,10 @@ public:
 	void setQueueSize(unsigned int size);
 
 	// MEMBER FUNCTIONS
-	bool enQueueEvent(const IEvent & ev);
-	  // return false if queue is full.
-	bool deQueueEvent(const IEvent & ev);
-	  // return  false if the event is not there.
+	bool enQueueEvent(const BasicEvent& ev);
+	  // return false if queue is full, event bus collects memory
+	bool deQueueEvent(const BasicEvent& ev);
+	  // return  false if the event is not there, user collects memory
 
 	void registerListener(const IEvent & ev,
 						  EventListenerCallbacksPtr listener);

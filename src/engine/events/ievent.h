@@ -17,7 +17,7 @@ public:
 	// virtual float timeStamp() const = 0;
 	virtual const EventType & type() const = 0;
 	  // return a GUID for fast comparision.
-	virtual const std::string name() const = 0;
+	virtual const std::string message() const = 0;
 	  // return a human readable name for the event.
 };
 

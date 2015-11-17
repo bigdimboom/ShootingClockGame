@@ -16,7 +16,7 @@ protected:
 	hctm::Point2f d_pos;
 public:
 	//COSTRUCTOS
-	Actor(hctm::Point2f pos);
+	Actor(hctm::Point2f pos = hctm::Point2f(0.0f,0.0f));
 	Actor(const Actor & actor);
 	Actor(Actor && actor);
 

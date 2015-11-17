@@ -32,6 +32,9 @@
     <Filter Include="Source Files\engine\collision">
       <UniqueIdentifier>{a63ea449-1394-4fc3-b33e-45b850ed2c9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\gameplay">
+      <UniqueIdentifier>{bbb70877-5af4-4900-bbdf-f6a768146a58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\api\graphics.cpp">
@@ -91,6 +94,30 @@
     <ClCompile Include="src\engine\collision\aabb.cpp">
       <Filter>Source Files\engine\collision</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\collision\icollider.cpp">
+      <Filter>Source Files\engine\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\scene\scene_graph.cpp">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\events\basic_event.cpp">
+      <Filter>Source Files\engine\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\clock.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\scene\scene.cpp">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\gameplay\apawn.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\gameplay\acontroller.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\gameplay\acharacter.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -146,6 +173,30 @@
     </ClInclude>
     <ClInclude Include="src\engine\collision\aabb.h">
       <Filter>Source Files\engine\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\collision\icollider.h">
+      <Filter>Source Files\engine\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\scene\scene_graph.h">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\events\basic_event.h">
+      <Filter>Source Files\engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\clock.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\scene\scene.h">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\gameplay\apawn.h">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\gameplay\acontroller.h">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\gameplay\acharacter.h">
+      <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

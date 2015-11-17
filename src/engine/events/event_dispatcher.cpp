@@ -18,8 +18,8 @@ EventDispatcher::~EventDispatcher()
 // MEMBER FUNCTIONS
 void EventDispatcher::dispatch(const IEvent & ev)
 {
-	std::string evName = ev.name();
-	auto got = d_listeners.find(evName);
+	EventType type = ev.type();
+	auto got = d_listeners.find(type);
 	if (got != d_listeners.end())
 	{
 		for (auto callBacks : got->second )
@@ -32,18 +32,16 @@ void EventDispatcher::dispatch(const IEvent & ev)
 	}
 }
 
-void EventDispatcher::add(const std::string& eventName,
-						  EventListenerCallbacksPtr listener)
+void EventDispatcher::add(const IEvent & ev, EventListenerCallbacksPtr listener)
 {
 	assert(listener);
-	d_listeners[eventName].push_back(listener);
+	d_listeners[ev.type()].push_back(listener);
 }
 
-void EventDispatcher::remove(const std::string& eventName, 
-							 EventListenerCallbacksPtr listener)
+void EventDispatcher::remove(const IEvent & ev, EventListenerCallbacksPtr listener)
 {
 	assert(listener);
-	auto got = d_listeners.find(eventName);
+	auto got = d_listeners.find(ev.type());
 
 	if (got != d_listeners.end())
 	{
