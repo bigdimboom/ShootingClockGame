@@ -13,10 +13,10 @@ class ASprite : public hctm::IShape, public hctr::IDrawable
 {
 private:
 	// DELETED
-	ASprite(const ASprite &);
-	ASprite(ASprite &&);
-	ASprite& operator = (const ASprite &);
-	ASprite& operator = (ASprite &);
+	ASprite(const ASprite &) = delete;
+	ASprite(ASprite &&) = delete;
+	ASprite& operator = (const ASprite &) = delete;
+	ASprite& operator = (ASprite &) = delete;
 protected:
 	hctm::Point2f d_pos;
 public:
