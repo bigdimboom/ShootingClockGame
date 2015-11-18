@@ -4,7 +4,6 @@
 #include "../math/ishape.h"
 #include "../math/point2f.h"
 #include "../rendering/idrawable.h"
-#include <vector>
 
 namespace hctg
 {
