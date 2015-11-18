@@ -1,7 +1,7 @@
 // controller.h
 #pragma once
 #include "../scene/itickable.h"
-#include "apawn.h"
+#include "pawn.h"
 #include <vector>
 // controller is reponsible of GC.
 
@@ -15,21 +15,16 @@ private:
 	AController& operator=(const AController &) = delete;
 	AController& operator=(AController &&) = delete;
 protected:
-
-	// the amount of pawns
-	// the operations' complexity of a container
-	//...
-	// defines what kind of container I choose.
-
+	Pawn* d_pawn;
 public:
 	// CONSTRUCTOR
-	AController();
+	AController(Pawn* pawn = nullptr);
 
 	// DESTRUCTOR
 	~AController();
 
-	virtual void addPawn(APawn* pawn) = 0;
-	virtual void removePawn(APawn* pawn) = 0;
+	void addPawn(Pawn* pawn);
+	void removePawn();
 
 	virtual void preTick() = 0;
 	virtual void tick() = 0;
