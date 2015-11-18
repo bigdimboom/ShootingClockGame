@@ -10,13 +10,33 @@ class Renderer
 {
 private:
 	std::vector<IDrawable*> d_drawables;
+	int d_width;
+	int d_height;
+
+	// DELETED
+	Renderer(const Renderer &) = delete;
+	Renderer(Renderer &&) = delete;
+	Renderer& operator = (const Renderer &) = delete;
+	Renderer& operator = (Renderer &&) = delete;
+
 public:
-	Renderer();
+	Renderer(int width = 0, int height = 0);
 	~Renderer();
+
+	// ACCESSOR
+	int width() const;
+	int height() const;
+
+	// MUTATORS
+	void setWindowSize(int width, int height);
+
+	// MEMBER FUNCTIONS
 	void draw();
 	void clearAll(unsigned int r, unsigned int g, unsigned int b);
 	void addDrawable(IDrawable* drawable);
 	void removeDrawable(IDrawable* drawable);
+	bool isActive() const;
+	  // is render width == 0 or height == 0;
 };
 
 } // end namespace hctr
