@@ -1,21 +1,21 @@
-// drawable_line.h
+// drawable_triangle.h
 #pragma once
-#include "../math/line.h"
 #include "idrawable.h"
+#include "../math/triangle.h"
 
 namespace hctr
 {
 
-class DrawableLine : public hctm::Line, public IDrawable
+class DrawableTriangle : public hctm::Triangle, public hctr::IDrawable
 {
 private:
 	unsigned int d_r;
 	unsigned int d_g;
 	unsigned int d_b;
 public:
-	DrawableLine(const hctm::Point2f& start, const hctm::Point2f& end,
+	DrawableTriangle(const hctm::Point2f& pt1, const hctm::Point2f& pt2, const hctm::Point2f& pt3,
 				 unsigned int r, unsigned int g, unsigned int b);
-	~DrawableLine();
+	~DrawableTriangle();
 
 	// MEMBER FUNCTIONS
 	void setColor(unsigned int r, unsigned int g, unsigned int b);

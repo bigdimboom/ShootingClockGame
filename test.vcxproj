@@ -30,6 +30,7 @@
     <ClCompile Include="src\engine\math\triangle.cpp" />
     <ClCompile Include="src\engine\rendering\drawable_line.cpp" />
     <ClCompile Include="src\engine\rendering\drawable_rect.cpp" />
+    <ClCompile Include="src\engine\rendering\drawable_triangle.cpp" />
     <ClCompile Include="src\engine\rendering\idrawable.cpp" />
     <ClCompile Include="src\engine\rendering\renderer.cpp" />
     <ClCompile Include="src\engine\scene\actor.cpp" />
@@ -59,6 +60,7 @@
     <ClInclude Include="src\engine\math\triangle.h" />
     <ClInclude Include="src\engine\rendering\drawable_line.h" />
     <ClInclude Include="src\engine\rendering\drawable_rect.h" />
+    <ClInclude Include="src\engine\rendering\drawable_triangle.h" />
     <ClInclude Include="src\engine\rendering\idrawable.h" />
     <ClInclude Include="src\engine\rendering\renderer.h" />
     <ClInclude Include="src\engine\scene\actor.h" />

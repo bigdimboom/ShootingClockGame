@@ -7,7 +7,7 @@ namespace hctm
 
 class Triangle : public IShape
 {
-private:
+protected:
 	Point2f d_top;
 	Point2f d_left;
 	Point2f d_right;

@@ -50,7 +50,7 @@ hctm::Point2f Actor::positionXY() const
 }
 
 //MUTATORS
-void Actor::set(hctm::Point2f pos)
+void Actor::setPosition(hctm::Point2f pos)
 {
 	d_pos = pos;
 }

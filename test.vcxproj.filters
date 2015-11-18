@@ -118,6 +118,9 @@
     <ClCompile Include="src\engine\rendering\drawable_line.cpp">
       <Filter>Source Files\engine\rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\rendering\drawable_triangle.cpp">
+      <Filter>Source Files\engine\rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -196,6 +199,9 @@
       <Filter>Source Files\game</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\rendering\drawable_line.h">
+      <Filter>Source Files\engine\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\rendering\drawable_triangle.h">
       <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
   </ItemGroup>

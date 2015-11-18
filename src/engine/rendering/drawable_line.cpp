@@ -1,7 +1,6 @@
+// drawable_line.cpp
 #include "drawable_line.h"
 #include "../api/graphics.h"
-
-
 
 namespace hctr
 {
