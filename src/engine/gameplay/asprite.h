@@ -10,14 +10,16 @@ namespace hctg
 
 class ASprite : public hctm::IShape, public hctr::IDrawable
 {
+protected:
+	hctm::Point2f d_pos;
+
 private:
 	// DELETED
 	ASprite(const ASprite &) = delete;
 	ASprite(ASprite &&) = delete;
 	ASprite& operator = (const ASprite &) = delete;
-	ASprite& operator = (ASprite &) = delete;
-protected:
-	hctm::Point2f d_pos;
+	ASprite& operator = (ASprite &&) = delete;
+
 public:
 	// CONSTRUCTOR
 	ASprite(hctm::Point2f pos = hctm::Point2f(0.0f,0.0f));

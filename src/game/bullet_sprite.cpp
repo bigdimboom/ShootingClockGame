@@ -26,10 +26,22 @@ BulletSprite::BulletSprite(BulletSprite && other)
 // ASSIGNMENT OVERLOADS
 BulletSprite& BulletSprite::operator = (const BulletSprite & other)
 {
+	if (this != &other)
+	{
+		d_pos = other.d_pos;
+		d_bullet = other.d_bullet;
+	}
+	return *this;
 }
 
 BulletSprite& BulletSprite::operator = (const BulletSprite && other)
 {
+	if (this != &other)
+	{
+		d_pos = std::move(other.d_pos);
+		d_bullet = std::move(other.d_bullet);
+	}
+	return *this;
 }
 
 // DESTRUCTOR
