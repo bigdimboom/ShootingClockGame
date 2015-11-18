@@ -63,6 +63,8 @@ public:
 	Point2f& operator /= (float s);
 	  // division on current object.
 
+	friend bool operator == (const Point2f & obj1, const Point2f & obj2);
+
 	// vector specific operations.
 	float dot(const Point2f & other);
 	  // dot product if it is a vector.
@@ -86,6 +88,11 @@ std::ostream& operator<<(std::ostream& stream, const Point2f& obj)
 	return stream << "x: " << obj.d_x << "y: " << obj.d_y;
 }
 
+inline
+bool operator == (const Point2f & obj1, const Point2f & obj2)
+{
+	return (obj1.d_x == obj2.d_x && obj1.d_y == obj2.d_y);
+}
 
 // CONSTRUCTORS
 inline

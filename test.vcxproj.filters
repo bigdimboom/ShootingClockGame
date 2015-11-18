@@ -124,6 +124,12 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\gameplay\character.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\bullet_sprite.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -208,6 +214,12 @@
       <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
     <ClInclude Include="src\game\cannon_sprite.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\gameplay\character.h">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\bullet_sprite.h">
       <Filter>Source Files\game</Filter>
     </ClInclude>
   </ItemGroup>

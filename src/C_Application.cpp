@@ -19,6 +19,7 @@ C_Application::C_Application(int screenWidth, int screenHeight)
 	, d_cd1(Point2f(100.0f, 100.f), 20.0f, 20.0f)
 	, d_cd2(Point2f(200.0f, 200.f), 200.0f, 200.0f)
 	, d_clock(hctm::Point2f(m_ScreenWidth / 2, m_ScreenHeight / 2))
+	, d_cann(hctm::Point2f(m_CannonX, m_CannonY + 100))
 {
 	init();
 }
@@ -43,7 +44,7 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 		d_rec1.translate(-10, 0);
 		d_cd1.translate(-10, 0);
 		d_clock.translate(-10, 0);
-
+		d_cann.rotate(d_cann.position(), -10);
 	}
 
 	if(pressedKeys & s_KeyRight)
@@ -51,6 +52,7 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 		d_rec1.translate(10, 0);
 		d_cd1.translate(10, 0);
 		d_clock.translate(10, 0);
+		d_cann.rotate(d_cann.position(), 10);
 	}
 
 	if(pressedKeys & s_KeyUp)
@@ -93,6 +95,7 @@ void C_Application::draw()
 	//}
 
 	d_clock.draw();
+	d_cann.draw();
 }
 
 } // end namespace hctg

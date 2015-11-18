@@ -4,6 +4,7 @@
 #include "engine\rendering\drawable_rect.h"
 #include "engine\collision\aabb.h"
 #include "game/clock_sprite.h"
+#include "game/cannon_sprite.h"
 #include <iostream>
 
 using namespace hctr;
@@ -48,6 +49,7 @@ private:
 	hctc::Aabb d_cd2;
 
 	mygame::ClockSprite d_clock;
+	mygame::CannonSprite d_cann;
 };
 
 } // end namespace hctg

@@ -7,9 +7,9 @@ namespace mygame
 CannonSprite::CannonSprite(hctm::Point2f pos)
 	: ASprite(pos)
 	, d_tri(hctm::Point2f(pos.x(), pos.y() - 30),
-			hctm::Point2f(pos.x() - 10, pos.y()),
-			hctm::Point2f(pos.x() + 10, pos.y()),
-			0, 0, 255)
+	hctm::Point2f(pos.x() - 10, pos.y()),
+	hctm::Point2f(pos.x() + 10, pos.y()),
+	0, 0, 255)
 {
 }
 
@@ -68,7 +68,12 @@ void CannonSprite::translate(hctm::Point2f increment)
 
 void CannonSprite::rotate(const hctm::Point2f& pvt, float angleInDegree)
 {
-	d_tri.rotate(pvt, angleInDegree);
+	static float track = 90.0f;
+	track += angleInDegree;
+	if (track >= 0.0f && track <= 180.0f)
+	{
+		d_tri.rotate(pvt, angleInDegree);
+	}	
 }
 
 void CannonSprite::scale(float factor)

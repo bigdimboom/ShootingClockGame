@@ -128,7 +128,7 @@ void ClockSprite::preTick()
 
 void ClockSprite::tick()
 {
-	const int unitDegree = 6; // (360 / 60)
+	const float unitDegree = 6.0; // (360 / 60)
 	int nowHr, nowMin, nowSec;
 	GetTime(nowHr, nowMin, nowSec);
 
