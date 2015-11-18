@@ -37,6 +37,7 @@
     <ClCompile Include="src\engine\scene\itickable.cpp" />
     <ClCompile Include="src\engine\scene\scene.cpp" />
     <ClCompile Include="src\engine\scene\scene_graph.cpp" />
+    <ClCompile Include="src\game\cannon_sprite.cpp" />
     <ClCompile Include="src\game\clock_sprite.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
@@ -67,6 +68,7 @@
     <ClInclude Include="src\engine\scene\itickable.h" />
     <ClInclude Include="src\engine\scene\scene.h" />
     <ClInclude Include="src\engine\scene\scene_graph.h" />
+    <ClInclude Include="src\game\cannon_sprite.h" />
     <ClInclude Include="src\game\clock_sprite.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

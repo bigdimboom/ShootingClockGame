@@ -1,18 +1,79 @@
+// clock_sprite.cpp
 #include "clock_sprite.h"
+#include "../engine/api/time.h"
 
 namespace mygame
 {
 
 ClockSprite::ClockSprite(hctm::Point2f pos, float width, float height)
 	: ASprite(pos)
-	, d_clockFace( hctm::Point2f( pos.x() - width / 2.0f, pos.y() - height/ 2.0f), width, height, 255, 0, 0)
-	, d_hrHand(pos, hctm::Point2f(0.0f,1.0f) * 0.9f * height, 255, 204, 0)
-	, d_minHand(pos, hctm::Point2f(0.0f, 1.0f) * 0.6f * height, 255, 0, 128)
-	, d_secHand(pos, hctm::Point2f(0.0f, 1.0f)* 0.3f * height, 255, 255, 255)
+	, d_clockFace(hctm::Point2f(pos.x() - width / 2.0f, pos.y() - height / 2.0f), width, height, 255, 0, 0)
+	, d_hrHand(pos, pos + hctm::Point2f(0.0f, -1.0f) * 0.30f * height, 255, 204, 0)
+	, d_minHand(pos, pos + hctm::Point2f(0.0f, -1.0f) * 0.40f * height, 255, 0, 128)
+	, d_secHand(pos, pos + hctm::Point2f(0.0f, -1.0f)* 0.45f * height, 255, 255, 255)
+	, d_prevHr(0)
+	, d_prevMin(0)
+	, d_prevSec(0)
 {
 }
 
+ClockSprite::ClockSprite(const ClockSprite & other)
+	: ASprite(d_pos)
+	, d_clockFace(other.d_clockFace)
+	, d_hrHand(other.d_hrHand)
+	, d_minHand(other.d_minHand)
+	, d_secHand(other.d_secHand)
+	, d_prevHr(other.d_prevHr)
+	, d_prevMin(other.d_prevMin)
+	, d_prevSec(other.d_prevSec)
 
+{
+}
+
+ClockSprite::ClockSprite(ClockSprite && other)
+	: ASprite(std::move(d_pos))
+	, d_clockFace(std::move(other.d_clockFace))
+	, d_hrHand(std::move(other.d_hrHand))
+	, d_minHand(std::move(other.d_minHand))
+	, d_secHand(std::move(other.d_secHand))
+	, d_prevHr(std::move(other.d_prevHr))
+	, d_prevMin(std::move(other.d_prevMin))
+	, d_prevSec(std::move(other.d_prevSec))
+{
+}
+
+// ASSIGNMENT OVERLOADS
+ClockSprite& ClockSprite::operator = (const ClockSprite & other)
+{
+	if (this != &other)
+	{
+		d_clockFace = other.d_clockFace;
+		d_hrHand = other.d_hrHand;
+		d_minHand = other.d_minHand;
+		d_secHand = other.d_secHand;
+		d_prevHr = other.d_prevHr;
+		d_prevMin = other.d_prevMin;
+		d_prevSec = other.d_prevSec;
+	}
+	return *this;
+}
+
+ClockSprite& ClockSprite::operator = (ClockSprite && other)
+{
+	if (this != &other)
+	{
+		d_clockFace = std::move(other.d_clockFace);
+		d_hrHand = std::move(other.d_hrHand);
+		d_minHand = std::move(other.d_minHand);
+		d_secHand = std::move(other.d_secHand);
+		d_prevHr = std::move(other.d_prevHr);
+		d_prevMin = std::move(other.d_prevMin);
+		d_prevSec = std::move(other.d_prevSec);
+	}
+	return *this;
+}
+
+// DESTRUCTOR
 ClockSprite::~ClockSprite()
 {
 }
@@ -20,10 +81,10 @@ ClockSprite::~ClockSprite()
 void ClockSprite::translate(float x, float y)
 {
 	d_pos += hctm::Point2f(x, y);
-	d_clockFace.translate(x,y);
-	d_hrHand.translate(x,y);
-	d_minHand.translate(x,y);
-	d_secHand.translate(x,y);
+	d_clockFace.translate(x, y);
+	d_hrHand.translate(x, y);
+	d_minHand.translate(x, y);
+	d_secHand.translate(x, y);
 }
 
 void ClockSprite::translate(hctm::Point2f increment)
@@ -42,10 +103,10 @@ void ClockSprite::rotate(const hctm::Point2f& pvt, float angleInDegree)
 
 void ClockSprite::scale(float factor)
 {
-	d_clockFace.translate(factor);
-	d_hrHand.translate(factor);
-	d_minHand.translate(factor);
-	d_secHand.translate(factor);
+	d_clockFace.scale(factor);
+	d_hrHand.scale(factor);
+	d_minHand.scale(factor);
+	d_secHand.scale(factor);
 }
 
 float ClockSprite::area() const
@@ -67,6 +128,21 @@ void ClockSprite::preTick()
 
 void ClockSprite::tick()
 {
+	const int unitDegree = 6; // (360 / 60)
+	int nowHr, nowMin, nowSec;
+	GetTime(nowHr, nowMin, nowSec);
+
+	float degreeHr =  (nowHr - d_prevHr)   * unitDegree;
+	float degreeMin = (nowMin - d_prevMin) * unitDegree;
+	float degreeSec = (nowSec - d_prevSec) * unitDegree;
+
+	d_hrHand.rotate(d_pos, degreeHr);
+	d_minHand.rotate(d_pos, degreeMin);
+	d_secHand.rotate(d_pos, degreeSec);
+
+	d_prevHr = nowHr;
+	d_prevMin = nowMin;
+	d_prevSec = nowSec;
 }
 
 } // end namespace mygame

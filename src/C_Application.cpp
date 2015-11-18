@@ -18,6 +18,7 @@ C_Application::C_Application(int screenWidth, int screenHeight)
 	, d_rec2(Point2f(200.0f, 200.f), 200.0f, 200.0f, 255, 0, 0)
 	, d_cd1(Point2f(100.0f, 100.f), 20.0f, 20.0f)
 	, d_cd2(Point2f(200.0f, 200.f), 200.0f, 200.0f)
+	, d_clock(hctm::Point2f(m_ScreenWidth / 2, m_ScreenHeight / 2))
 {
 	init();
 }
@@ -41,24 +42,29 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 	{
 		d_rec1.translate(-10, 0);
 		d_cd1.translate(-10, 0);
+		d_clock.translate(-10, 0);
+
 	}
 
 	if(pressedKeys & s_KeyRight)
 	{
 		d_rec1.translate(10, 0);
 		d_cd1.translate(10, 0);
+		d_clock.translate(10, 0);
 	}
 
 	if(pressedKeys & s_KeyUp)
 	{
 		d_rec1.translate(0, -10);
 		d_cd1.translate(0, -10);
+		d_clock.translate(0, -10);
 	}
 
 	if(pressedKeys & s_KeyDown)
 	{
 		d_rec1.translate(0, 10);
 		d_cd1.translate(0, 10);
+		d_clock.translate(0, 10);
 	}
 
 	if(pressedKeys & s_KeySpace)
@@ -69,22 +75,24 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 
 void C_Application::tick()
 {
+	d_clock.tick();
 }
 
 void C_Application::draw()
 {
 	FillRect(0, 0, m_ScreenWidth, m_ScreenHeight,0);
 
-	if (!d_cd1.doesCollide(d_cd2))
-	{
-		d_rec1.draw();
-		d_rec2.draw();
-	}
-	else
-	{
-		d_rec2.draw();
-	}
+	//if (!d_cd1.doesCollide(d_cd2))
+	//{
+	//	d_rec1.draw();
+	//	d_rec2.draw();
+	//}
+	//else
+	//{
+	//	d_rec2.draw();
+	//}
 
+	d_clock.draw();
 }
 
 } // end namespace hctg

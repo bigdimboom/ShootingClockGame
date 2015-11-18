@@ -1,3 +1,4 @@
+// clock_sprite.h
 #pragma once
 #include "../engine/gameplay/asprite.h"
 #include "../engine/rendering/drawable_rect.h"
@@ -19,18 +20,21 @@ private:
 	int d_prevMin;
 	int d_prevSec;
 
+
 public:
 	// CONSTRUCTORS
 	ClockSprite(hctm::Point2f pos, float width = 100.0f, float height = 100.0f);
 	  // default constructor.
-	ClockSprite(const ClockSprite &);
-	  // copy constructor.
+	ClockSprite(const ClockSprite & );
+	  // copy constructors.
 	ClockSprite(ClockSprite &&);
 	  // move constructor.
 
-	// ASSIGNMANET OVERLOADS
-	ClockSprite& operator = (const ClockSprite &);
-	ClockSprite& operator = ( ClockSprite &&);
+	// ASSIGNMENT OVERLOADS
+	ClockSprite& operator= (const ClockSprite &);
+	  // copy assignment.
+	ClockSprite& operator= (ClockSprite &&);
+	  // move assignment.  
 
 	// DESTRUCTOR
 	~ClockSprite();
@@ -47,6 +51,18 @@ public:
 	void preTick() override;
 	void tick() override;
 
+	// Non-class function
+	friend std::ostream& operator<<(std::ostream& stream, const ClockSprite &);
 };
+
+// NON-CLASS FUNCTIONS
+inline
+std::ostream& operator<<(std::ostream& stream, const ClockSprite & obj)
+{
+	return stream 
+		<< "Hr: " << obj.d_prevHr
+		<< "Min: " << obj.d_prevMin
+		<< "Sec:" << obj.d_prevSec;
+}
 
 } // end namespace mygame
