@@ -17,9 +17,15 @@ int Renderer::height() const
 	return d_height;
 }
 
-// MUTATORS
-void Renderer::setWindowSize(int width, int height)
+hctm::Point2f Renderer::positionTopLeft() const
 {
+	return d_topLeftStartingPoint;
+}
+
+// MUTATORS
+void Renderer::setView(hctm::Point2f topLeft, int width, int height)
+{
+	d_topLeftStartingPoint = topLeft;
 	d_width = width;
 	d_height = height;
 }
