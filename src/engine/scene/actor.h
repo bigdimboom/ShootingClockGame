@@ -31,7 +31,7 @@ public:
 	hctm::Point2f positionXY() const;
 
 	//MUTATORS
-	void set(hctm::Point2f pos);
+	void setPosition(hctm::Point2f pos);
 	  // set d_pos to pos
 	void translate(hctm::Point2f deltaPos);
 	 // add d_pos by deltaPos.

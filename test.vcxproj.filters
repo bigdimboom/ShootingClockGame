@@ -88,9 +88,6 @@
     <ClCompile Include="src\engine\events\ievent.cpp">
       <Filter>Source Files\engine\events</Filter>
     </ClCompile>
-    <ClCompile Include="src\engine\scene\tickable_actor.cpp">
-      <Filter>Source Files\engine\scene</Filter>
-    </ClCompile>
     <ClCompile Include="src\engine\collision\aabb.cpp">
       <Filter>Source Files\engine\collision</Filter>
     </ClCompile>
@@ -103,19 +100,16 @@
     <ClCompile Include="src\engine\events\basic_event.cpp">
       <Filter>Source Files\engine\events</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\clock.cpp">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
     <ClCompile Include="src\engine\scene\scene.cpp">
       <Filter>Source Files\engine\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\gameplay\apawn.cpp">
-      <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\gameplay\acontroller.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\engine\gameplay\acharacter.cpp">
+    <ClCompile Include="src\engine\gameplay\pawn.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\gameplay\asprite.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
   </ItemGroup>
@@ -168,9 +162,6 @@
     <ClInclude Include="src\engine\events\ievent.h">
       <Filter>Source Files\engine\events</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\scene\tickable_actor.h">
-      <Filter>Source Files\engine\scene</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\collision\aabb.h">
       <Filter>Source Files\engine\collision</Filter>
     </ClInclude>
@@ -183,19 +174,16 @@
     <ClInclude Include="src\engine\events\basic_event.h">
       <Filter>Source Files\engine\events</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\clock.h">
-      <Filter>Source Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\scene\scene.h">
       <Filter>Source Files\engine\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\gameplay\apawn.h">
-      <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\gameplay\acontroller.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\gameplay\acharacter.h">
+    <ClInclude Include="src\engine\gameplay\pawn.h">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\gameplay\asprite.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
   </ItemGroup>
