@@ -112,6 +112,12 @@
     <ClCompile Include="src\engine\gameplay\asprite.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\clock_sprite.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\rendering\drawable_line.cpp">
+      <Filter>Source Files\engine\rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -185,6 +191,12 @@
     </ClInclude>
     <ClInclude Include="src\engine\gameplay\asprite.h">
       <Filter>Source Files\engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\clock_sprite.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\rendering\drawable_line.h">
+      <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
