@@ -5,10 +5,13 @@
 namespace mygame
 {
 
+#define UNIT_DEGREE_SIX 6// const float unitDegree = 6.0; // (360 / 60)
+#define UNIT_DEGREE_THIRTY 30 // 360 / 12
+
 ClockSprite::ClockSprite(hctm::Point2f pos, float width, float height)
 	: ASprite(pos)
 	, d_clockFace(hctm::Point2f(pos.x() - width / 2.0f, pos.y() - height / 2.0f), width, height, 255, 0, 0)
-	, d_hrHand(pos, pos + hctm::Point2f(0.0f, -1.0f) * 0.30f * height, 255, 204, 0)
+	, d_hrHand(pos, pos + hctm::Point2f(0.0f, -1.0f) * 0.25f * height, 255, 204, 0)
 	, d_minHand(pos, pos + hctm::Point2f(0.0f, -1.0f) * 0.40f * height, 255, 0, 128)
 	, d_secHand(pos, pos + hctm::Point2f(0.0f, -1.0f)* 0.45f * height, 255, 255, 255)
 	, d_prevHr(0)
@@ -128,13 +131,12 @@ void ClockSprite::preTick()
 
 void ClockSprite::tick()
 {
-	const float unitDegree = 6.0; // (360 / 60)
 	int nowHr, nowMin, nowSec;
 	GetTime(nowHr, nowMin, nowSec);
 
-	float degreeHr =  (nowHr - d_prevHr)   * unitDegree;
-	float degreeMin = (nowMin - d_prevMin) * unitDegree;
-	float degreeSec = (nowSec - d_prevSec) * unitDegree;
+	float degreeHr =  (nowHr - d_prevHr)   * UNIT_DEGREE_THIRTY;
+	float degreeMin = (nowMin - d_prevMin) * UNIT_DEGREE_SIX;
+	float degreeSec = (nowSec - d_prevSec) * UNIT_DEGREE_SIX;
 
 	d_hrHand.rotate(d_pos, degreeHr);
 	d_minHand.rotate(d_pos, degreeMin);
