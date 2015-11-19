@@ -134,13 +134,13 @@ void ClockSprite::tick()
 	int nowHr, nowMin, nowSec;
 	GetTime(nowHr, nowMin, nowSec);
 
-	float degreeHr =  (nowHr - d_prevHr)   * UNIT_DEGREE_THIRTY;
-	float degreeMin = (nowMin - d_prevMin) * UNIT_DEGREE_SIX;
-	float degreeSec = (nowSec - d_prevSec) * UNIT_DEGREE_SIX;
+	int degreeSec = (nowSec - d_prevSec) * UNIT_DEGREE_SIX;
+	int degreeMin = (nowMin - d_prevMin) * UNIT_DEGREE_SIX;
+	int degreeHr = (nowHr - d_prevHr)   * UNIT_DEGREE_THIRTY;
 
-	d_hrHand.rotate(d_pos, degreeHr);
-	d_minHand.rotate(d_pos, degreeMin);
-	d_secHand.rotate(d_pos, degreeSec);
+	d_hrHand.rotate(d_pos, (float)degreeHr);
+	d_minHand.rotate(d_pos, (float)degreeMin);
+	d_secHand.rotate(d_pos, (float)degreeSec);
 
 	d_prevHr = nowHr;
 	d_prevMin = nowMin;

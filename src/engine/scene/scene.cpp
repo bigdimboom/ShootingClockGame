@@ -78,7 +78,10 @@ void Scene::buildSceneGraph(int division, int maxDivision)
 {
 	if (d_renderer)
 	{
-		d_sceneGraph.build(d_renderer->positionTopLeft(), d_renderer->width(), d_renderer->height(), division, maxDivision);
+		d_sceneGraph.build( d_renderer->positionTopLeft(), 
+						   (float)d_renderer->width(), 
+						   (float)d_renderer->height(), 
+						   division, maxDivision );
 	}
 	else
 	{
