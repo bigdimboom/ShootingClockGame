@@ -6,6 +6,18 @@
 namespace hctr
 {
 
+// CONSTRUCTOR
+Renderer::Renderer(int width, int height)
+{
+
+}
+
+// DESTRUCTOR
+Renderer::~Renderer()
+{
+
+}
+
 // ACCESSOR
 int Renderer::width() const
 {

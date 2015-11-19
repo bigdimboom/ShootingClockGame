@@ -1,6 +1,7 @@
 // scene.cpp
 #include "scene.h"
 #include <assert.h>
+#include "../events/event_bus.h"
 
 namespace hcts
 {
@@ -21,19 +22,25 @@ Scene& Scene::inst()
 	return scene;
 }
 
+// ACCESSORS
+const hcts::SceneGraph& Scene::sceneGraph() const
+{
+	return d_sceneGraph;
+}
+
+// MEMBER FUNCTIONS
 void Scene::tick()
 {
-	for (const auto & i : d_tickables)
-	{
-		i->preTick();
-		d_sceneGraph.preTick();
-	}
+	hcte::EventBus::inst().preTick();
+	d_sceneGraph.preTick();
 
 	for (const auto & i : d_tickables)
 	{
 		i->tick();
-		d_sceneGraph.tick();
 	}
+
+	hcte::EventBus::inst().tick();
+	d_sceneGraph.tick();
 }
 void Scene::draw()
 {
@@ -74,14 +81,13 @@ void Scene::removeCollider(hctc::ICollider* collider)
 	d_sceneGraph.removeCollider(collider);
 }
 
-void Scene::buildSceneGraph(int division, int maxDivision)
+void Scene::buildSceneGraph(float cellSize)
 {
 	if (d_renderer)
 	{
-		d_sceneGraph.build( d_renderer->positionTopLeft(), 
-						   (float)d_renderer->width(), 
+		d_sceneGraph.build((float)d_renderer->width(), 
 						   (float)d_renderer->height(), 
-						   division, maxDivision );
+						   cellSize);
 	}
 	else
 	{

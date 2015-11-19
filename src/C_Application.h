@@ -1,10 +1,11 @@
 #ifndef TEST_C_APPLICATION_H
 #define TEST_C_APPLICATION_H
 
-#include "engine\rendering\drawable_rect.h"
-#include "engine\collision\aabb.h"
 #include "game/clock_sprite.h"
 #include "game/cannon_sprite.h"
+#include "engine/rendering/renderer.h"
+#include "engine/events/event_bus.h"
+#include "engine/scene/scene.h"
 #include <iostream>
 
 using namespace hctr;
@@ -40,13 +41,8 @@ private:
 	const int	m_ScreenHeight;
 
 	// Members for sample tick
-	int			m_CannonX;
-	int			m_CannonY;
 
-	DrawableRect d_rec1;
-	DrawableRect d_rec2;
-	hctc::Aabb d_cd1;
-	hctc::Aabb d_cd2;
+	hctr::Renderer d_render;
 
 	mygame::ClockSprite d_clock;
 	mygame::CannonSprite d_cann;

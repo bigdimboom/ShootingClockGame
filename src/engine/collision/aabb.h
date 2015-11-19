@@ -20,6 +20,10 @@ public:
 	// DESTRUCTORS
 	~Aabb();
 	
+	// ACCESSORS
+	hctm::Point2f topLeftPoint() const;
+	hctm::Point2f downRightPoint() const;
+
 	// MEMBER FUNCTIONS
 	bool doesCollide(const Aabb & aabb);
 
@@ -42,6 +46,19 @@ Aabb::Aabb(float xLeftTop, float yLeftTop, float width, float height)
 inline
 Aabb::~Aabb()
 {
+}
+
+// ACCESSORS
+inline
+hctm::Point2f Aabb::topLeftPoint() const
+{
+	return d_topLeft;
+}
+
+inline
+hctm::Point2f Aabb::downRightPoint() const
+{
+	return d_downRight;
 }
 
 // MEMBER FUNCTIONS

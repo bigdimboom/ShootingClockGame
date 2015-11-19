@@ -43,6 +43,7 @@ public:
 	  // the access point of a singleton class.
 
 	// ACCESSORS
+	const hcts::SceneGraph& sceneGraph() const;
 
 	// MEMBER FUNCTIONS
 	void tick();
@@ -58,7 +59,7 @@ public:
 	void addCollider(hctc::ICollider* collider);
 	void removeCollider(hctc::ICollider* collider);
 
-	void buildSceneGraph(int division, int maxDivision);
+	void buildSceneGraph(float cellSize = 50.0f); // min clock size: 5 by 5 max: 100 by 100
 
 	void setRenderer(hctr::Renderer* renderer);
 	  // allocate renderer on stack, 
