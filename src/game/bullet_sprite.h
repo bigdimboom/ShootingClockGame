@@ -24,12 +24,12 @@ public:
 	~BulletSprite();
 
 	// MEMBER FUNCTIONS
-	virtual void translate(float x, float y) override;
-	virtual void translate(hctm::Point2f increment) override;
-	virtual void rotate(const hctm::Point2f& pvt, float angleInDegree);
-	virtual void scale(float factor) override;
-	virtual float area() const override;
-	virtual void draw() override;
+	void translate(float x, float y) override;
+	void translate(hctm::Point2f increment) override;
+	void rotate(const hctm::Point2f& pvt, float angleInDegree);
+	void scale(float factor) override;
+	float area() const override;
+	void draw() override;
 };
 
 } // end namespace mygame

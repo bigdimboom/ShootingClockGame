@@ -13,7 +13,7 @@ enum CollisionType
 class ICollider
 {
 public:
-	~ICollider(){}
+	virtual ~ICollider(){}
 	virtual const Aabb& bounds() const = 0;
 	virtual unsigned short flags() const = 0;
 	virtual void setFlags(unsigned short flags) = 0;

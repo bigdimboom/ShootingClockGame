@@ -29,7 +29,7 @@ public:
 	  // move assignemnt.
 
 	// DESTRUCTORS
-	~Triangle();
+	virtual ~Triangle();
 
 	// MEMBER FUCNTIONS
 	void translate(float x, float y) override;

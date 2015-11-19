@@ -26,7 +26,7 @@ public:
 	// move assignemnt.
 
 	// DESTRUCTORS
-	~Line();
+	virtual ~Line();
 
 	//ACCESSOR
 	Point2f theStartPoint() const;

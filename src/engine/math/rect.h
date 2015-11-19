@@ -34,7 +34,7 @@ public:
 	  // move assignemnt.
 
 	// DESTRUCTORS
-	~Rect();
+	virtual ~Rect();
 
 	// MEMBER FUCNTIONS
 	virtual void translate(float x, float y) override;
