@@ -28,7 +28,7 @@ public:
 	Pawn& operator = (Pawn && other);
 
 	// DESTRUCTOR
-	~Pawn();
+	virtual ~Pawn();
 
 	// ACCESSOR 
 	hctm::Point2f velocity() const;

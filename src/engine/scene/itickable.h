@@ -7,7 +7,7 @@ namespace hcts
 class ITickable
 {
 public:
-	virtual ~ITickable(){}
+	~ITickable(){}
 	virtual void preTick() = 0;
 	virtual void tick() = 0;
 };

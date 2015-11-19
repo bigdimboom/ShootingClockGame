@@ -25,7 +25,7 @@ public:
 	Actor& operator = (Actor &&);
 
 	//DESTRUCTOR
-	~Actor();
+	virtual ~Actor();
 
 	//ACCESSORS
 	hctm::Point2f positionXY() const;

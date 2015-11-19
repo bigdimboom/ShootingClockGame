@@ -5,6 +5,11 @@
 namespace hctc
 {
 
+enum CollisionType
+{
+	// TODO: 
+};
+
 class ICollider
 {
 public:

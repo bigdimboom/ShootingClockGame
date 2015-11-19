@@ -21,7 +21,7 @@ public:
 	AController(Pawn* pawn = nullptr);
 
 	// DESTRUCTOR
-	~AController();
+	virtual ~AController();
 
 	void addPawn(Pawn* pawn);
 	void removePawn();

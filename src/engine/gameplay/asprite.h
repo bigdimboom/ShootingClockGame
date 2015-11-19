@@ -25,7 +25,7 @@ public:
 	ASprite(hctm::Point2f pos = hctm::Point2f(0.0f,0.0f));
 
 	// DESTRUCTOR
-	~ASprite();
+	virtual ~ASprite();
 
 	//ACCESSOR
 	hctm::Point2f position() const;

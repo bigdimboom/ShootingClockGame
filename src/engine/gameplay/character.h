@@ -22,7 +22,7 @@ public:
 	Character& operator = (const Character & other);
 	Character& operator = (Character && other);
 
-	~Character();
+	virtual ~Character();
 
 	//ACCESSORS
 	const std::vector<ASprite*>& sprites() const;
