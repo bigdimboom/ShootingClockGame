@@ -5,10 +5,15 @@
 namespace hcte
 {
 
-typedef unsigned long EventType;
+//typedef unsigned long EventType;
   // create a GUID to identify an event with a GUID generator.
   // e.g. {B1CEB228-AD05-4E8D-A477-6491843DE2ED}
   // syntax in c, DEFINE_GUID(<< name >> , 0xb1ceb228, 0xad05, 0x4e8d, 0xa4, 0x77, 0x64, 0x91, 0x84, 0x3d, 0xe2, 0xed);
+
+enum  class EventType
+{
+	PLAYER_CMD
+};
 
 class IEvent
 {

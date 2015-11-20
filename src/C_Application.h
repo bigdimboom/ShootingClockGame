@@ -6,6 +6,7 @@
 #include "engine/rendering/renderer.h"
 #include "engine/events/event_bus.h"
 #include "engine/scene/scene.h"
+#include "game\player_controller.h"
 #include <iostream>
 
 using namespace hctr;
@@ -44,8 +45,9 @@ private:
 
 	hctr::Renderer d_render;
 
-	mygame::ClockSprite d_clock;
-	mygame::CannonSprite d_cann;
+	//mygame::ClockSprite d_clock;
+	//mygame::CannonSprite d_cann;
+	mygame::PlayerController d_contrl;
 };
 
 } // end namespace hctg

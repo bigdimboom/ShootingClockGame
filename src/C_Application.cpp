@@ -9,8 +9,7 @@ static const float k_PI = 3.1415926536f;
 C_Application::C_Application(int screenWidth, int screenHeight)
 	: m_ScreenWidth(screenWidth)
 	, m_ScreenHeight(screenHeight)
-	, d_clock(hctm::Point2f(m_ScreenWidth / 2, m_ScreenHeight / 2))
-	, d_cann(hctm::Point2f(m_ScreenWidth / 2, m_ScreenHeight / 2 + 100.0f))
+	, d_contrl(hctm::Point2f(m_ScreenWidth / 2, m_ScreenHeight / 2 + 100.0f))
 {
 	init();
 }
@@ -24,11 +23,14 @@ C_Application::~C_Application()
 void C_Application::init()
 {
 	// Read config file
+	d_contrl.init();
+
 	d_render.setView(hctm::Point2f(0.0f,0.0f), m_ScreenWidth, m_ScreenHeight);
-	d_render.addDrawable(&d_clock);
-	d_render.addDrawable(&d_cann);
+
 	hcts::Scene::inst().setRenderer(&d_render);
-	hcts::Scene::inst().addTickable(&d_clock);
+
+	d_render.addDrawable(&d_contrl.d_sprite);
+	hcts::Scene::inst().addTickable(&d_contrl.d_cannon);
 }
 
 void C_Application::handleInput(T_PressedKey pressedKeys)
@@ -37,10 +39,15 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 
 	if(pressedKeys & s_KeyLeft)
 	{
+		hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "TURN_LEFT");
+		hcte::EventBus::inst().enQueueEvent(ev);
+
 	}
 
 	if(pressedKeys & s_KeyRight)
 	{
+		hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "TURN_RIGHT");
+		hcte::EventBus::inst().enQueueEvent(ev);
 	}
 
 	if(pressedKeys & s_KeyUp)

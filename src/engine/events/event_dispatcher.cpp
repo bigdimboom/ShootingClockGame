@@ -22,11 +22,11 @@ void EventDispatcher::dispatch(const IEvent & ev)
 	auto got = d_listeners.find(type);
 	if (got != d_listeners.end())
 	{
-		for (auto callBacks : got->second )
+		for (const auto & func : got->second)
 		{
-			if (callBacks && *callBacks)
+			if (func && *func)
 			{
-				(*callBacks)(ev);
+				(*func)(ev);
 			}
 		}
 	}

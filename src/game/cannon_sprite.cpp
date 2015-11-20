@@ -68,12 +68,7 @@ void CannonSprite::translate(hctm::Point2f increment)
 
 void CannonSprite::rotate(const hctm::Point2f& pvt, float angleInDegree)
 {
-	static float track = 90.0f;
-	track += angleInDegree;
-	if (track >= 0.0f && track <= 180.0f)
-	{
-		d_tri.rotate(pvt, angleInDegree);
-	}	
+	d_tri.rotate(pvt, angleInDegree);
 }
 
 void CannonSprite::scale(float factor)

@@ -26,8 +26,9 @@ public:
 	void addPawn(Pawn* pawn);
 	void removePawn();
 
-	virtual void preTick() = 0;
-	virtual void tick() = 0;
+	virtual void init() = 0;
+	virtual void preTick() override = 0;
+	virtual void tick() override = 0;
 };
 
 } // end namespace hctg

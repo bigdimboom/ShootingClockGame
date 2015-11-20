@@ -133,6 +133,9 @@
     <ClCompile Include="src\engine\gameplay\collidable_character.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\player_controller.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -227,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="src\engine\gameplay\collidable_character.h">
       <Filter>Source Files\engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\player_controller.h">
+      <Filter>Source Files\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

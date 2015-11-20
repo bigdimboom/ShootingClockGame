@@ -10,14 +10,15 @@
 namespace  hcte
 {
 
+typedef std::function<void(const IEvent &)> EventListenerCallbacks;
 typedef std::function<void(const IEvent &)>* EventListenerCallbacksPtr;
-typedef std::vector<EventListenerCallbacksPtr> EventListenerPtrList;
+typedef std::vector<EventListenerCallbacksPtr> EventListenerList;
 
 
 class EventDispatcher : public hcts::ITickable
 {
 private:
-	std::unordered_map<EventType, EventListenerPtrList> d_listeners;
+	std::unordered_map<EventType, EventListenerList> d_listeners;
 	  // store a map of listeners ready for exec.
 	  // listeners have to manage themslves.
 
