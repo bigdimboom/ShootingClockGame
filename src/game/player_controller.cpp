@@ -4,17 +4,13 @@
 namespace mygame
 {
 
-void PlayerController::evHandler(const hcte::IEvent & ev)
-{
-
-}
 
 PlayerController::PlayerController(hctm::Point2f pos)
 	: hctg::AController()
 	, d_cannon(pos)
 	, d_sprite(pos)
 {
-	myFunction = [&](const hcte::IEvent & ev){
+	eventHandler = [&](const hcte::IEvent & ev){
 	
 		static float angle = 90.0f;
 		const float delta = 1.0f;
@@ -36,7 +32,7 @@ PlayerController::PlayerController(hctm::Point2f pos)
 PlayerController::~PlayerController()
 {
 	hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD);
-	hcte::EventBus::inst().deRegisterListener(ev, &myFunction);
+	hcte::EventBus::inst().deRegisterListener(ev, &eventHandler);
 
 	hctg::AController::removePawn();
 	d_cannon.removeSprites(&d_sprite);
@@ -48,7 +44,7 @@ void PlayerController::init()
 	d_cannon.attachSprites(&d_sprite);
 
 	 hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD);
-	 hcte::EventBus::inst().registerListener(ev, &myFunction);
+	 hcte::EventBus::inst().registerListener(ev, &eventHandler);
 
 }
 

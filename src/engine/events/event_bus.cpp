@@ -39,15 +39,18 @@ bool EventBus::deQueueEvent(const BasicEvent & ev)
 
 	unsigned int size = d_eventQ.size();
 	bool ret = false;
-	for (auto iter = d_eventQ.begin(); iter != d_eventQ.end(); ++iter)
+	auto it = d_eventQ.begin();
+	for (; it != d_eventQ.end();)
 	{
-		if ((*iter).type() == ev.type())
+		if ((*it).type() == ev.type())
 		{
-			d_eventQ.erase(iter);
+			it = d_eventQ.erase(it);
 			ret = true;
 		}
-		// if I implement type() in IEvent in stead of comparing names,
-		// then it would compare numbers, faster than comparing strings.
+		else
+		{
+			++it;
+		}
 	}
 	return ret;
 }

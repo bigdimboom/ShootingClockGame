@@ -65,11 +65,16 @@ void Renderer::addDrawable(IDrawable* drawable)
 void Renderer::removeDrawable(IDrawable* drawable)
 {
 	assert(drawable);
-	for (auto i = d_drawables.begin(); i != d_drawables.end(); ++i)
+	auto i = d_drawables.begin();
+	while (i != d_drawables.end())
 	{
 		if (*i == drawable)
 		{
 			d_drawables.erase(i);
+		}
+		else
+		{
+			++i;
 		}
 	}
 }

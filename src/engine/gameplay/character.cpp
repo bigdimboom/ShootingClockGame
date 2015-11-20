@@ -70,11 +70,16 @@ void Character::attachSprites(ASprite* sprite)
 void Character::removeSprites(ASprite* sprite)
 {
 	assert(sprite);
-	for (auto i = d_sprites.begin(); i != d_sprites.end(); ++i)
+	auto itr = d_sprites.begin();
+	while (itr != d_sprites.end())
 	{
-		if (*i == sprite)
+		if (*itr == sprite)
 		{
-			d_sprites.erase(i);
+			d_sprites.erase(itr);
+		}
+		else
+		{
+			++itr;
 		}
 	}
 }

@@ -60,11 +60,16 @@ void Scene::addTickable(ITickable* tickable)
 void Scene::removeTickable(ITickable* tickable)
 {
 	assert(tickable);
-	for (auto i = d_tickables.begin(); i != d_tickables.end(); ++i)
+	auto i = d_tickables.begin();
+	for (; i != d_tickables.end();)
 	{
 		if (*i == tickable)
 		{
 			d_tickables.erase(i);
+		}
+		else
+		{
+			++i;
 		}
 	}
 }

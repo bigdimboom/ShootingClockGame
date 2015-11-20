@@ -15,15 +15,13 @@ public:
 	hctg::Character d_cannon;
 	CannonSprite d_sprite;
 
-	hcte::EventListenerCallbacks myFunction;
+	hcte::EventListenerCallbacks eventHandler;
 
 	// CONSTRUCTOR
 	PlayerController(hctm::Point2f pos);
 
 	// DESTRUCTOR
 	~PlayerController();
-
-	void evHandler(const hcte::IEvent & );
 
 	void init() override;
 	void preTick() override;

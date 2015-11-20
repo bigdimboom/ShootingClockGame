@@ -45,8 +45,19 @@ void EventDispatcher::remove(const IEvent & ev, EventListenerCallbacksPtr listen
 
 	if (got != d_listeners.end())
 	{
-		auto vecPtr = &(got->second);
-		vecPtr->erase(std::remove(vecPtr->begin(), vecPtr->end(), listener), vecPtr->end());
+		auto & vec = got->second;
+		auto it = vec.begin();
+		for (; it != vec.end();) 
+		{
+			if (*it == listener) 
+			{
+				it = vec.erase(it);
+			}
+			else 
+			{
+				++it;
+			}
+		}
 	}
 }
 
