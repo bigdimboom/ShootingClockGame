@@ -31,18 +31,12 @@ PlayerController::~PlayerController()
 
 void PlayerController::preTick()
 {
-	if (d_pawn)
-	{
-		d_pawn->preTick();
-	}
+	// DO NOTHING
 }
 
 void PlayerController::tick()
 {
-	if (d_pawn)
-	{
-		d_pawn->tick();
-	}
+	// DO NOTHING
 }
 
 } // end namespace mygame
