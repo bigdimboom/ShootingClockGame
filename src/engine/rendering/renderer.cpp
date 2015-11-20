@@ -2,6 +2,7 @@
 #include "renderer.h"
 #include <assert.h>
 #include "../api/graphics.h"
+#include <algorithm>
 
 namespace hctr
 {

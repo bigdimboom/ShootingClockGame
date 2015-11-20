@@ -39,7 +39,7 @@ SceneGraph::SceneGraph(float width, float height, float cellSize)
 
 SceneGraph::~SceneGraph()
 {
-	delete d_table;
+	delete[] d_table;
 }
 
 // ACCESSOR

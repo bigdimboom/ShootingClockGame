@@ -7,6 +7,7 @@
 #include "engine/events/event_bus.h"
 #include "engine/scene/scene.h"
 #include "game/player_controller.h"
+#include "game/clock_controller.h"
 #include <iostream>
 
 using namespace hctr;
@@ -46,6 +47,8 @@ private:
 	hctr::Renderer d_render;
 
 	mygame::PlayerController d_playerContrl;
+	mygame::ClockController d_clcokCtrl;
+	mygame::ClockController d_clcokCtrlw;
 };
 
 } // end namespace hctg

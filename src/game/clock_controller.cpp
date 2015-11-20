@@ -4,14 +4,4 @@
 namespace mygame
 {
 
-
-ClockController::ClockController()
-{
-}
-
-
-ClockController::~ClockController()
-{
-}
-
 } // end namespace mygame
