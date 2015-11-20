@@ -46,4 +46,15 @@ void AController::removeSprite()
 	d_sprite = nullptr;
 }
 
+void AController::addCollider(hctc::ICollider* cd)
+{
+	assert(cd);
+	d_collider = cd;
+}
+
+void AController::removeCollider()
+{
+	d_collider = nullptr;
+}
+
 } // end 
