@@ -55,12 +55,13 @@ public:
 	void removeTickable(ITickable* tickable);
 	  // remove tickable aka scene components.
 	  // use object manager to alloc/dealloc memory(outside of this class).
-
 	void addCollider(hctc::ICollider* collider);
 	void removeCollider(hctc::ICollider* collider);
 
-	void buildSceneGraph(float cellSize = 50.0f); // min clock size: 5 by 5 max: 100 by 100
+	void addDrawable(hctr::IDrawable* drawable);
+	void removeDrawable(hctr::IDrawable* drawable);
 
+	void buildSceneGraph(float cellSize = 50.0f); // min clock size: 5 by 5 max: 100 by 100
 	void setRenderer(hctr::Renderer* renderer);
 	  // allocate renderer on stack, 
 	  // we are going to have the renderer be part of the scene 

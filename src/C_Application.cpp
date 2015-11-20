@@ -59,7 +59,7 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 
 	if(pressedKeys & s_KeySpace)
 	{
-		hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "SHOOT");
+		hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "FIRE");
 		hcte::EventBus::inst().enQueueEvent(ev);
 	}
 }

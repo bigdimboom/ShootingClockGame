@@ -6,7 +6,7 @@
 #include "engine/rendering/renderer.h"
 #include "engine/events/event_bus.h"
 #include "engine/scene/scene.h"
-#include "game\player_controller.h"
+#include "game/player_controller.h"
 #include <iostream>
 
 using namespace hctr;

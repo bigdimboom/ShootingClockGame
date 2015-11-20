@@ -11,7 +11,7 @@ PlayerController::PlayerController(hctm::Point2f pos)
 	, d_sprite(pos)
 {
 	eventHandler = [&](const hcte::IEvent & ev){
-	
+
 		static float angle = 90.0f;
 		const float delta = 1.0f;
 
@@ -32,9 +32,6 @@ PlayerController::~PlayerController()
 {
 	hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD);
 	hcte::EventBus::inst().deRegisterListener(ev, &eventHandler);
-
-	hctg::AController::removePawn();
-	d_cannon.removeSprites(&d_sprite);
 }
 
 void PlayerController::init()
@@ -42,8 +39,8 @@ void PlayerController::init()
 	hctg::AController::addPawn(&d_cannon);
 	d_cannon.attachSprites(&d_sprite);
 
-	 hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD);
-	 hcte::EventBus::inst().registerListener(ev, &eventHandler);
+	hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD);
+	hcte::EventBus::inst().registerListener(ev, &eventHandler);
 
 }
 

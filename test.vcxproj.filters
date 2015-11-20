@@ -103,9 +103,6 @@
     <ClCompile Include="src\engine\gameplay\acontroller.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\engine\gameplay\pawn.cpp">
-      <Filter>Source Files\engine\gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="src\engine\gameplay\asprite.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
@@ -135,6 +132,9 @@
     </ClCompile>
     <ClCompile Include="src\game\player_controller.cpp">
       <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\gameplay\pawn.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -204,9 +204,6 @@
     <ClInclude Include="src\engine\gameplay\acontroller.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\gameplay\pawn.h">
-      <Filter>Source Files\engine\gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\gameplay\asprite.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
@@ -233,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="src\game\player_controller.h">
       <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\gameplay\pawn.h">
+      <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

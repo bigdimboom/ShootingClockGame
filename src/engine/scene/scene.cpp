@@ -86,6 +86,24 @@ void Scene::removeCollider(hctc::ICollider* collider)
 	d_sceneGraph.removeCollider(collider);
 }
 
+void Scene::addDrawable(hctr::IDrawable* drawable)
+{
+	if (d_renderer)
+	{
+		assert(drawable);
+		d_renderer->addDrawable(drawable);
+	}
+}
+
+void Scene::removeDrawable(hctr::IDrawable* drawable)
+{
+	if (d_renderer)
+	{
+		assert(drawable);
+		d_renderer->removeDrawable(drawable);
+	}
+}
+
 void Scene::buildSceneGraph(float cellSize)
 {
 	if (d_renderer)

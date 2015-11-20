@@ -29,6 +29,7 @@ public:
 
 	const std::string kTurnLeft = "TURN_LEFT";
 	const std::string kTurnRight = "TURN_RIGHT";
+	const std::string kOpenFire = "FIRE";
 };
 
 } // end namespace mygame
