@@ -23,7 +23,7 @@ AController::~AController()
 {
 }
 
-
+// MEMBER FUNCTIONS
 void AController::addPawn(Pawn* pawn)
 {
 	assert(pawn);

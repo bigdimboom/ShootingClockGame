@@ -26,6 +26,11 @@ public:
 	// DESTRUCTOR
 	virtual ~AController();
 
+	// ACCESSORS
+	Pawn* pawn();
+	ASprite* sprite();
+
+	// MEMBER FUNCTIONS
 	void addPawn(Pawn* pawn);
 	void removePawn();
 
@@ -35,5 +40,24 @@ public:
 	virtual void preTick() override = 0;
 	virtual void tick() override = 0;
 };
+
+// ACCESSORS
+inline
+Pawn* AController::pawn()
+{
+#ifdef _DEBUG
+	std::cerr << "pawn is NULL.\n";
+#endif
+	return d_pawn;
+}
+
+inline
+ASprite* AController::sprite()
+{
+#ifdef _DEBUG
+	std::cerr << "sprite is NULL.\n";
+#endif
+	return d_sprite;
+}
 
 } // end namespace hctg

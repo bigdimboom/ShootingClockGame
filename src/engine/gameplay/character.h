@@ -10,7 +10,7 @@ namespace hctg
 class Character : public Pawn
 {
 protected:
-	std::vector<ASprite*> d_sprites;
+	ASprite* d_sprite;
 public:
 	// CONSTRUCTORS
 	Character(hctm::Point2f pos = hctm::Point2f(0.0f, 0.0f),
@@ -25,15 +25,25 @@ public:
 	virtual ~Character();
 
 	//ACCESSORS
-	const std::vector<ASprite*>& sprites() const;
+	ASprite* sprites();
 
 	// MEMBER FUNCTIONS
-	void attachSprites(ASprite* sprite);
-	void removeSprites(ASprite* sprite);
+	void attachSprite(ASprite* sprite);
+	void removeSprite();
 
 	virtual void preTick() override;
 	virtual void tick() override;
 };
+
+//ACCESSORS
+inline
+ASprite* Character::sprites()
+{
+#ifdef _DEBUG
+	std::cerr << "Sprite is NULL.\n";
+#endif
+	return d_sprite;
+}
 
 }// end namespace hctg
 

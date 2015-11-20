@@ -12,13 +12,13 @@ Character::Character(hctm::Point2f pos, hctm::Point2f vel)
 }
 
 Character::Character(const Character & other)
-	: d_sprites(other.d_sprites)
+	: d_sprite(other.d_sprite)
 	, Pawn(other.d_pos, other.d_vel)
 {
 }
 
 Character::Character(Character && other)
-	: d_sprites(std::move(other.d_sprites))
+	: d_sprite(std::move(other.d_sprite))
 	, Pawn( std::move(other.d_pos), std::move(other.d_vel) )
 {
 }
@@ -30,7 +30,7 @@ Character& Character::operator = (const Character & other)
 	{
 		d_pos = other.d_pos;
 		d_vel = other.d_vel;
-		d_sprites = other.d_sprites;
+		d_sprite = other.d_sprite;
 	}
 	return *this;
 }
@@ -41,47 +41,26 @@ Character& Character::operator = (Character && other)
 	{
 		d_pos = std::move(other.d_pos);
 		d_vel = std::move(other.d_vel);
-		d_sprites = std::move(other.d_sprites);
+		d_sprite = std::move(other.d_sprite);
 	}
 	return *this;
 }
 
 Character::~Character()
 {
-	for (auto &i : d_sprites)
-	{
-		i = nullptr;
-	}
-}
-
-//ACCESSORS
-const std::vector<ASprite*>& Character::sprites() const
-{
-	return d_sprites;
+	removeSprite();
 }
 
 // MEMBER FUNCTIONS
-void Character::attachSprites(ASprite* sprite)
+void Character::attachSprite(ASprite* sprite)
 {
 	assert(sprite);
-	d_sprites.push_back(sprite);
+	d_sprite = sprite;
 }
 
-void Character::removeSprites(ASprite* sprite)
+void Character::removeSprite()
 {
-	assert(sprite);
-	auto itr = d_sprites.begin();
-	while (itr != d_sprites.end())
-	{
-		if (*itr == sprite)
-		{
-			d_sprites.erase(itr);
-		}
-		else
-		{
-			++itr;
-		}
-	}
+	d_sprite = nullptr;
 }
 
 void Character::preTick()
