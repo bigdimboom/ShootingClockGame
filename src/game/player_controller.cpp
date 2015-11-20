@@ -5,51 +5,44 @@ namespace mygame
 {
 
 
-PlayerController::PlayerController(hctm::Point2f pos)
-	: hctg::AController()
-	, d_cannon(pos)
-	, d_sprite(pos)
+PlayerController::PlayerController()
+	: AController()
+	, d_deltaAngle(0)
+	, d_maxAngle(0)
+	, d_minAngle(0)
 {
-	eventHandler = [&](const hcte::IEvent & ev){
-
-		static float angle = 90.0f;
-		const float delta = 1.0f;
-
-		if (ev.message() == kTurnLeft && angle >= 0.0f)
-		{
-			d_sprite.rotate(d_cannon.positionXY(), -delta);
-			angle -= delta;
-		}
-		else if (ev.message() == kTurnRight && angle <= 180.0f)
-		{
-			d_sprite.rotate(d_cannon.positionXY(), delta);
-			angle += delta;
-		}
-	};
+	hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD);
+	hcte::EventBus::inst().registerListener(ev, &d_eventHandler);
 }
 
 PlayerController::~PlayerController()
 {
 	hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD);
-	hcte::EventBus::inst().deRegisterListener(ev, &eventHandler);
-}
-
-void PlayerController::init()
-{
-	hctg::AController::addPawn(&d_cannon);
-	d_cannon.attachSprites(&d_sprite);
-
-	hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD);
-	hcte::EventBus::inst().registerListener(ev, &eventHandler);
-
+	hcte::EventBus::inst().deRegisterListener(ev, &d_eventHandler);
+	if (d_sprite)
+	{
+		delete d_sprite;
+	}
+	if (d_pawn)
+	{
+		delete d_pawn;
+	}
 }
 
 void PlayerController::preTick()
 {
+	if (d_pawn)
+	{
+		d_pawn->preTick();
+	}
 }
 
 void PlayerController::tick()
 {
+	if (d_pawn)
+	{
+		d_pawn->tick();
+	}
 }
 
 } // end namespace mygame

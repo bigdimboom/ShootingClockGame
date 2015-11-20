@@ -6,8 +6,15 @@ namespace hctg
 {
 
 // CONSTRUCTORS
-AController::AController(Pawn* pawn)
-	:d_pawn(pawn)
+AController::AController()
+	: d_pawn(nullptr)
+	, d_sprite(nullptr)
+{
+}
+
+AController::AController(Pawn* pawn, ASprite* sprite)
+	: d_pawn(pawn)
+	, d_sprite(sprite)
 {
 }
 
@@ -26,6 +33,17 @@ void AController::addPawn(Pawn* pawn)
 void AController::removePawn()
 {
 	d_pawn = nullptr;
+}
+
+void AController::addSprite(ASprite* sprite)
+{
+	assert(sprite);
+	d_sprite = sprite;
+}
+
+void AController::removeSprite()
+{
+	d_sprite = nullptr;
 }
 
 } // end 

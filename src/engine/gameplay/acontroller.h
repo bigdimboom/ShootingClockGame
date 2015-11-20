@@ -2,6 +2,7 @@
 #pragma once
 #include "../scene/itickable.h"
 #include "pawn.h"
+#include "asprite.h"
 #include <vector>
 // controller is reponsible of GC.
 
@@ -16,15 +17,20 @@ private:
 	AController& operator=(AController &&) = delete;
 protected:
 	Pawn* d_pawn;
+	ASprite* d_sprite;
 public:
 	// CONSTRUCTOR
-	AController(Pawn* pawn = nullptr);
+	AController();
+	AController(Pawn* pawn, ASprite* sprite);
 
 	// DESTRUCTOR
 	virtual ~AController();
 
 	void addPawn(Pawn* pawn);
 	void removePawn();
+
+	void addSprite(ASprite* pawn);
+	void removeSprite();
 
 	virtual void preTick() override = 0;
 	virtual void tick() override = 0;
