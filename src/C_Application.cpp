@@ -9,7 +9,7 @@ static const float k_PI = 3.1415926536f;
 C_Application::C_Application(int screenWidth, int screenHeight)
 	: m_ScreenWidth(screenWidth)
 	, m_ScreenHeight(screenHeight)
-	, d_contrl(hctm::Point2f(m_ScreenWidth / 2, m_ScreenHeight / 2 + 100.0f))
+	, d_playerContrl(hctm::Point2f(m_ScreenWidth / 2, m_ScreenHeight / 2 + 200.0f))
 {
 	init();
 }
@@ -23,14 +23,12 @@ C_Application::~C_Application()
 void C_Application::init()
 {
 	// Read config file
-	d_contrl.init();
-
 	d_render.setView(hctm::Point2f(0.0f,0.0f), m_ScreenWidth, m_ScreenHeight);
-
 	hcts::Scene::inst().setRenderer(&d_render);
 
-	d_render.addDrawable(&d_contrl.d_sprite);
-	hcts::Scene::inst().addTickable(&d_contrl.d_cannon);
+	d_playerContrl.init();
+	d_render.addDrawable(&d_playerContrl.d_sprite);
+	hcts::Scene::inst().addTickable(&d_playerContrl.d_cannon);
 }
 
 void C_Application::handleInput(T_PressedKey pressedKeys)
@@ -61,7 +59,8 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 
 	if(pressedKeys & s_KeySpace)
 	{
-
+		hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "SHOOT");
+		hcte::EventBus::inst().enQueueEvent(ev);
 	}
 }
 

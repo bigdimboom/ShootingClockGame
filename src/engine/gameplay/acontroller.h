@@ -26,7 +26,6 @@ public:
 	void addPawn(Pawn* pawn);
 	void removePawn();
 
-	virtual void init() = 0;
 	virtual void preTick() override = 0;
 	virtual void tick() override = 0;
 };

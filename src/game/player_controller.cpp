@@ -25,7 +25,6 @@ PlayerController::PlayerController(hctm::Point2f pos)
 			d_sprite.rotate(d_cannon.positionXY(), delta);
 			angle += delta;
 		}
-
 	};
 }
 

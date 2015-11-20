@@ -23,7 +23,7 @@ public:
 	// DESTRUCTOR
 	~PlayerController();
 
-	void init() override;
+	void init();
 	void preTick() override;
 	void tick() override;
 

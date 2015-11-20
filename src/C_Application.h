@@ -45,9 +45,7 @@ private:
 
 	hctr::Renderer d_render;
 
-	//mygame::ClockSprite d_clock;
-	//mygame::CannonSprite d_cann;
-	mygame::PlayerController d_contrl;
+	mygame::PlayerController d_playerContrl;
 };
 
 } // end namespace hctg
