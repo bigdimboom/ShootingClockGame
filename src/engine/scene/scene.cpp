@@ -22,8 +22,7 @@ Scene& Scene::inst()
 	return scene;
 }
 
-// ACCESSORS
-const hcts::SceneGraph& Scene::sceneGraph() const
+hcts::SceneGraph& Scene::getSceneGraph()
 {
 	return d_sceneGraph;
 }

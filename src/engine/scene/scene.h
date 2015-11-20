@@ -42,9 +42,6 @@ public:
 	static Scene& inst();
 	  // the access point of a singleton class.
 
-	// ACCESSORS
-	const hcts::SceneGraph& sceneGraph() const;
-
 	// MEMBER FUNCTIONS
 	void tick();
 	  // place it in main loop
@@ -57,6 +54,7 @@ public:
 	  // use object manager to alloc/dealloc memory(outside of this class).
 	void addCollider(hctc::ICollider* collider);
 	void removeCollider(hctc::ICollider* collider);
+	hcts::SceneGraph& getSceneGraph();
 
 	void addDrawable(hctr::IDrawable* drawable);
 	void removeDrawable(hctr::IDrawable* drawable);
