@@ -40,7 +40,16 @@ public:
 		d_deltaAngle = delta;
 
 		d_sprite = new CannonSprite(d_pos);
-		hcts::Scene::inst().addDrawable(d_sprite);
+
+		if (d_sprite)
+		{
+			hcts::Scene::inst().addDrawable(d_sprite);
+		}
+
+		if (d_pawn)
+		{
+			hcts::Scene::inst().addTickable(d_pawn);
+		}
 
 		d_eventHandler = [&](const hcte::IEvent & ev){
 
