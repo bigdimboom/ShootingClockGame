@@ -35,6 +35,12 @@
     <Filter Include="Source Files\engine\gameplay">
       <UniqueIdentifier>{bbb70877-5af4-4900-bbdf-f6a768146a58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\game\sprites">
+      <UniqueIdentifier>{cc54449a-e80f-4315-9fe8-56661c778fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\controllers">
+      <UniqueIdentifier>{32c739bb-b1a9-4235-a26e-ee44537a6e29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\api\graphics.cpp">
@@ -106,17 +112,11 @@
     <ClCompile Include="src\engine\gameplay\asprite.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\clock_sprite.cpp">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
     <ClCompile Include="src\engine\rendering\drawable_line.cpp">
       <Filter>Source Files\engine\rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\rendering\drawable_triangle.cpp">
       <Filter>Source Files\engine\rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\cannon_sprite.cpp">
-      <Filter>Source Files\game</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
@@ -124,20 +124,26 @@
     <ClCompile Include="src\engine\gameplay\character.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\bullet_sprite.cpp">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
     <ClCompile Include="src\engine\gameplay\collidable_character.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\player_controller.cpp">
-      <Filter>Source Files\game</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\gameplay\pawn.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\bullet_sprite.cpp">
+      <Filter>Source Files\game\sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\cannon_sprite.cpp">
+      <Filter>Source Files\game\sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\clock_sprite.cpp">
+      <Filter>Source Files\game\sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\player_controller.cpp">
+      <Filter>Source Files\game\controllers</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\clock_controller.cpp">
-      <Filter>Source Files\game</Filter>
+      <Filter>Source Files\game\controllers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,35 +216,35 @@
     <ClInclude Include="src\engine\gameplay\asprite.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\clock_sprite.h">
-      <Filter>Source Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\rendering\drawable_line.h">
       <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\rendering\drawable_triangle.h">
       <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\cannon_sprite.h">
-      <Filter>Source Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\gameplay\character.h">
       <Filter>Source Files\engine\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\bullet_sprite.h">
-      <Filter>Source Files\game</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\gameplay\collidable_character.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\player_controller.h">
-      <Filter>Source Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\gameplay\pawn.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\bullet_sprite.h">
+      <Filter>Source Files\game\sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\cannon_sprite.h">
+      <Filter>Source Files\game\sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\clock_sprite.h">
+      <Filter>Source Files\game\sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\player_controller.h">
+      <Filter>Source Files\game\controllers</Filter>
+    </ClInclude>
     <ClInclude Include="src\game\clock_controller.h">
-      <Filter>Source Files\game</Filter>
+      <Filter>Source Files\game\controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

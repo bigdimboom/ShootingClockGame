@@ -72,7 +72,7 @@ void Line::rotate(const Point2f& pvt, float angleInDegree)
 
 void Line::scale(float factor)
 {
-	Point2f center = d_start + (d_end * 1.0f / 2.0f);
+	Point2f center = (d_start + d_end) * 0.5f;
 	//translate to (0,0)
 	d_start -= center;
 	d_end -= center;

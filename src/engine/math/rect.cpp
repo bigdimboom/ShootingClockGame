@@ -96,9 +96,8 @@ void Rect::rotate(const Point2f& pvt, float angleInDegree)
 void Rect::scale(float factor)
 {
 	// Again it should use matrix in regular situations.
-	Point2f vec = d_downRight - d_topLeft;
-	vec *= 0.5;
-	Point2f center = d_topLeft + vec;
+	Point2f center = (d_downRight + d_topLeft) * 0.5f;
+	// Point2f center = d_topLeft + vec;
 	// translate to center
 	d_topLeft -= center;
 	d_topRight -= center;

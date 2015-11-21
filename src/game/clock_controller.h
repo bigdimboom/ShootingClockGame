@@ -73,6 +73,7 @@ public:
 
 					d_pawn->setVelocity(dir);
 
+					d_sprite->scale(1.2f);
 					clockSprite->setClockFaceColor(0, 255, 122); // debugging purpose
 				}
 			}
@@ -88,9 +89,9 @@ public:
 
 	void destory()
 	{
-		hcts::Scene::inst().removeDrawable(d_sprite);
+		//hcts::Scene::inst().removeDrawable(d_sprite);
 		//hcts::Scene::inst().removeTickable(d_pawn);
-		hcts::Scene::inst().removeCollider(d_collider);
+		//hcts::Scene::inst().removeCollider(d_collider);
 
 		removePawn();
 		removeSprite();
