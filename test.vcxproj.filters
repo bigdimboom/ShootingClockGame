@@ -145,6 +145,12 @@
     <ClCompile Include="src\game\clock_controller.cpp">
       <Filter>Source Files\game\controllers</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\bullet_controller.cpp">
+      <Filter>Source Files\game\controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\gameplay\collidable_actor.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -245,6 +251,12 @@
     </ClInclude>
     <ClInclude Include="src\game\clock_controller.h">
       <Filter>Source Files\game\controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\bullet_controller.h">
+      <Filter>Source Files\game\controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\gameplay\collidable_actor.h">
+      <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

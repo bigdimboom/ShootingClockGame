@@ -5,9 +5,12 @@
 namespace hctc
 {
 
-enum CollisionType
+enum class ColliderType
 {
 	// TODO: 
+	UNSET,
+	STATIC_COLLIDER,
+	DYNAMIC_COLLIDER
 };
 
 class ICollider
@@ -15,9 +18,9 @@ class ICollider
 public:
 	virtual ~ICollider(){}
 	virtual Aabb& bounds() = 0;
-	virtual unsigned short flags() const = 0;
-	virtual void setFlags(unsigned short flags) = 0;
-	virtual bool canCollide(unsigned short flags) const = 0;
+	virtual ColliderType flags() const = 0;
+	virtual void setFlags(ColliderType flags) = 0;
+	//virtual bool canCollide(unsigned short flags) const = 0;
 	virtual bool doesCollide(const Aabb & candidate) = 0;
 };
 

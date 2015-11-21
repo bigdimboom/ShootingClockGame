@@ -23,6 +23,7 @@
     <ClCompile Include="src\engine\gameplay\acontroller.cpp" />
     <ClCompile Include="src\engine\gameplay\asprite.cpp" />
     <ClCompile Include="src\engine\gameplay\character.cpp" />
+    <ClCompile Include="src\engine\gameplay\collidable_actor.cpp" />
     <ClCompile Include="src\engine\gameplay\collidable_character.cpp" />
     <ClCompile Include="src\engine\gameplay\pawn.cpp" />
     <ClCompile Include="src\engine\math\ishape.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="src\engine\scene\itickable.cpp" />
     <ClCompile Include="src\engine\scene\scene.cpp" />
     <ClCompile Include="src\engine\scene\scene_graph.cpp" />
+    <ClCompile Include="src\game\bullet_controller.cpp" />
     <ClCompile Include="src\game\bullet_sprite.cpp" />
     <ClCompile Include="src\game\cannon_sprite.cpp" />
     <ClCompile Include="src\game\clock_controller.cpp" />
@@ -59,6 +61,7 @@
     <ClInclude Include="src\engine\gameplay\acontroller.h" />
     <ClInclude Include="src\engine\gameplay\asprite.h" />
     <ClInclude Include="src\engine\gameplay\character.h" />
+    <ClInclude Include="src\engine\gameplay\collidable_actor.h" />
     <ClInclude Include="src\engine\gameplay\collidable_character.h" />
     <ClInclude Include="src\engine\gameplay\pawn.h" />
     <ClInclude Include="src\engine\math\ishape.h" />
@@ -75,6 +78,7 @@
     <ClInclude Include="src\engine\scene\itickable.h" />
     <ClInclude Include="src\engine\scene\scene.h" />
     <ClInclude Include="src\engine\scene\scene_graph.h" />
+    <ClInclude Include="src\game\bullet_controller.h" />
     <ClInclude Include="src\game\bullet_sprite.h" />
     <ClInclude Include="src\game\cannon_sprite.h" />
     <ClInclude Include="src\game\clock_controller.h" />

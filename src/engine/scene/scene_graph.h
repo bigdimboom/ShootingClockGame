@@ -16,16 +16,20 @@ private:
 	int d_xSize;
 	int d_ySize;
 
-	std::vector<hctc::ICollider* > d_all;
-	std::set<hctc::ICollider*> d_qResult;
+	std::vector<hctc::ICollider* > d_all; // dynamic
+	std::vector<hctc::ICollider* > d_staticAll; // the statics
 
 	std::vector<hctc::ICollider* >* d_table;
+	std::vector<hctc::ICollider* >* d_staticTable;
+
+	std::set<hctc::ICollider*> d_qResult;
 
 	// HELPERS
 	int _preHash(float pt1D);
 	int _hash(const hctm::Point2f & point);
 
-	void _insertCollider(hctc::ICollider *collider);
+	void _insertCollider(hctc::ICollider *collider,
+						 std::vector<hctc::ICollider* >* table);
 
 	SceneGraph(const SceneGraph &) = delete;
 	SceneGraph(SceneGraph &&) = delete;
@@ -37,7 +41,8 @@ public:
 	~SceneGraph();
 
 	// ACCESSOR
-	const std::vector<hctc::ICollider* >& getAllColliders() const;
+	const std::vector<hctc::ICollider* >& getStaticColliders() const;
+	const std::vector<hctc::ICollider* >& getDynamicColliders() const;
 
 	// MEMBER FUNCTIONS
 	void build(float width, float height, float cellSize);
