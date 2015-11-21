@@ -6,8 +6,8 @@ namespace hctg
 
 CollidableCharacter::CollidableCharacter(hctm::Point2f pos, float width, float height)
 	: Character(pos)
-	, d_bb(hctm::Point2f(pos.x() - width / 2.0f, pos.y() - height / 2.0f), width, height)
-	, d_cdState(hctc::ColliderType::UNSET)
+	, d_bb(hctm::Point2f(pos.x() - width * 0.5f, pos.y() - height * 0.5f), width, height)
+	, d_cdState(hctc::ColliderType::DYNAMIC_COLLIDER)
 {
 }
 
