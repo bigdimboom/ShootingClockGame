@@ -36,6 +36,11 @@ public:
 	ClockSprite& operator= (ClockSprite &&);
 	  // move assignment.  
 
+	// MUTATORS
+	void setHrColor(unsigned int r, unsigned int g, unsigned int b);
+	void setMinColor(unsigned int r, unsigned int g, unsigned int b);
+	void setSecColor(unsigned int r, unsigned int g, unsigned int b);
+
 	// DESTRUCTOR
 	~ClockSprite();
 
@@ -63,6 +68,26 @@ std::ostream& operator<<(std::ostream& stream, const ClockSprite & obj)
 		<< "Hr: " << obj.d_prevHr
 		<< "Min: " << obj.d_prevMin
 		<< "Sec:" << obj.d_prevSec;
+}
+
+
+// MUTATORS
+inline
+void ClockSprite::setHrColor(unsigned int r, unsigned int g, unsigned int b)
+{
+	d_hrHand.setColor(r,g,b);
+}
+
+inline
+void ClockSprite::setMinColor(unsigned int r, unsigned int g, unsigned int b)
+{
+	d_minHand.setColor(r, g, b);
+}
+
+inline
+void ClockSprite::setSecColor(unsigned int r, unsigned int g, unsigned int b)
+{
+	d_secHand.setColor(r, g, b);
 }
 
 } // end namespace mygame

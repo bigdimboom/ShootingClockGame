@@ -10,7 +10,7 @@ namespace mygame
 
 ClockSprite::ClockSprite(hctm::Point2f pos, float width, float height)
 	: ASprite(pos)
-	, d_clockFace(hctm::Point2f(pos.x() - width / 2.0f, pos.y() - height / 2.0f), width, height, 255, 0, 0)
+	, d_clockFace(hctm::Point2f(pos.x() - width * 0.5f, pos.y() - height * 0.5f), width, height, 255, 0, 0)
 	, d_hrHand(pos, pos + hctm::Point2f(0.0f, -1.0f) * 0.25f * height, 255, 204, 0)
 	, d_minHand(pos, pos + hctm::Point2f(0.0f, -1.0f) * 0.40f * height, 255, 0, 128)
 	, d_secHand(pos, pos + hctm::Point2f(0.0f, -1.0f)* 0.45f * height, 255, 255, 255)

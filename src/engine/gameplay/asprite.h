@@ -11,7 +11,7 @@ namespace hctg
 class ASprite : public hctm::IShape, public hctr::IDrawable
 {
 protected:
-	hctm::Point2f d_pos;
+	hctm::Point2f d_pos; // cneter
 
 private:
 	// DELETED
