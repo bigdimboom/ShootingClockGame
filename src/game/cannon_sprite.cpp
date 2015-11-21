@@ -4,6 +4,14 @@
 namespace mygame
 {
 // CONSTRUCTORS
+//CannonSprite::CannonSprite(hctm::Point2f top, 
+//						   hctm::Point2f left, 
+//						   hctm::Point2f right)
+//						   : ASprite((right + left) * 0.5f)
+//						   , d_tri(top, left, right, 0, 0, 255)
+//{
+//}
+
 CannonSprite::CannonSprite(hctm::Point2f pos)
 	: ASprite(pos)
 	, d_tri(hctm::Point2f(pos.x(), pos.y() - 30),

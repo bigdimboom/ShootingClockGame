@@ -13,16 +13,17 @@ C_Application::C_Application(int screenWidth, int screenHeight)
 	, d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), 1.0f, (float)m_ScreenHeight)
 	, d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), 1.0f, (float)m_ScreenHeight)
 	, d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, 1.0f)
-	//, d_wallsN(hctm::Point2f(0.0f, 0.0f), (float)m_ScreenWidth * 2.0, 1.0f)
-	//, d_wallsW(hctm::Point2f(0.0f, 0.0f), 1.0f, (float)m_ScreenHeight * 2)
-	//, d_wallsE(hctm::Point2f((float)m_ScreenWidth, 0), 1.0f, (float)m_ScreenHeight * 2.0f)
-	//, d_wallsS(hctm::Point2f(m_ScreenWidth, m_ScreenHeight), (float)m_ScreenWidth * 2.0f, 1.0f)
+
+	, d_playerContrl(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f), 180.0f, 0.0f, 5.0f)
 {
 }
 
 
 C_Application::~C_Application()
 {
+	d_playerContrl.removeSprite();
+	//hcts::Scene::inst().removeDrawable(d_cannSprite);
+	delete d_cannSprite;
 }
 
 void C_Application::init()
@@ -31,17 +32,18 @@ void C_Application::init()
 	d_render.setView(hctm::Point2f(0.0f, 0.0f), m_ScreenWidth, m_ScreenHeight);
 	hcts::Scene::inst().setRenderer(&d_render);
 
+	d_cannSprite = new mygame::CannonSprite(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f));
+	d_playerContrl.addSprite(d_cannSprite);
+	hcts::Scene::inst().addDrawable(d_cannSprite);
+
+
+
+	
 	// imaginary walls
 	hcts::Scene::inst().addCollider(&d_wallsE);
 	hcts::Scene::inst().addCollider(&d_wallsW);
 	hcts::Scene::inst().addCollider(&d_wallsS);
 	hcts::Scene::inst().addCollider(&d_wallsN);
-
-
-
-
-
-	d_playerContrl.init(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f), 180.0f, 0, 2.0f);
 
 	hcts::Scene::inst().buildSceneGraph();
 }

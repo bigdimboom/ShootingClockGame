@@ -13,7 +13,7 @@ private:
 	unsigned int d_g;
 	unsigned int d_b;
 public:
-	DrawableTriangle(const hctm::Point2f& pt1, const hctm::Point2f& pt2, const hctm::Point2f& pt3,
+	DrawableTriangle(const hctm::Point2f& top, const hctm::Point2f& left, const hctm::Point2f& right,
 				 unsigned int r, unsigned int g, unsigned int b);
 	~DrawableTriangle();
 

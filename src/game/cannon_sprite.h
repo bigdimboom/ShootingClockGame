@@ -9,9 +9,10 @@ namespace mygame
 class CannonSprite : public hctg::ASprite
 {
 private:
-	hctr::DrawableTriangle d_tri;
+	hctr::DrawableTriangle d_tri; // position is at center bottom
 public:
 	// CONSTRUCTORS
+	//CannonSprite(hctm::Point2f top, hctm::Point2f left, hctm::Point2f right);
 	CannonSprite(hctm::Point2f pos);
 	CannonSprite( const CannonSprite &);
 	CannonSprite( CannonSprite &&);
@@ -21,7 +22,7 @@ public:
 	CannonSprite& operator=(CannonSprite &&);
 
 	// DESTRUCTOR
-	~CannonSprite();
+	virtual ~CannonSprite();
 
 	// MUTATORS
 	void setPostion(hctm::Point2f pos) override;

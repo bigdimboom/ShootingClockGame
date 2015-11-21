@@ -9,6 +9,8 @@
 #include "game/player_controller.h"
 #include "game/clock_controller.h"
 #include "../src/engine/gameplay/collidable_actor.h"
+#include "game\cannon_sprite.h"
+
 #include <iostream>
 
 using namespace hctr;
@@ -48,9 +50,8 @@ private:
 	hctr::Renderer d_render;
 
 	mygame::PlayerController d_playerContrl;
-	mygame::ClockController d_clcokCtrl;
-	mygame::ClockController d_clcokCtrlw;
-	mygame::ClockController d_clcokCtrlr;
+
+	mygame::CannonSprite* d_cannSprite;
 
 	hctg::CollidableActor d_wallsW;
 	hctg::CollidableActor d_wallsE;

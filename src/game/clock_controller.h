@@ -11,46 +11,10 @@ namespace mygame
 class ClockController : public hctg::AController
 {
 public:
-	ClockController()
-	{
-	}
-
-	virtual ~ClockController()
-	{
-	}
-
-	void preTick() override
-	{
-	}
-
-	void tick() override
-	{
-		assert(d_collider && d_pawn && d_sprite);
-
-		auto & set = hcts::Scene::inst().getSceneGraph().query(d_collider);
-		for (auto & cd : set)
-		{
-			if (d_collider->doesCollide(cd->bounds()))
-			{
-				d_pawn->setVelocity(-d_pawn->velocity());
-				d_pawn->tick(); // one tick back
-
-				auto dir = d_collider->bounds().getCenter()
-					- cd->bounds().getCenter();
-				// reverse dirction
-
-				float speed = d_pawn->velocity().length();
-				dir.normalize();
-				dir *= speed;
-
-				d_pawn->setVelocity(dir);
-			}
-		}
-
-		d_pawn->tick();
-		d_collider->bounds().translate(d_pawn->positionXY() - d_sprite->position());
-		d_sprite->setPostion(d_pawn->positionXY());
-	}
+	ClockController();
+	virtual ~ClockController();
+	void preTick() override;
+	void tick() override;
 };
 
 } // end namespace mygame
