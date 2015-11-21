@@ -8,6 +8,7 @@
 #include "engine/scene/scene.h"
 #include "game/player_controller.h"
 #include "game/clock_controller.h"
+#include "../src/engine/gameplay/collidable_actor.h"
 #include <iostream>
 
 using namespace hctr;
@@ -50,6 +51,11 @@ private:
 	mygame::ClockController d_clcokCtrl;
 	mygame::ClockController d_clcokCtrlw;
 	mygame::ClockController d_clcokCtrlr;
+
+	hctg::CollidableActor d_wallsW;
+	hctg::CollidableActor d_wallsE;
+	hctg::CollidableActor d_wallsS;
+	hctg::CollidableActor d_wallsN;
 };
 
 } // end namespace hctg

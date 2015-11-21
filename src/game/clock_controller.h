@@ -74,7 +74,7 @@ public:
 
 					d_pawn->setVelocity(dir);
 
-					d_sprite->scale(1.5f);
+
 					clockSprite->setClockFaceColor(0, 255, 122); // debugging purpose
 				}
 			}

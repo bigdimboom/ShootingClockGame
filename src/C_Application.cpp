@@ -9,6 +9,14 @@ static const float k_PI = 3.1415926536f;
 C_Application::C_Application(int screenWidth, int screenHeight)
 	: m_ScreenWidth(screenWidth)
 	, m_ScreenHeight(screenHeight)
+	, d_wallsN(hctm::Point2f(m_ScreenWidth * 0.5f, 0.0f), (float)m_ScreenWidth, 1.0f)
+	, d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), 1.0f, (float)m_ScreenHeight)
+	, d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), 1.0f, (float)m_ScreenHeight)
+	, d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, 1.0f)
+	//, d_wallsN(hctm::Point2f(0.0f, 0.0f), (float)m_ScreenWidth * 2.0, 1.0f)
+	//, d_wallsW(hctm::Point2f(0.0f, 0.0f), 1.0f, (float)m_ScreenHeight * 2)
+	//, d_wallsE(hctm::Point2f((float)m_ScreenWidth, 0), 1.0f, (float)m_ScreenHeight * 2.0f)
+	//, d_wallsS(hctm::Point2f(m_ScreenWidth, m_ScreenHeight), (float)m_ScreenWidth * 2.0f, 1.0f)
 {
 }
 
@@ -23,6 +31,13 @@ void C_Application::init()
 	// TODO:: Read config file
 	d_render.setView(hctm::Point2f(0.0f, 0.0f), m_ScreenWidth, m_ScreenHeight);
 	hcts::Scene::inst().setRenderer(&d_render);
+
+	// imaginary walls
+	hcts::Scene::inst().addCollider(&d_wallsE);
+	hcts::Scene::inst().addCollider(&d_wallsW);
+	hcts::Scene::inst().addCollider(&d_wallsS);
+	hcts::Scene::inst().addCollider(&d_wallsN);
+
 	hcts::Scene::inst().buildSceneGraph();
 
 	d_clcokCtrl.d_position = hctm::Point2f(m_ScreenWidth *0.5f, m_ScreenHeight * 0.5f);
@@ -30,13 +45,12 @@ void C_Application::init()
 	d_clcokCtrl.pawn()->setVelocity(hctm::Point2f(0.0f, 1.0f));
 	hcts::Scene::inst().addTickable(&d_clcokCtrl);
 
-	d_clcokCtrlw.d_position = hctm::Point2f(m_ScreenWidth *0.5f, (float)m_ScreenHeight);
+	d_clcokCtrlw.d_position = hctm::Point2f(m_ScreenWidth - 120, (float)m_ScreenHeight - 120);
 	d_clcokCtrlw.create();
 	d_clcokCtrlw.pawn()->setVelocity(hctm::Point2f(0.0f, -1.0f));
 	hcts::Scene::inst().addTickable(&d_clcokCtrlw);
 
-
-	d_clcokCtrlr.d_position = hctm::Point2f(0.0 + 100.0f, m_ScreenHeight * 0.5f);
+	d_clcokCtrlr.d_position = hctm::Point2f(m_ScreenHeight * 0.5f, m_ScreenHeight * 0.5f + 10.0f);
 	d_clcokCtrlr.create();
 	d_clcokCtrlr.pawn()->setVelocity(hctm::Point2f(1.0f, 0.0f));
 	hcts::Scene::inst().addTickable(&d_clcokCtrlr);
