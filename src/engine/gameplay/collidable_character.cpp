@@ -7,7 +7,7 @@ namespace hctg
 CollidableCharacter::CollidableCharacter(hctm::Point2f pos, float width, float height)
 	: Character(pos)
 	, d_bb(hctm::Point2f(pos.x() - width * 0.5f, pos.y() - height * 0.5f), width, height)
-	, d_cdState(hctc::ColliderType::DYNAMIC_COLLIDER)
+	, d_cdState(DYNAMIC_COLLIDER)
 {
 }
 
@@ -21,12 +21,12 @@ hctc::Aabb& CollidableCharacter::bounds()
 	return d_bb;
 }
 
-hctc::ColliderType CollidableCharacter::flags() const
+unsigned short CollidableCharacter::flags() const
 {
 	return d_cdState;
 }
 
-void CollidableCharacter::setFlags(hctc::ColliderType flags)
+void CollidableCharacter::setFlags(unsigned short flags)
 {
 	d_cdState = flags;
 }

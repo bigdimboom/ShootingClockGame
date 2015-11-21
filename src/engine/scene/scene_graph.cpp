@@ -95,13 +95,13 @@ void SceneGraph::rebuild()
 
 void SceneGraph::addCollider(hctc::ICollider *collider)
 {
-	assert(collider && collider->flags() != hctc::ColliderType::UNSET);
+	assert(collider);
 
-	if (collider->flags() == hctc::ColliderType::DYNAMIC_COLLIDER)
+	if ((collider->flags() & DYNAMIC_COLLIDER) == DYNAMIC_COLLIDER)
 	{
 		d_all.push_back(collider);
 	}
-	else if (collider->flags() == hctc::ColliderType::STATIC_COLLIDER)
+	else
 	{
 		d_staticAll.push_back(collider);
 	}
@@ -109,8 +109,22 @@ void SceneGraph::addCollider(hctc::ICollider *collider)
 
 void SceneGraph::removeCollider(hctc::ICollider *collider)
 {
-	assert(collider && collider->flags() != hctc::ColliderType::UNSET);
-	if (collider->flags() == hctc::ColliderType::STATIC_COLLIDER)
+	assert(collider);
+	if ((collider->flags() & DYNAMIC_COLLIDER) == DYNAMIC_COLLIDER)
+	{
+		for (auto i = d_all.begin(); i != d_all.end();)
+		{
+			if (*i == collider)
+			{
+				d_all.erase(i);
+			}
+			else
+			{
+				++i;
+			}
+		}
+	}
+	else
 	{
 		hctm::Point2f top = collider->bounds().topLeftPoint();
 		hctm::Point2f down = collider->bounds().downRightPoint();
@@ -150,20 +164,6 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 			if (*i == collider)
 			{
 				d_staticAll.erase(i);
-			}
-			else
-			{
-				++i;
-			}
-		}
-	}
-	else if (collider->flags() == hctc::ColliderType::STATIC_COLLIDER)
-	{
-		for (auto i = d_all.begin(); i != d_all.end();)
-		{
-			if (*i == collider)
-			{
-				d_all.erase(i);
 			}
 			else
 			{
@@ -212,7 +212,7 @@ const std::set<hctc::ICollider*> & SceneGraph::query(hctc::ICollider *collider)
 
 void SceneGraph::preTick()
 {
-	// Nothing
+	// Nothing.
 }
 
 void SceneGraph::tick()

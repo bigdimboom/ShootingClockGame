@@ -7,7 +7,7 @@ namespace hctg
 CollidableActor::CollidableActor(hctm::Point2f pos, float width, float height)
 	: Actor(pos)
 	, d_bb(hctm::Point2f(pos.x() - width * 0.5f, pos.y() - height *0.5f), width, height)
-	, d_cdState(hctc::ColliderType::STATIC_COLLIDER)
+	, d_cdState(STATIC_COLLIDER)
 {
 }
 
@@ -21,16 +21,14 @@ hctc::Aabb& CollidableActor::bounds()
 	return d_bb;
 }
 
-hctc::ColliderType CollidableActor::flags() const
+unsigned short CollidableActor::flags() const
 {
 	return d_cdState;
 }
 
-void CollidableActor::setFlags(hctc::ColliderType flags)
+void CollidableActor::setFlags(unsigned short flags)
 {
-#ifdef _DEBUG
-	std::cerr << "No set happened.\n";
-#endif
+	d_cdState = flags;
 }
 
 bool CollidableActor::doesCollide(const hctc::Aabb & candidate)

@@ -34,7 +34,7 @@ public:
 
 		cdCharacter = new CollidableCharacter(d_position, 100.0f, 100.0f);
 		clockSprite = new ClockSprite(d_position);
-		cdCharacter->setFlags(hctc::ColliderType::DYNAMIC_COLLIDER);
+		cdCharacter->setFlags(DYNAMIC_COLLIDER);
 
 		addPawn(cdCharacter);
 		addSprite(clockSprite);
