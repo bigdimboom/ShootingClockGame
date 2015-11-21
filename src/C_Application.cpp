@@ -35,6 +35,13 @@ void C_Application::init()
 	d_clcokCtrlw.pawn()->setVelocity(hctm::Point2f(0.0f, -1.0f));
 	hcts::Scene::inst().addTickable(&d_clcokCtrlw);
 
+
+	d_clcokCtrlr.d_position = hctm::Point2f(0.0 + 100.0f, m_ScreenHeight * 0.5);
+	d_clcokCtrlr.create();
+	d_clcokCtrlr.pawn()->setVelocity(hctm::Point2f(1.0f, 0.0f));
+	hcts::Scene::inst().addTickable(&d_clcokCtrlr);
+
+
 	d_playerContrl.init(hctm::Point2f(m_ScreenWidth * 0.5, m_ScreenHeight * 0.5 + 200), 180, 0, 1);
 }
 

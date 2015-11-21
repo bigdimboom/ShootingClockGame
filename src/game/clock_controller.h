@@ -11,9 +11,6 @@ namespace mygame
 class ClockController : public hctg::AController
 {
 public:
-
-	float d_speed;
-
 	hctm::Point2f d_position;
 	hctg::CollidableCharacter* cdCharacter;
 	mygame::ClockSprite* clockSprite;
@@ -33,10 +30,9 @@ public:
 	{
 		using namespace hctg;
 		//d_position; // need to get a random point
-		d_speed = 5; // read from resource manager
 
 
-		cdCharacter = new CollidableCharacter(d_position, 100.0, 100.0f);
+		cdCharacter = new CollidableCharacter(d_position, 100.0f, 100.0f);
 		clockSprite = new ClockSprite(d_position);
 
 		addPawn(cdCharacter);
@@ -52,22 +48,29 @@ public:
 
 	void preTick() override
 	{
-
 	}
 
 	void tick() override
 	{
-
 		if (d_collider)
 		{
-			// auto & set = hcts::Scene::inst().getSceneGraph().query(d_collider);
-			auto & set = hcts::Scene::inst().getSceneGraph().getAllColliders();
+			auto & set = hcts::Scene::inst().getSceneGraph().query(d_collider);
+			// auto & set = hcts::Scene::inst().getSceneGraph().getAllColliders();
 			for (auto & cd : set)
 			{
 				if (d_collider->doesCollide(cd->bounds()))
 				{
-					hctm::Point2f negDir = -(d_pawn->velocity());
-					d_pawn->setVelocity(negDir);
+					d_pawn->setVelocity(-d_pawn->velocity());
+					auto targetPos = hctm::Point2f(cd->bounds().topLeftPoint().x() + cd->bounds().width() * 0.5,
+												cd->bounds().topLeftPoint().y() + cd->bounds().height() * 0.5);
+					d_pawn->tick(); // one tick back
+
+					auto dir = d_pawn->positionXY() - targetPos;
+					float speed = d_pawn->velocity().length();
+					dir.normalize();
+					dir *= speed;
+
+					d_pawn->setVelocity(dir);
 				}
 			}
 		}

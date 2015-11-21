@@ -13,12 +13,18 @@ void SceneGraph::_insertCollider(hctc::ICollider *collider)
 	int topX, topY, downX, downY;
 	topX = _preHash(top.x());
 	topY = _preHash(top.y());
-	downX = _preHash(top.x());
-	downY = _preHash(top.y());
+	downX = _preHash(down.x());
+	downY = _preHash(down.y());
 
-	for (int y = topY; y < downY + 1; ++y)
+	topX = topX >= 0 ? topX : 0;
+	topY = topY >= 0 ? topY : 0;
+	downX = downX <= d_xSize ? downX : d_xSize;
+	downY = downY <= d_ySize ? downY : d_ySize;
+
+
+	for (int y = topY; y <= downY; ++y)
 	{
-		for (int x = topX; x < downX + 1; ++x)
+		for (int x = topX; x <= downX; ++x)
 		{
 			d_table[y * d_xSize + x].push_back(collider);
 		}
@@ -62,7 +68,7 @@ void SceneGraph::rebuild()
 	{
 		delete d_table;
 	}
-	d_table = new std::vector<hctc::ICollider* >[d_xSize * d_ySize];
+	d_table = new std::vector<hctc::ICollider* >[(d_xSize + 1) * (d_ySize + 1)];
 }
 
 void SceneGraph::addCollider(hctc::ICollider *collider)
@@ -99,14 +105,19 @@ const std::set<hctc::ICollider*> & SceneGraph::query(hctc::ICollider *collider)
 	int topX, topY, downX, downY;
 	topX = _preHash(top.x());
 	topY = _preHash(top.y());
-	downX = _preHash(top.x());
-	downY = _preHash(top.y());
+	downX = _preHash(down.x());
+	downY = _preHash(down.y());
 
-	for (int y = topY; y < downY + 1; ++y)
+	topX = topX >= 0 ? topX : 0;
+	topY = topY >= 0 ? topY : 0;
+	downX = downX <= d_xSize ? downX : d_xSize;
+	downY = downY <= d_ySize ? downY : d_ySize;
+
+	for (int y = topY; y <= downY; ++y)
 	{
-		for (int x = topX; x < downX + 1; ++x)
+		for (int x = topX; x <= downX; ++x)
 		{
-			for (const auto & i : d_table[x + d_xSize * y])
+			for (auto i : d_table[y * d_xSize + x])
 			{
 				d_qResult.insert(i);
 			}

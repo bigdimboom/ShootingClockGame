@@ -49,6 +49,7 @@ private:
 	mygame::PlayerController d_playerContrl;
 	mygame::ClockController d_clcokCtrl;
 	mygame::ClockController d_clcokCtrlw;
+	mygame::ClockController d_clcokCtrlr;
 };
 
 } // end namespace hctg
