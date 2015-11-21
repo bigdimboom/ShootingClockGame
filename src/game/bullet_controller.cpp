@@ -4,13 +4,5 @@
 namespace mygame
 {
 
-BulletController::BulletController()
-{
-}
-
-
-BulletController::~BulletController()
-{
-}
 
 } //end namespace mygame

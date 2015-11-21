@@ -4,12 +4,11 @@
 namespace mygame
 {
 
-BulletSprite::BulletSprite(hctm::Point2f pos, hctm::Point2f direction)
-	: ASprite(pos)
-	, d_bullet(pos, pos + direction, 255, 255, 255)
+BulletSprite::BulletSprite(hctm::Point2f start, hctm::Point2f end)
+	: ASprite((end + start) * 0.5f)
+	, d_bullet(start, end, 255, 255, 255)
 {
 }
-
 
 BulletSprite::BulletSprite(const BulletSprite & other)
 	: ASprite(other.d_pos)

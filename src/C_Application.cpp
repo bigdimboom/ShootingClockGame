@@ -23,7 +23,6 @@ C_Application::C_Application(int screenWidth, int screenHeight)
 
 C_Application::~C_Application()
 {
-
 }
 
 void C_Application::init()
@@ -38,20 +37,9 @@ void C_Application::init()
 	hcts::Scene::inst().addCollider(&d_wallsS);
 	hcts::Scene::inst().addCollider(&d_wallsN);
 
-	d_clcokCtrl.d_position = hctm::Point2f(m_ScreenWidth *0.5f, m_ScreenHeight * 0.5f);
-	d_clcokCtrl.create();
-	d_clcokCtrl.pawn()->setVelocity(hctm::Point2f(0.0f, 1.0f));
-	hcts::Scene::inst().addTickable(&d_clcokCtrl);
 
-	d_clcokCtrlw.d_position = hctm::Point2f(m_ScreenWidth - 120.0f, (float)m_ScreenHeight - 120.0f);
-	d_clcokCtrlw.create();
-	d_clcokCtrlw.pawn()->setVelocity(hctm::Point2f(0.0f, -1.0f));
-	hcts::Scene::inst().addTickable(&d_clcokCtrlw);
 
-	d_clcokCtrlr.d_position = hctm::Point2f(m_ScreenHeight * 0.5f, m_ScreenHeight * 0.5f + 10.0f);
-	d_clcokCtrlr.create();
-	d_clcokCtrlr.pawn()->setVelocity(hctm::Point2f(1.0f, 0.0f));
-	hcts::Scene::inst().addTickable(&d_clcokCtrlr);
+
 
 	d_playerContrl.init(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f), 180.0f, 0, 2.0f);
 

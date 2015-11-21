@@ -12,7 +12,7 @@ private:
 	hctr::DrawableLine d_bullet;
 public:
 	// CONSTRUCTORS
-	BulletSprite(hctm::Point2f pos, hctm::Point2f direction);
+	BulletSprite(hctm::Point2f start, hctm::Point2f end);
 	BulletSprite(const BulletSprite &);
 	BulletSprite(BulletSprite &&);
 
