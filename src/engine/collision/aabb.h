@@ -12,6 +12,9 @@ private:
 	Aabb(Aabb && other) = delete;
 	Aabb& operator = (const Aabb&) = delete;
 	Aabb& operator = (Aabb&&) = delete;
+
+	
+
 public:
 	// CONSTRUCTORS
 	Aabb(const hctm::Point2f& topLeft, float width, float height);
@@ -23,6 +26,8 @@ public:
 	// ACCESSORS
 	hctm::Point2f topLeftPoint() const;
 	hctm::Point2f downRightPoint() const;
+	hctm::Point2f getCenter() const;
+
 
 	// MEMBER FUNCTIONS
 	bool doesCollide(const Aabb & aabb);
@@ -59,6 +64,16 @@ inline
 hctm::Point2f Aabb::downRightPoint() const
 {
 	return d_downRight;
+}
+
+inline
+hctm::Point2f Aabb::getCenter() const
+{
+	return
+		hctm::Point2f(
+		d_topLeft.x() + (d_downRight.x() - d_topLeft.x()) * 0.5f,
+		d_topLeft.y() + (d_downRight.y() - d_topLeft.y()) * 0.5f
+		);
 }
 
 // MEMBER FUNCTIONS
