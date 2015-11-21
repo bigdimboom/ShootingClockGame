@@ -61,16 +61,19 @@ public:
 				if (d_collider->doesCollide(cd->bounds()))
 				{
 					d_pawn->setVelocity(-d_pawn->velocity());
-					auto targetPos = hctm::Point2f(cd->bounds().topLeftPoint().x() + cd->bounds().width() * 0.5,
-												cd->bounds().topLeftPoint().y() + cd->bounds().height() * 0.5);
 					d_pawn->tick(); // one tick back
 
-					auto dir = d_pawn->positionXY() - targetPos;
+					auto dir = d_collider->bounds().getCenter() 
+						- cd->bounds().getCenter();
+					// reverse dirction
+
 					float speed = d_pawn->velocity().length();
 					dir.normalize();
 					dir *= speed;
 
 					d_pawn->setVelocity(dir);
+
+					clockSprite->setClockFaceColor(0, 255, 122); // debugging purpose
 				}
 			}
 		}
@@ -79,7 +82,7 @@ public:
 		{
 			d_pawn->tick();
 			d_collider->bounds().translate(d_pawn->positionXY() - d_sprite->position());
-			d_sprite->translate(d_pawn->positionXY() - d_sprite->position());
+			d_sprite->setPostion(d_pawn->positionXY());
 		}
 	}
 

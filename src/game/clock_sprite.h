@@ -24,22 +24,25 @@ private:
 public:
 	// CONSTRUCTORS
 	ClockSprite(hctm::Point2f pos, float width = 100.0f, float height = 100.0f);
-	  // default constructor.
-	ClockSprite(const ClockSprite & );
-	  // copy constructors.
+	// default constructor.
+	ClockSprite(const ClockSprite &);
+	// copy constructors.
 	ClockSprite(ClockSprite &&);
-	  // move constructor.
+	// move constructor.
 
 	// ASSIGNMENT OVERLOADS
 	ClockSprite& operator= (const ClockSprite &);
-	  // copy assignment.
+	// copy assignment.
 	ClockSprite& operator= (ClockSprite &&);
-	  // move assignment.  
+	// move assignment.  
 
 	// MUTATORS
+	void setClockFaceColor(unsigned int r, unsigned int g, unsigned int b);
 	void setHrColor(unsigned int r, unsigned int g, unsigned int b);
 	void setMinColor(unsigned int r, unsigned int g, unsigned int b);
 	void setSecColor(unsigned int r, unsigned int g, unsigned int b);
+
+	void setPostion(hctm::Point2f pos) override;
 
 	// DESTRUCTOR
 	~ClockSprite();
@@ -64,7 +67,7 @@ public:
 inline
 std::ostream& operator<<(std::ostream& stream, const ClockSprite & obj)
 {
-	return stream 
+	return stream
 		<< "Hr: " << obj.d_prevHr
 		<< "Min: " << obj.d_prevMin
 		<< "Sec:" << obj.d_prevSec;
@@ -73,9 +76,15 @@ std::ostream& operator<<(std::ostream& stream, const ClockSprite & obj)
 
 // MUTATORS
 inline
+void ClockSprite::setClockFaceColor(unsigned int r, unsigned int g, unsigned int b)
+{
+	d_clockFace.setColor(r,g,b);
+}
+
+inline
 void ClockSprite::setHrColor(unsigned int r, unsigned int g, unsigned int b)
 {
-	d_hrHand.setColor(r,g,b);
+	d_hrHand.setColor(r, g, b);
 }
 
 inline
@@ -90,4 +99,15 @@ void ClockSprite::setSecColor(unsigned int r, unsigned int g, unsigned int b)
 	d_secHand.setColor(r, g, b);
 }
 
+inline
+void ClockSprite::setPostion(hctm::Point2f pos)
+{
+	auto old = d_pos;
+	d_pos = pos;
+	auto incr = d_pos - old;
+	d_clockFace.translate(incr);
+	d_hrHand.translate(incr);
+	d_minHand.translate(incr);
+	d_secHand.translate(incr);
+}
 } // end namespace mygame

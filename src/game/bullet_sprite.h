@@ -23,6 +23,10 @@ public:
 	// DESTRUCTOR
 	~BulletSprite();
 
+	// MUTATORS
+	void setPostion(hctm::Point2f pos) override;
+	void setColor(unsigned int r, unsigned int g, unsigned int b);
+
 	// MEMBER FUNCTIONS
 	void translate(float x, float y) override;
 	void translate(hctm::Point2f increment) override;
@@ -31,5 +35,21 @@ public:
 	float area() const override;
 	void draw() override;
 };
+
+// MUTATORS
+inline
+void BulletSprite::setPostion(hctm::Point2f pos)
+{
+	auto old = d_pos;
+	d_pos = pos;
+	auto incr = d_pos - old;
+	d_bullet.translate(incr);
+}
+
+inline
+void BulletSprite::setColor(unsigned int r, unsigned int g, unsigned int b)
+{
+	d_bullet.setColor(r,g,b);
+}
 
 } // end namespace mygame

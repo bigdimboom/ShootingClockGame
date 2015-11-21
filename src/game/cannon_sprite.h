@@ -23,6 +23,10 @@ public:
 	// DESTRUCTOR
 	~CannonSprite();
 
+	// MUTATORS
+	void setPostion(hctm::Point2f pos) override;
+	void setColor(unsigned int r, unsigned int g, unsigned int b);
+
 	// MEMBER FUNCTIONS
 	void translate(float x, float y) override;
 	void translate(hctm::Point2f increment) override;
@@ -32,5 +36,21 @@ public:
 
 	void draw() override;
 };
+
+// MUTATORS
+inline
+void CannonSprite::setPostion(hctm::Point2f pos)
+{
+	auto old = d_pos;
+	d_pos = pos;
+	auto incr = d_pos - old;
+	d_tri.translate(incr);
+}
+
+inline
+void CannonSprite::setColor(unsigned int r, unsigned int g, unsigned int b)
+{
+	d_tri.setColor(r, g, b);
+}
 
 } //end namespace mygame

@@ -31,7 +31,7 @@ public:
 	hctm::Point2f position() const;
 
 	//MUTATORS
-	void setPostion(hctm::Point2f pos);
+	virtual void setPostion(hctm::Point2f pos) = 0;
 
 	// MEMBER FUNCTIONS
 	virtual void translate(float x, float y) override = 0;
