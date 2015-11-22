@@ -58,6 +58,7 @@ public:
 
 	void preTick() override;
 	void tick() override;
+	void postTick() override;
 
 	// Non-class function
 	friend std::ostream& operator<<(std::ostream& stream, const ClockSprite &);

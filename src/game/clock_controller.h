@@ -12,6 +12,7 @@ public:
 	virtual ~ClockController();
 	void preTick() override;
 	void tick() override;
+	void postTick() override;
 };
 
 } // end namespace mygame

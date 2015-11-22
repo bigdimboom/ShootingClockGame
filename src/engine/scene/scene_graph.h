@@ -56,6 +56,7 @@ public:
 
 	virtual void preTick() override;
 	virtual void tick() override;
+	virtual void postTick() override;
 };
 
 // HELPERS

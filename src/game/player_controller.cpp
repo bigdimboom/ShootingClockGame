@@ -127,4 +127,9 @@ void PlayerController::tick()
 	// You can not delete tick in the tick
 }
 
+void PlayerController::postTick()
+{
+
+}
+
 } // end namespace mygame

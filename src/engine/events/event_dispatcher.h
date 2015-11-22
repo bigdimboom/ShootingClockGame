@@ -40,6 +40,7 @@ public:
 
 	void preTick() override;
 	void tick() override;
+	void postTick() override;
 };
 
 } // end namespace sgde

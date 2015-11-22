@@ -38,6 +38,7 @@ public:
 	// MEMBERS
 	void preTick() override;
 	void tick() override;
+	void postTick() override;
 
 };
 

@@ -217,6 +217,10 @@ void SceneGraph::preTick()
 
 void SceneGraph::tick()
 {
+}
+
+void SceneGraph::postTick()
+{
 	// insert static colliders
 	for (int i = 0; i < d_xSize * d_ySize; ++i)
 	{

@@ -127,6 +127,7 @@ void ClockSprite::draw()
 
 void ClockSprite::preTick()
 {
+	// Do Nothings.
 }
 
 void ClockSprite::tick()
@@ -145,6 +146,11 @@ void ClockSprite::tick()
 	d_prevHr = nowHr;
 	d_prevMin = nowMin;
 	d_prevSec = nowSec;
+}
+
+void ClockSprite::postTick()
+{
+	//DO nothings.
 }
 
 } // end namespace mygame

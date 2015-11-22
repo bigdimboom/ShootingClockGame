@@ -73,4 +73,9 @@ void Pawn::tick()
 	d_pos += d_vel;
 }
 
+void Pawn::postTick()
+{
+	//Do nothing.
+}
+
 } // end namespace hctg

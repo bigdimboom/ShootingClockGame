@@ -45,6 +45,7 @@ public:
 
 	virtual void preTick() override = 0;
 	virtual void tick() override = 0;
+	virtual void postTick() = 0;
 };
 
 // ACCESSORS

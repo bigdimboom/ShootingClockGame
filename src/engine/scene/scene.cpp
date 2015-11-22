@@ -30,21 +30,20 @@ hcts::SceneGraph& Scene::getSceneGraph()
 // MEMBER FUNCTIONS
 void Scene::tick()
 {
-	hcte::EventBus::inst().preTick();
-	d_sceneGraph.preTick();
-
-	for (auto i : d_tickables)
+	for (auto i = d_tickables.begin(); i != d_tickables.end(); ++i)
 	{
-		i->preTick();
+		(*i)->preTick();
 	}
 
-	for (auto i : d_tickables)
+	for (auto i = d_tickables.begin(); i != d_tickables.end(); ++i)
 	{
-		i->tick();
+		(*i)->tick();
 	}
 
-	hcte::EventBus::inst().tick();
-	d_sceneGraph.tick();
+	for (auto i = d_tickables.begin(); i != d_tickables.end(); ++i)
+	{
+		(*i)->postTick();
+	}
 }
 void Scene::draw()
 {

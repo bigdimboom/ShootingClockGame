@@ -49,4 +49,9 @@ void ClockController::tick()
 	d_sprite->setPostion(d_pawn->positionXY());
 }
 
+void ClockController::postTick()
+{
+
+}
+
 } // end namespace mygame

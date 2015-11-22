@@ -78,6 +78,10 @@ void EventBus::preTick()
 
 void EventBus::tick()
 {
+}
+
+void EventBus::postTick()
+{
 	unsigned int size = d_eventQ.size();
 	for (unsigned int i = 0; i < size; ++i)
 	{

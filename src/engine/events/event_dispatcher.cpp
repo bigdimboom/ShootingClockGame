@@ -69,6 +69,10 @@ void EventDispatcher::tick()
 {
 }
 
+void EventDispatcher::postTick()
+{
+}
+
 #ifdef UNIT_TEST
 
 void unitTest() // test for control and sprite interaction

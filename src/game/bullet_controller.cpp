@@ -42,4 +42,8 @@ void BulletController::tick()
 	d_sprite->setPostion(d_pawn->positionXY());
 }
 
+void BulletController::postTick()
+{
+}
+
 } //end namespace mygame
