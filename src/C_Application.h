@@ -33,6 +33,7 @@ public:
 	void handleInput(T_PressedKey pressedKeys);
 	void tick();
 	void draw();
+	void cleanUp();
 
 	static const T_PressedKey s_KeyLeft = 0x01;
 	static const T_PressedKey s_KeyUp = 0x02;
@@ -50,8 +51,6 @@ private:
 	hctr::Renderer d_render;
 
 	mygame::PlayerController d_playerContrl;
-
-	mygame::CannonSprite* d_cannSprite;
 
 	hctg::CollidableActor d_wallsW;
 	hctg::CollidableActor d_wallsE;

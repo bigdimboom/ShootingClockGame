@@ -71,7 +71,7 @@ void Renderer::removeDrawable(IDrawable* drawable)
 	{
 		if (*i == drawable)
 		{
-			d_drawables.erase(i);
+			i = d_drawables.erase(i);
 		}
 		else
 		{

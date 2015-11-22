@@ -116,7 +116,7 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 		{
 			if (*i == collider)
 			{
-				d_all.erase(i);
+				i = d_all.erase(i);
 			}
 			else
 			{
@@ -149,7 +149,7 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 				{
 					if (*k == collider)
 					{
-						c.erase(k);
+						k = c.erase(k);
 					}
 					else
 					{
@@ -163,7 +163,7 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 		{
 			if (*i == collider)
 			{
-				d_staticAll.erase(i);
+				i = d_staticAll.erase(i);
 			}
 			else
 			{

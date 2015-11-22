@@ -21,9 +21,6 @@ C_Application::C_Application(int screenWidth, int screenHeight)
 
 C_Application::~C_Application()
 {
-	d_playerContrl.removeSprite();
-	//hcts::Scene::inst().removeDrawable(d_cannSprite);
-	delete d_cannSprite;
 }
 
 void C_Application::init()
@@ -32,13 +29,10 @@ void C_Application::init()
 	d_render.setView(hctm::Point2f(0.0f, 0.0f), m_ScreenWidth, m_ScreenHeight);
 	hcts::Scene::inst().setRenderer(&d_render);
 
-	d_cannSprite = new mygame::CannonSprite(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f));
-	d_playerContrl.addSprite(d_cannSprite);
-	hcts::Scene::inst().addDrawable(d_cannSprite);
+	d_playerContrl.addSprite
+		(new mygame::CannonSprite(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f)));
+	hcts::Scene::inst().addDrawable(d_playerContrl.sprite());
 
-
-
-	
 	// imaginary walls
 	hcts::Scene::inst().addCollider(&d_wallsE);
 	hcts::Scene::inst().addCollider(&d_wallsW);
@@ -88,6 +82,18 @@ void C_Application::tick()
 void C_Application::draw()
 {
 	hcts::Scene::inst().draw();
+}
+
+void C_Application::cleanUp()
+{
+	hcts::Scene::inst().removeCollider(&d_wallsE);
+	hcts::Scene::inst().removeCollider(&d_wallsW);
+	hcts::Scene::inst().removeCollider(&d_wallsS);
+	hcts::Scene::inst().removeCollider(&d_wallsN);
+
+	hcts::Scene::inst().removeDrawable(d_playerContrl.sprite());
+	delete d_playerContrl.sprite();
+	d_playerContrl.removeSprite();
 }
 
 } // end namespace hctg

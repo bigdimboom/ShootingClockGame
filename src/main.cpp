@@ -126,6 +126,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			app.tick();
 			app.draw();
 		}
+
+		app.cleanUp();
 	}
 
 	// Uninitialize graphics

@@ -64,7 +64,7 @@ void Scene::removeTickable(ITickable* tickable)
 	{
 		if (*i == tickable)
 		{
-			d_tickables.erase(i);
+			i = d_tickables.erase(i);
 		}
 		else
 		{
