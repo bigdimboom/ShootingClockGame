@@ -25,7 +25,7 @@ C_Application::~C_Application()
 
 void C_Application::init()
 {
-	// TODO:: Read config file
+	// TODO:: Read config file.
 	d_render.setView(hctm::Point2f(0.0f, 0.0f), m_ScreenWidth, m_ScreenHeight);
 	hcts::Scene::inst().setRenderer(&d_render);
 
@@ -33,12 +33,13 @@ void C_Application::init()
 		(new mygame::CannonSprite(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f)));
 	hcts::Scene::inst().addDrawable(d_playerContrl.sprite());
 
-	// imaginary walls
+	// imaginary walls.
 	hcts::Scene::inst().addCollider(&d_wallsE);
 	hcts::Scene::inst().addCollider(&d_wallsW);
 	hcts::Scene::inst().addCollider(&d_wallsS);
 	hcts::Scene::inst().addCollider(&d_wallsN);
 
+	// CD.
 	hcts::Scene::inst().buildSceneGraph();
 }
 

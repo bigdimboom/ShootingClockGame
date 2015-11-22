@@ -9,12 +9,14 @@ namespace hctg
 AController::AController()
 	: d_pawn(nullptr)
 	, d_sprite(nullptr)
+	, d_collider(nullptr)
 {
 }
 
 AController::AController(Pawn* pawn, ASprite* sprite)
 	: d_pawn(pawn)
 	, d_sprite(sprite)
+	, d_collider(nullptr)
 {
 }
 
