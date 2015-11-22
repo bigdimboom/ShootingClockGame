@@ -32,18 +32,22 @@ void Scene::tick()
 {
 	for (auto i = d_tickables.begin(); i != d_tickables.end(); ++i)
 	{
-		(*i)->preTick();
+		(*i)->preTick(); // precess inputs , rarely used
 	}
 
 	for (auto i = d_tickables.begin(); i != d_tickables.end(); ++i)
 	{
-		(*i)->tick();
+		(*i)->tick(); // update game states
 	}
 
 	for (auto i = d_tickables.begin(); i != d_tickables.end(); ++i)
 	{
-		(*i)->postTick();
+		(*i)->postTick(); // process game states
 	}
+
+	d_sceneGraph.postTick();  // reload scene_graph
+	hcte::EventBus::inst().postTick(); // process events or it could add to preTick()
+
 }
 void Scene::draw()
 {
@@ -63,16 +67,11 @@ void Scene::addTickable(ITickable* tickable)
 void Scene::removeTickable(ITickable* tickable)
 {
 	assert(tickable);
-	auto i = d_tickables.begin();
-	for (; i != d_tickables.end();)
+	for (auto i = d_tickables.begin(); i != d_tickables.end();++i)
 	{
 		if (*i == tickable)
 		{
-			i = d_tickables.erase(i);
-		}
-		else
-		{
-			++i;
+			(*i) = nullptr;
 		}
 	}
 }

@@ -110,8 +110,23 @@ void SceneGraph::addCollider(hctc::ICollider *collider)
 void SceneGraph::removeCollider(hctc::ICollider *collider)
 {
 	assert(collider);
+
+	hctm::Point2f top = collider->bounds().topLeftPoint();
+	hctm::Point2f down = collider->bounds().downRightPoint();
+	int topX, topY, downX, downY;
+	topX = _preHash(top.x());
+	topY = _preHash(top.y());
+	downX = _preHash(down.x());
+	downY = _preHash(down.y());
+
+	topX = topX >= 0 ? topX : 0;
+	topY = topY >= 0 ? topY : 0;
+	downX = downX <= d_xSize ? downX : d_xSize;
+	downY = downY <= d_ySize ? downY : d_ySize;
+
 	if ((collider->flags() & DYNAMIC_COLLIDER) == DYNAMIC_COLLIDER)
 	{
+		// remove from d_all the dynamic preparing list
 		for (auto i = d_all.begin(); i != d_all.end();)
 		{
 			if (*i == collider)
@@ -123,31 +138,17 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 				++i;
 			}
 		}
-	}
-	else
-	{
-		hctm::Point2f top = collider->bounds().topLeftPoint();
-		hctm::Point2f down = collider->bounds().downRightPoint();
-		int topX, topY, downX, downY;
-		topX = _preHash(top.x());
-		topY = _preHash(top.y());
-		downX = _preHash(down.x());
-		downY = _preHash(down.y());
 
-		topX = topX >= 0 ? topX : 0;
-		topY = topY >= 0 ? topY : 0;
-		downX = downX <= d_xSize ? downX : d_xSize;
-		downY = downY <= d_ySize ? downY : d_ySize;
-
+		// remove from dynamic table
 		for (int y = topY; y <= downY; ++y)
 		{
 			for (int x = topX; x <= downX; ++x)
 			{
-				auto & c = d_staticTable[y * d_xSize + x];
+				auto & c = d_table[y * d_xSize + x]; // delete from table
 
 				for (auto k = c.begin(); k != c.end();)
 				{
-					if (*k == collider)
+					if ((*k) == collider)
 					{
 						k = c.erase(k);
 					}
@@ -159,6 +160,10 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 			}
 		}
 
+	}
+	else
+	{
+		// remove from static preparing(candidae) list;
 		for (auto i = d_staticAll.begin(); i != d_staticAll.end();)
 		{
 			if (*i == collider)
@@ -168,6 +173,27 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 			else
 			{
 				++i;
+			}
+		}
+
+		// remove from static table
+		for (int y = topY; y <= downY; ++y)
+		{
+			for (int x = topX; x <= downX; ++x)
+			{
+				auto & c = d_staticTable[y * d_xSize + x]; // delete from table
+
+				for (auto k = c.begin(); k != c.end();)
+				{
+					if ((*k) == collider)
+					{
+						k = c.erase(k);
+					}
+					else
+					{
+						++k;
+					}
+				}
 			}
 		}
 	}
@@ -217,6 +243,7 @@ void SceneGraph::preTick()
 
 void SceneGraph::tick()
 {
+	// Nothing
 }
 
 void SceneGraph::postTick()

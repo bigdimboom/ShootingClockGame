@@ -40,7 +40,7 @@ void C_Application::init()
 		hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f), 100.0f, 100.f));
 	d_clockContol.addCollider(dynamic_cast<hctc::ICollider*>(d_clockContol.pawn()));
 	d_clockContol.addSprite(new mygame::ClockSprite(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f)));
-	d_clockContol.pawn()->setVelocity(hctm::Point2f(0.8, 1.2));
+	d_clockContol.pawn()->setVelocity(hctm::Point2f(0.8f, 1.2f));
 
 	hcts::Scene::inst().addCollider(d_clockContol.collider());
 	hcts::Scene::inst().addDrawable(d_clockContol.sprite());
@@ -109,7 +109,6 @@ void C_Application::cleanUp()
 	delete d_clockContol.pawn();
 	d_clockContol.removePawn();
 	d_clockContol.removeCollider();
-
 	delete d_clockContol.sprite();
 	d_clockContol.removeSprite();
 
