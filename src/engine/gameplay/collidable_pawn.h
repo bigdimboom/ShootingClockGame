@@ -1,19 +1,19 @@
 // collidable_character.h
 #pragma once
 #include "../collision/icollider.h"
-#include "../gameplay/character.h"
+#include "../gameplay/pawn.h"
 
 namespace hctg
 {
 
-class CollidableCharacter : public Character,  public hctc::ICollider
+class CollidablePawn : public Pawn, public hctc::ICollider
 {
 private:
 	hctc::Aabb d_bb; // the bounding box
 	unsigned short  d_cdState;
 public:
-	CollidableCharacter(hctm::Point2f pos, float bindWidth, float bindHeight);
-	virtual ~CollidableCharacter();
+	CollidablePawn(hctm::Point2f pos, float bindWidth, float bindHeight);
+	virtual ~CollidablePawn();
 
 	hctc::Aabb& bounds() override;
 	unsigned short flags() const override;

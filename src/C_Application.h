@@ -9,7 +9,7 @@
 #include "game/player_controller.h"
 #include "game/clock_controller.h"
 #include "../src/engine/gameplay/collidable_actor.h"
-#include "game\cannon_sprite.h"
+#include "game/cannon_sprite.h"
 
 #include <iostream>
 
@@ -51,11 +51,13 @@ private:
 	hctr::Renderer d_render;
 
 	mygame::PlayerController d_playerContrl;
+	mygame::ClockController d_clockContol;
 
 	hctg::CollidableActor d_wallsW;
 	hctg::CollidableActor d_wallsE;
 	hctg::CollidableActor d_wallsS;
 	hctg::CollidableActor d_wallsN;
+
 };
 
 } // end namespace hctg

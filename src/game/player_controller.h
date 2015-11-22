@@ -1,7 +1,6 @@
 // player_controller.h
 #pragma once
 #include "../engine/gameplay/acontroller.h"
-#include "../engine/gameplay/character.h"
 #include "../engine/events/event_bus.h"
 #include "../engine/scene/scene.h"
 #include "cannon_sprite.h"

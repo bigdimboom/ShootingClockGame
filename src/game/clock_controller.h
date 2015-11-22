@@ -2,7 +2,7 @@
 #pragma 
 #include "../engine/gameplay/acontroller.h"
 #include "clock_sprite.h"
-#include "../engine/gameplay/collidable_character.h"
+#include "../engine/gameplay/collidable_pawn.h"
 #include "../engine/scene/scene.h"
 
 namespace mygame

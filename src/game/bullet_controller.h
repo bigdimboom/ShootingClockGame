@@ -2,7 +2,7 @@
 #pragma once
 #include "../engine/gameplay/acontroller.h"
 #include "../game/bullet_sprite.h"
-#include "../engine/gameplay/collidable_character.h"
+#include "../engine/gameplay/collidable_pawn.h"
 
 namespace mygame
 {

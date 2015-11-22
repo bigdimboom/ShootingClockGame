@@ -1,32 +1,32 @@
 // collidable_character.cpp
-#include "collidable_character.h"
+#include "collidable_pawn.h"
 
 namespace hctg
 {
 
-CollidableCharacter::CollidableCharacter(hctm::Point2f pos, float width, float height)
-	: Character(pos)
+CollidablePawn::CollidablePawn(hctm::Point2f pos, float width, float height)
+	: Pawn(pos)
 	, d_bb(hctm::Point2f(pos.x() - width * 0.5f, pos.y() - height * 0.5f), width, height)
 	, d_cdState(DYNAMIC_COLLIDER)
 {
 }
 
 
-CollidableCharacter::~CollidableCharacter()
+CollidablePawn::~CollidablePawn()
 {
 }
 
-hctc::Aabb& CollidableCharacter::bounds()
+hctc::Aabb& CollidablePawn::bounds()
 {
 	return d_bb;
 }
 
-unsigned short CollidableCharacter::flags() const
+unsigned short CollidablePawn::flags() const
 {
 	return d_cdState;
 }
 
-void CollidableCharacter::setFlags(unsigned short flags)
+void CollidablePawn::setFlags(unsigned short flags)
 {
 	d_cdState = flags;
 }
@@ -40,7 +40,7 @@ void CollidableCharacter::setFlags(unsigned short flags)
 //	return false;
 //}
 
-bool CollidableCharacter::doesCollide(const hctc::Aabb & candidate)
+bool CollidablePawn::doesCollide(const hctc::Aabb & candidate)
 {
 	if (&d_bb == &candidate)
 	{

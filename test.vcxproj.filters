@@ -121,12 +121,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\engine\gameplay\character.cpp">
-      <Filter>Source Files\engine\gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\gameplay\collidable_character.cpp">
-      <Filter>Source Files\engine\gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="src\engine\gameplay\pawn.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
@@ -149,6 +143,9 @@
       <Filter>Source Files\game\controllers</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\gameplay\collidable_actor.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\gameplay\collidable_pawn.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
   </ItemGroup>
@@ -228,12 +225,6 @@
     <ClInclude Include="src\engine\rendering\drawable_triangle.h">
       <Filter>Source Files\engine\rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\gameplay\character.h">
-      <Filter>Source Files\engine\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\gameplay\collidable_character.h">
-      <Filter>Source Files\engine\gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="src\engine\gameplay\pawn.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
@@ -256,6 +247,9 @@
       <Filter>Source Files\game\controllers</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\gameplay\collidable_actor.h">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\gameplay\collidable_pawn.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
   </ItemGroup>
