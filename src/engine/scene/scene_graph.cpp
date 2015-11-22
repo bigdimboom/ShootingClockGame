@@ -124,6 +124,8 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 	downX = downX <= d_xSize ? downX : d_xSize;
 	downY = downY <= d_ySize ? downY : d_ySize;
 
+	bool has = false;
+
 	if ((collider->flags() & DYNAMIC_COLLIDER) == DYNAMIC_COLLIDER)
 	{
 		// remove from d_all the dynamic preparing list
@@ -132,11 +134,17 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 			if (*i == collider)
 			{
 				i = d_all.erase(i);
+				has = true;
 			}
 			else
 			{
 				++i;
 			}
+		}
+
+		if (!has)
+		{
+			return;
 		}
 
 		// remove from dynamic table
@@ -169,11 +177,17 @@ void SceneGraph::removeCollider(hctc::ICollider *collider)
 			if (*i == collider)
 			{
 				i = d_staticAll.erase(i);
+				has = true;
 			}
 			else
 			{
 				++i;
 			}
+		}
+
+		if (!has)
+		{
+			return;
 		}
 
 		// remove from static table

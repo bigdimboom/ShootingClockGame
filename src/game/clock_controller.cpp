@@ -40,7 +40,10 @@ void ClockController::tick()
 
 			d_pawn->setVelocity(dir);
 
-			break;
+			//break;
+
+			hcts::Scene::inst().removeCollider(d_collider);
+			//return;
 		}
 	}
 
