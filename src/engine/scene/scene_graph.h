@@ -5,6 +5,7 @@
 #include "../collision/icollider.h"
 #include "../collision/aabb.h"
 #include <vector>
+#include <list>
 #include <set>
 
 namespace hcts
@@ -16,8 +17,8 @@ private:
 	int d_xSize;
 	int d_ySize;
 
-	std::vector<hctc::ICollider* > d_all; // dynamic
-	std::vector<hctc::ICollider* > d_staticAll; // the statics
+	std::list<hctc::ICollider* > d_all; // dynamic
+	std::list<hctc::ICollider* > d_staticAll; // the statics
 
 	std::vector<hctc::ICollider* >* d_table;
 	std::vector<hctc::ICollider* >* d_staticTable;
@@ -41,8 +42,8 @@ public:
 	~SceneGraph();
 
 	// ACCESSOR
-	const std::vector<hctc::ICollider* >& getStaticColliders() const;
-	const std::vector<hctc::ICollider* >& getDynamicColliders() const;
+	const std::list<hctc::ICollider* >& getStaticColliders() const;
+	const std::list<hctc::ICollider* >& getDynamicColliders() const;
 
 	// MEMBER FUNCTIONS
 	void build(float width, float height, float cellSize);

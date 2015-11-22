@@ -48,6 +48,18 @@ void Scene::tick()
 	d_sceneGraph.postTick();  // reload scene_graph
 	hcte::EventBus::inst().postTick(); // process events or it could add to preTick()
 
+	// Sync
+	for (auto i = d_tickables.begin(); i != d_tickables.end();)
+	{
+		if (*i == &NullTickable::inst())
+		{ 
+			i = d_tickables.erase(i);
+		}
+		else
+		{
+			++i;
+		}
+	}
 }
 void Scene::draw()
 {
@@ -71,7 +83,7 @@ void Scene::removeTickable(ITickable* tickable)
 	{
 		if (*i == tickable)
 		{
-			(*i) = nullptr;
+			(*i) = &NullTickable::inst();
 		}
 	}
 }

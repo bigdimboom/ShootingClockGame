@@ -54,12 +54,12 @@ SceneGraph::~SceneGraph()
 }
 
 // ACCESSOR
-const std::vector<hctc::ICollider* >& SceneGraph::getDynamicColliders() const
+const std::list<hctc::ICollider* >& SceneGraph::getDynamicColliders() const
 {
 	return d_all;
 }
 
-const std::vector<hctc::ICollider* >& SceneGraph::getStaticColliders() const
+const std::list<hctc::ICollider* >& SceneGraph::getStaticColliders() const
 {
 	return d_staticAll;
 }

@@ -3,8 +3,9 @@
 // contains a render, a scene-graph for collision
 // it can add actors.
 #pragma once
-#include <vector>
+#include <list>
 #include "../scene/itickable.h"
+#include "../scene/null_tickable.h"
 #include "../collision/icollider.h"
 #include "../rendering/renderer.h"
 #include "scene_graph.h"
@@ -16,7 +17,7 @@ class Scene
 {
 private:
 
-	std::vector<ITickable*> d_tickables;
+	std::list<ITickable*> d_tickables;
 	  // for tickable iterations.
 	hcts::SceneGraph d_sceneGraph;
 

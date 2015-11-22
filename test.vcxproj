@@ -37,14 +37,17 @@
     <ClCompile Include="src\engine\rendering\renderer.cpp" />
     <ClCompile Include="src\engine\scene\actor.cpp" />
     <ClCompile Include="src\engine\scene\itickable.cpp" />
+    <ClCompile Include="src\engine\scene\null_tickable.cpp" />
     <ClCompile Include="src\engine\scene\scene.cpp" />
     <ClCompile Include="src\engine\scene\scene_graph.cpp" />
+    <ClCompile Include="src\game\actor_factory.cpp" />
     <ClCompile Include="src\game\bullet_controller.cpp" />
     <ClCompile Include="src\game\bullet_sprite.cpp" />
     <ClCompile Include="src\game\cannon_sprite.cpp" />
     <ClCompile Include="src\game\clock_controller.cpp" />
     <ClCompile Include="src\game\clock_sprite.cpp" />
     <ClCompile Include="src\game\player_controller.cpp" />
+    <ClCompile Include="src\game\sprite_factory.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -74,14 +77,17 @@
     <ClInclude Include="src\engine\rendering\renderer.h" />
     <ClInclude Include="src\engine\scene\actor.h" />
     <ClInclude Include="src\engine\scene\itickable.h" />
+    <ClInclude Include="src\engine\scene\null_tickable.h" />
     <ClInclude Include="src\engine\scene\scene.h" />
     <ClInclude Include="src\engine\scene\scene_graph.h" />
+    <ClInclude Include="src\game\actor_factory.h" />
     <ClInclude Include="src\game\bullet_controller.h" />
     <ClInclude Include="src\game\bullet_sprite.h" />
     <ClInclude Include="src\game\cannon_sprite.h" />
     <ClInclude Include="src\game\clock_controller.h" />
     <ClInclude Include="src\game\clock_sprite.h" />
     <ClInclude Include="src\game\player_controller.h" />
+    <ClInclude Include="src\game\sprite_factory.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{19B58AE8-1901-46A0-9952-95E672EC86F5}</ProjectGuid>
