@@ -33,7 +33,12 @@ void Scene::tick()
 	hcte::EventBus::inst().preTick();
 	d_sceneGraph.preTick();
 
-	for (const auto & i : d_tickables)
+	for (auto i : d_tickables)
+	{
+		i->preTick();
+	}
+
+	for (auto i : d_tickables)
 	{
 		i->tick();
 	}

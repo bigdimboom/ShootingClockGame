@@ -4,6 +4,8 @@
 #include "../engine/events/event_bus.h"
 #include "../engine/scene/scene.h"
 #include "cannon_sprite.h"
+#include "bullet_controller.h"
+#include <vector>
 
 namespace mygame
 {
@@ -11,7 +13,8 @@ namespace mygame
 class PlayerController : public hctg::AController
 {
 private:
-	hcte::EventListenerCallbacks d_eventHandler;
+	hcte::EventListenerCallbacks d_eventHandlerInput;
+	hcte::EventListenerCallbacks d_eventHandlerHit;
 
 	const std::string kTurnLeft = "TURN_LEFT";
 	const std::string kTurnRight = "TURN_RIGHT";
@@ -23,6 +26,7 @@ private:
 
 	hctm::Point2f d_position;
 	hctm::Point2f d_head;
+	std::vector<BulletController*> d_gun;
 
 public:
 	// CONSTRUCTOR

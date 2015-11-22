@@ -1,5 +1,6 @@
 // colock_controller.cpp
 #include "clock_controller.h"
+#include "../engine/scene/scene.h"
 #include <assert.h>
 
 namespace mygame
@@ -38,6 +39,8 @@ void ClockController::tick()
 			dir *= speed;
 
 			d_pawn->setVelocity(dir);
+
+			break;
 		}
 	}
 

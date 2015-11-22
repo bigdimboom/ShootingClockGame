@@ -10,10 +10,10 @@ static const float k_PI = 3.1415926536f;
 C_Application::C_Application(int screenWidth, int screenHeight)
 	: m_ScreenWidth(screenWidth)
 	, m_ScreenHeight(screenHeight)
-	, d_wallsN(hctm::Point2f(m_ScreenWidth * 0.5f, 0.0f), (float)m_ScreenWidth, 1.0f)
-	, d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), 1.0f, (float)m_ScreenHeight)
-	, d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), 1.0f, (float)m_ScreenHeight)
-	, d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, 1.0f)
+	, d_wallsN(hctm::Point2f(m_ScreenWidth * 0.5f, 0.0f), (float)m_ScreenWidth, 2.0f)
+	, d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), 2.0f, (float)m_ScreenHeight)
+	, d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), 2.0f, (float)m_ScreenHeight)
+	, d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, 2.0f)
 	, d_playerContrl(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f), 180.0f, 0.0f, 5.0f)
 {
 }
@@ -33,6 +33,7 @@ void C_Application::init()
 	d_playerContrl.addSprite
 		(new mygame::CannonSprite(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f)));
 	hcts::Scene::inst().addDrawable(d_playerContrl.sprite());
+	hcts::Scene::inst().addTickable(&d_playerContrl);
 
 	// Clock
 	d_clockContol.addPawn(new CollidablePawn(

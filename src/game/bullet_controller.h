@@ -9,39 +9,19 @@ namespace mygame
 
 class BulletController : public hctg::AController
 {
-public:
+private:
 
 
 public:
-	BulletController(hctm::Point2f pos)
-	{
-		
-	}
+	BulletController();
 
-	virtual ~BulletController()
-	{
+	virtual ~BulletController();
 
-	}
+	virtual void preTick() override;
+	virtual void tick() override;
 
-	void create()
-	{
+	//const std::string kBulletHit = "BULLET_HIT";
 
-	}
-
-	virtual void preTick() override
-	{
-
-	}
-
-	virtual void tick() override
-	{
-
-	}
-
-	void destory()
-	{
-
-	}
 };
 
 } //end namespace mygame
