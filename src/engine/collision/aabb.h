@@ -13,7 +13,6 @@ private:
 	Aabb& operator = (const Aabb&) = delete;
 	Aabb& operator = (Aabb&&) = delete;
 
-	
 
 public:
 	// CONSTRUCTORS
@@ -28,6 +27,8 @@ public:
 	hctm::Point2f downRightPoint() const;
 	hctm::Point2f getCenter() const;
 
+	// MUTATOR
+	void setPosition(hctm::Point2f);
 
 	// MEMBER FUNCTIONS
 	bool doesCollide(const Aabb & aabb);

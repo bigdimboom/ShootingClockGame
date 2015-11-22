@@ -4,7 +4,6 @@
 
 #include "bullet_sprite.h"
 #include "../engine/gameplay/collidable_pawn.h"
-
 #include "clock_sprite.h"
 
 #include <assert.h>
@@ -45,35 +44,35 @@ PlayerController::PlayerController(hctm::Point2f postion, float max, float min, 
 				}
 				else if (ev.message() == kOpenFire)
 				{
-					//unsigned int cont = d_gun.size();
+					unsigned int cont = d_gun.size();
 
-					//d_gun.push_back(new BulletController());
+					d_gun.push_back(new BulletController());
 
-					//BulletController* bctrl = d_gun[d_gun.size() - 1];
+					BulletController* bctrl = d_gun[d_gun.size() - 1];
 
-					//auto dir = d_head - d_position;
-					//dir.normalize();
-					//auto start = d_head + dir * 10.0f;
-					//start.setY(start.y() - 2.0f);
-					//auto center = start;
-					//start.setX(start.x() - 1.0f);
-					//start.setY(start.y() - 2.0f);
-					//auto end = hctm::Point2f(start.x() + 2.0f, start.y() + 4.0f);
+					auto dir = d_head - d_position;
+					dir.normalize();
+					auto start = d_head + dir * 10.0f;
+					start.setY(start.y() - 2.0f);
+					auto center = start;
+					start.setX(start.x() - 1.0f);
+					start.setY(start.y() - 2.0f);
+					auto end = hctm::Point2f(start.x() + 2.0f, start.y() + 4.0f);
 
-					//BulletSprite* bulletSprite = new BulletSprite(start, end);
-					////mygame::ClockSprite* bulletSprite = new ClockSprite(center, 10.0, 10.0);
-					//hctg::CollidablePawn* bulletPawn = new hctg::CollidablePawn(center, 2.0f, 4.0f);
-					//bulletPawn->setVelocity(dir * 3.0f);
-					//bulletPawn->setFlags(DYNAMIC_COLLIDER);
+					BulletSprite* bulletSprite = new BulletSprite(start, end);
+					//mygame::ClockSprite* bulletSprite = new ClockSprite(center, 10.0, 10.0);
+					hctg::CollidablePawn* bulletPawn = new hctg::CollidablePawn(center, 5.0f, 5.0f);
+					bulletPawn->setVelocity(dir * 3.0f);
+					bulletPawn->setFlags(DYNAMIC_COLLIDER);
 
-					//bctrl->addPawn(bulletPawn);
-					//bctrl->addCollider(bulletPawn);
-					//bctrl->addSprite(bulletSprite);
+					bctrl->addPawn(bulletPawn);
+					bctrl->addCollider(bulletPawn);
+					bctrl->addSprite(bulletSprite);
 
-					//hcts::Scene::inst().addTickable(bctrl);
-					//hcts::Scene::inst().addTickable(bctrl->pawn());
-					//hcts::Scene::inst().addCollider(bctrl->collider());
-					//hcts::Scene::inst().addDrawable(bctrl->sprite());
+					hcts::Scene::inst().addTickable(bctrl);
+					hcts::Scene::inst().addTickable(bctrl->pawn());
+					hcts::Scene::inst().addCollider(bctrl->collider());
+					hcts::Scene::inst().addDrawable(bctrl->sprite());
 				}
 			}
 		}
@@ -92,33 +91,6 @@ PlayerController::~PlayerController()
 void PlayerController::preTick()
 {
 	// DO NOTHING
-
-	//for (auto i = d_gun.begin(); i != d_gun.end();)
-	//{
-	//	if ((*i)->collider()->flags() == (RESERVE_COLLIDER2 | DYNAMIC_COLLIDER))
-	//	{
-	//		BulletController* bctrl = (*i);
-	//		//hcts::Scene::inst().removeTickable(bctrl);
-	//		hcts::Scene::inst().removeTickable(bctrl->pawn());
-	//		hcts::Scene::inst().removeCollider(bctrl->collider());
-	//		hcts::Scene::inst().removeDrawable(bctrl->sprite());
-
-	//		//delete bctrl->pawn();
-	//		//bctrl->removePawn();
-	//		//bctrl->removeCollider();
-	//		//delete bctrl->sprite();
-	//		//bctrl->removeSprite();
-
-	//		//delete bctrl;
-	//		//*i = nullptr;
-
-	//		i = d_gun.erase(i);
-	//	}
-	//	else
-	//	{
-	//		++i;
-	//	}
-	//}
 }
 
 void PlayerController::tick()
@@ -129,7 +101,31 @@ void PlayerController::tick()
 
 void PlayerController::postTick()
 {
+	for (auto i = d_gun.begin(); i != d_gun.end();)
+	{
+		if ((*i)->collider()->flags() == (RESERVE_COLLIDER2 | DYNAMIC_COLLIDER))
+		{
+			BulletController* bctrl = (*i);
+			hcts::Scene::inst().removeTickable(bctrl);
+			hcts::Scene::inst().removeTickable(bctrl->pawn());
+			hcts::Scene::inst().removeCollider(bctrl->collider());
+			hcts::Scene::inst().removeDrawable(bctrl->sprite());
 
+			delete bctrl->pawn();
+			bctrl->removePawn();
+			bctrl->removeCollider();
+			delete bctrl->sprite();
+			bctrl->removeSprite();
+
+			delete bctrl;
+
+			i = d_gun.erase(i);
+		}
+		else
+		{
+			++i;
+		}
+	}
 }
 
 } // end namespace mygame

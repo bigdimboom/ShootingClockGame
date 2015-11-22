@@ -154,14 +154,14 @@
     <ClCompile Include="src\engine\gameplay\collidable_pawn.cpp">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\actor_factory.cpp">
-      <Filter>Source Files\game\factories</Filter>
-    </ClCompile>
     <ClCompile Include="src\game\sprite_factory.cpp">
       <Filter>Source Files\game\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\scene\null_tickable.cpp">
       <Filter>Source Files\engine\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\actor_factory.cpp">
+      <Filter>Source Files\game\factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -267,14 +267,14 @@
     <ClInclude Include="src\engine\gameplay\collidable_pawn.h">
       <Filter>Source Files\engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\actor_factory.h">
-      <Filter>Source Files\game\factories</Filter>
-    </ClInclude>
     <ClInclude Include="src\game\sprite_factory.h">
       <Filter>Source Files\game\factories</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\scene\null_tickable.h">
       <Filter>Source Files\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\actor_factory.h">
+      <Filter>Source Files\game\factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
