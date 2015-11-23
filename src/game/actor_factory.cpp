@@ -16,7 +16,19 @@ ActorFactory::~ActorFactory()
 
 hcts::Actor* ActorFactory::createActor(ActorType type)
 {
-
+	switch (type)
+	{
+		case ActorType::BASIC_ACTOR:
+			break;
+		case ActorType::BASIC_PAWN:
+			break;
+		case ActorType::COLLIDABLE_ACTOR:
+			break;
+		case ActorType::COLLIDABLE_PAWN:
+			break;
+		default:
+			break;
+	}
 }
 
 } // end namespace mygame

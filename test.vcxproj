@@ -16,6 +16,8 @@
     <ClCompile Include="src\engine\api\time.cpp" />
     <ClCompile Include="src\engine\collision\aabb.cpp" />
     <ClCompile Include="src\engine\collision\icollider.cpp" />
+    <ClCompile Include="src\engine\data\config_parser.cpp" />
+    <ClCompile Include="src\engine\data\resource.cpp" />
     <ClCompile Include="src\engine\events\basic_event.cpp" />
     <ClCompile Include="src\engine\events\event_bus.cpp" />
     <ClCompile Include="src\engine\events\event_dispatcher.cpp" />
@@ -56,6 +58,8 @@
     <ClInclude Include="src\engine\api\time.h" />
     <ClInclude Include="src\engine\collision\aabb.h" />
     <ClInclude Include="src\engine\collision\icollider.h" />
+    <ClInclude Include="src\engine\data\config_parser.h" />
+    <ClInclude Include="src\engine\data\resource.h" />
     <ClInclude Include="src\engine\events\basic_event.h" />
     <ClInclude Include="src\engine\events\event_bus.h" />
     <ClInclude Include="src\engine\events\event_dispatcher.h" />
