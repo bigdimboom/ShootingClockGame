@@ -14,7 +14,6 @@ C_Application::C_Application(int screenWidth, int screenHeight)
 	, d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), 2.0f, (float)m_ScreenHeight)
 	, d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), 2.0f, (float)m_ScreenHeight)
 	, d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, 2.0f)
-	, d_playerContrl(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f), 180.0f, 0.0f, 5.0f)
 {
 }
 
@@ -30,11 +29,10 @@ void C_Application::init()
 	hcts::Scene::inst().setRenderer(&d_render);
 
 	// Player
-	d_playerContrl.addSprite
-		(new mygame::CannonSprite(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f)));
-	hcts::Scene::inst().addDrawable(d_playerContrl.sprite());
-	hcts::Scene::inst().addTickable(&d_playerContrl);
-
+	d_playerContrl.init(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f),
+						180.0f,
+						0.0f,
+						1.5f);
 	// Clock
 	d_flock.init();
 
@@ -87,6 +85,7 @@ void C_Application::draw()
 
 void C_Application::cleanUp()
 {
+	// cleanUp walls
 	hcts::Scene::inst().removeCollider(&d_wallsE);
 	hcts::Scene::inst().removeCollider(&d_wallsW);
 	hcts::Scene::inst().removeCollider(&d_wallsS);
@@ -95,9 +94,8 @@ void C_Application::cleanUp()
 	// clock flock controllers
 	d_flock.cleanUp();
 
-	hcts::Scene::inst().removeDrawable(d_playerContrl.sprite());
-	delete d_playerContrl.sprite();
-	d_playerContrl.removeSprite();
+	// player controller 
+	d_playerContrl.cleanUp();
 }
 
 } // end namespace hctg

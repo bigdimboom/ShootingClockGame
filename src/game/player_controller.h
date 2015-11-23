@@ -28,17 +28,22 @@ private:
 	hctm::Point2f d_head;
 	std::vector<BulletController*> d_gun;
 
+	// HELPERS
+	void _fire();
+
 public:
 	// CONSTRUCTOR
-	PlayerController(hctm::Point2f top, float max, float min, float delta);
+	PlayerController();
 
 	// DESTRUCTOR
 	~PlayerController();
 
 	// MEMBERS
+	void init(hctm::Point2f pos, float max, float min, float delta);
 	void preTick() override;
 	void tick() override;
 	void postTick() override;
+	void cleanUp();
 
 };
 
