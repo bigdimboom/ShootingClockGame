@@ -12,14 +12,15 @@ namespace hctc
 
 // MAKE IT SATIC
 
-#define DYNAMIC_COLLIDER 0x0001 // 0001
+#define DYNAMIC_COLLIDER 0x0001 // 0000001
 
 // fist digit of these bit must be 0;
 #define STATIC_COLLIDER   0x0000
-#define RESERVE_COLLIDER1 0x0002 // 0010
-#define RESERVE_COLLIDER2 0x0004 // 0100
-#define RESERVE_COLLIDER3 0x0006 // 0110
-#define RESERVE_COLLIDER4 0x0008 // 1000
+#define WALL_COLLIDER     0x0002 // 000010
+#define BULLET_COLLIDER   0x0004 // 000100
+#define BULLET_HIT        0x0008 // 001000
+#define HIT_BY_BULLET     0x0010 // 010000
+#define CLOCK_COLLIDER    0x0020 // 100000
 
 class ICollider
 {

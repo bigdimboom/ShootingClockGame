@@ -12,8 +12,7 @@ namespace hcte
 
 enum  class EventType
 {
-	PLAYER_CMD,
-	BULLET_HIT
+	PLAYER_CMD
 };
 
 class IEvent

@@ -29,20 +29,33 @@ void ClockController::tick()
 		{
 			if (d_collider->doesCollide(cd->bounds()))
 			{
-				d_pawn->setVelocity(-d_pawn->velocity());
-				d_pawn->tick(); // one tick back
+				if ((cd->flags() & BULLET_COLLIDER) == BULLET_COLLIDER) // if target is a bullet, do nothing
+				{
+					d_collider->setFlags(d_collider->flags() | HIT_BY_BULLET);
+					continue;
+				}
+				if ((cd->flags() & WALL_COLLIDER) == WALL_COLLIDER) // if target is a wall, negate velocity
+				{
+					d_pawn->setVelocity(-d_pawn->velocity());
+					d_pawn->tick(); // one tick back
+				}
+				else
+				{
+					d_pawn->setVelocity(-d_pawn->velocity());
+					d_pawn->tick(); // one tick back
 
-				auto dir = d_collider->bounds().getCenter()
-					- cd->bounds().getCenter();
-				// reverse dirction
+					auto dir = d_collider->bounds().getCenter()
+						- cd->bounds().getCenter();
+					// reverse dirction
 
-				float speed = d_pawn->velocity().length();
-				dir.normalize();
-				dir *= speed;
+					float speed = d_pawn->velocity().length();
+					dir.normalize();
+					dir *= speed;
 
-				d_pawn->setVelocity(dir);
+					d_pawn->setVelocity(dir);
 
-				break;
+					break;
+				}
 
 				//hcts::Scene::inst().removeTickable(d_pawn);
 				//hcts::Scene::inst().removeDrawable(d_sprite);

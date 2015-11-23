@@ -33,7 +33,7 @@ void PlayerController::_fire()
 	//mygame::ClockSprite* bulletSprite = new ClockSprite(center, 10.0, 10.0);
 	hctg::CollidablePawn* bulletPawn = new hctg::CollidablePawn(center, 5.0f, 5.0f);
 	bulletPawn->setVelocity(dir * 3.0f);
-	bulletPawn->setFlags(DYNAMIC_COLLIDER);
+	bulletPawn->setFlags(DYNAMIC_COLLIDER | BULLET_COLLIDER);
 
 	bctrl->addPawn(bulletPawn);
 	bctrl->addCollider(bulletPawn);
@@ -121,7 +121,7 @@ void PlayerController::postTick()
 {
 	for (auto i = d_gun.begin(); i != d_gun.end();)
 	{
-		if ((*i)->collider()->flags() == (RESERVE_COLLIDER2 | DYNAMIC_COLLIDER))
+		if ( ((*i)->collider()->flags() & BULLET_HIT ) == BULLET_HIT) // the bullet is hit something
 		{
 			BulletController* bctrl = (*i);
 			hcts::Scene::inst().removeTickable(bctrl);
@@ -154,6 +154,7 @@ void PlayerController::cleanUp()
 	}
 
 	hcts::Scene::inst().removeDrawable(d_sprite);
+	hcts::Scene::inst().removeTickable(this);
 	delete d_sprite;
 	removeSprite();
 }

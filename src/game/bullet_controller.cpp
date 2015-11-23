@@ -32,7 +32,14 @@ void BulletController::tick()
 		{
 			d_pawn->setVelocity(-d_pawn->velocity());
 			d_pawn->tick(); // one tick back
-			d_collider->setFlags(RESERVE_COLLIDER2 | DYNAMIC_COLLIDER);
+			
+			if ((cd->flags() & BULLET_COLLIDER) == BULLET_COLLIDER) // if target is a bullet, do nothing
+			{
+				continue;
+			}
+
+			d_collider->setFlags(d_collider->flags() | BULLET_HIT);
+
 			return;
 		}
 	}
