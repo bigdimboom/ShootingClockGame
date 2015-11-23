@@ -48,6 +48,7 @@
     <ClCompile Include="src\game\cannon_sprite.cpp" />
     <ClCompile Include="src\game\clock_controller.cpp" />
     <ClCompile Include="src\game\clock_sprite.cpp" />
+    <ClCompile Include="src\game\flock_controller.cpp" />
     <ClCompile Include="src\game\player_controller.cpp" />
     <ClCompile Include="src\game\sprite_factory.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -90,6 +91,7 @@
     <ClInclude Include="src\game\cannon_sprite.h" />
     <ClInclude Include="src\game\clock_controller.h" />
     <ClInclude Include="src\game\clock_sprite.h" />
+    <ClInclude Include="src\game\flock_controller.h" />
     <ClInclude Include="src\game\player_controller.h" />
     <ClInclude Include="src\game\sprite_factory.h" />
   </ItemGroup>

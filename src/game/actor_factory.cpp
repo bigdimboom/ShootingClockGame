@@ -29,6 +29,8 @@ hcts::Actor* ActorFactory::createActor(ActorType type)
 		default:
 			break;
 	}
+
+	return nullptr;
 }
 
 } // end namespace mygame

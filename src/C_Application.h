@@ -7,9 +7,9 @@
 #include "engine/events/event_bus.h"
 #include "engine/scene/scene.h"
 #include "game/player_controller.h"
-#include "game/clock_controller.h"
 #include "../src/engine/gameplay/collidable_actor.h"
 #include "game/cannon_sprite.h"
+#include "game\flock_controller.h"
 
 #include <iostream>
 
@@ -51,7 +51,7 @@ private:
 	hctr::Renderer d_render;
 
 	mygame::PlayerController d_playerContrl;
-	mygame::ClockController d_clockContol;
+	mygame::FlockController d_flock;
 
 	hctg::CollidableActor d_wallsW;
 	hctg::CollidableActor d_wallsE;

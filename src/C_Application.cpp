@@ -36,16 +36,7 @@ void C_Application::init()
 	hcts::Scene::inst().addTickable(&d_playerContrl);
 
 	// Clock
-	d_clockContol.addPawn(new CollidablePawn(
-		hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f), 100.0f, 100.f));
-	d_clockContol.addCollider(dynamic_cast<hctc::ICollider*>(d_clockContol.pawn()));
-	d_clockContol.addSprite(new mygame::ClockSprite(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f)));
-	d_clockContol.pawn()->setVelocity(hctm::Point2f(0.8f, 1.2f));
-
-	hcts::Scene::inst().addCollider(d_clockContol.collider());
-	hcts::Scene::inst().addDrawable(d_clockContol.sprite());
-	hcts::Scene::inst().addTickable(&d_clockContol);
-	hcts::Scene::inst().addTickable(dynamic_cast<hcts::ITickable*>(d_clockContol.sprite()));
+	d_flock.init();
 
 	// imaginary walls.
 	hcts::Scene::inst().addCollider(&d_wallsE);
@@ -101,16 +92,8 @@ void C_Application::cleanUp()
 	hcts::Scene::inst().removeCollider(&d_wallsS);
 	hcts::Scene::inst().removeCollider(&d_wallsN);
 
-	hcts::Scene::inst().removeCollider(d_clockContol.collider());
-	hcts::Scene::inst().removeDrawable(d_clockContol.sprite());
-	hcts::Scene::inst().removeTickable(&d_clockContol);
-	hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(d_clockContol.sprite()));
-
-	delete d_clockContol.pawn();
-	d_clockContol.removePawn();
-	d_clockContol.removeCollider();
-	delete d_clockContol.sprite();
-	d_clockContol.removeSprite();
+	// clock flock controllers
+	d_flock.cleanUp();
 
 	hcts::Scene::inst().removeDrawable(d_playerContrl.sprite());
 	delete d_playerContrl.sprite();

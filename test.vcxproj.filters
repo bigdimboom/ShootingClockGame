@@ -169,6 +169,9 @@
     <ClCompile Include="src\engine\data\config_parser.cpp">
       <Filter>Source Files\engine\data</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\flock_controller.cpp">
+      <Filter>Source Files\game\controllers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\api\graphics.h">
@@ -287,6 +290,9 @@
     </ClInclude>
     <ClInclude Include="src\engine\data\config_parser.h">
       <Filter>Source Files\engine\data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\flock_controller.h">
+      <Filter>Source Files\game\controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
