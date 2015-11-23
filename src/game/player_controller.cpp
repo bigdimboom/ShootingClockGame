@@ -22,17 +22,15 @@ void PlayerController::_fire()
 
 	auto dir = d_head - d_position;
 	dir.normalize();
-	auto start = d_head + dir * 10.0f;
-	start.setY(start.y() - 2.0f);
-	auto center = start;
-	start.setX(start.x() - 1.0f);
-	start.setY(start.y() - 2.0f);
-	auto end = hctm::Point2f(start.x() + 2.0f, start.y() + 4.0f);
+
+	auto center = d_head + dir * 10.0f;
+
+	hctg::CollidablePawn* bulletPawn = new hctg::CollidablePawn(center, 5.0f, 5.0f);
+	auto start = bulletPawn->bounds().downRightPoint();
+	auto end = bulletPawn->bounds().topLeftPoint();
 
 	BulletSprite* bulletSprite = new BulletSprite(start, end);
-	//mygame::ClockSprite* bulletSprite = new ClockSprite(center, 10.0, 10.0);
-	hctg::CollidablePawn* bulletPawn = new hctg::CollidablePawn(center, 5.0f, 5.0f);
-	bulletPawn->setVelocity(dir * 3.0f);
+	bulletPawn->setVelocity(dir * 5.0f);
 	bulletPawn->setFlags(DYNAMIC_COLLIDER | BULLET_COLLIDER);
 
 	bctrl->addPawn(bulletPawn);
