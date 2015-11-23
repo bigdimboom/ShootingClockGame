@@ -29,11 +29,14 @@ void C_Application::init()
 	hcts::Scene::inst().setRenderer(&d_render);
 
 	// Player
+	hcts::Scene::inst().addTickable(&d_playerContrl);
 	d_playerContrl.init(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f),
 						180.0f,
 						0.0f,
 						1.5f);
+
 	// Clock
+	hcts::Scene::inst().addTickable(&d_flock);
 	d_flock.init();
 
 	// imaginary walls.
@@ -97,9 +100,11 @@ void C_Application::cleanUp()
 
 	// clock flock controllers
 	d_flock.cleanUp();
+	hcts::Scene::inst().removeTickable(&d_flock);
 
 	// player controller 
 	d_playerContrl.cleanUp();
+	hcts::Scene::inst().removeTickable(&d_playerContrl);
 }
 
 } // end namespace hctg

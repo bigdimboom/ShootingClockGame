@@ -103,7 +103,7 @@ void PlayerController::init(hctm::Point2f pos, float max, float min, float delta
 
 	addSprite(new mygame::CannonSprite(d_position));
 	hcts::Scene::inst().addDrawable(d_sprite);
-	hcts::Scene::inst().addTickable(this);
+	//hcts::Scene::inst().addTickable(this);
 }
 
 void PlayerController::preTick()
@@ -154,7 +154,7 @@ void PlayerController::cleanUp()
 	}
 
 	hcts::Scene::inst().removeDrawable(d_sprite);
-	hcts::Scene::inst().removeTickable(this);
+	//hcts::Scene::inst().removeTickable(this);
 	delete d_sprite;
 	removeSprite();
 }

@@ -47,9 +47,9 @@ void FlockController::_destoryClock(ClockController* ptr)
 {
 	assert(ptr);
 
+	hcts::Scene::inst().removeTickable(ptr);
 	hcts::Scene::inst().removeCollider(ptr->collider());
 	hcts::Scene::inst().removeDrawable(ptr->sprite());
-	hcts::Scene::inst().removeTickable(ptr);
 	hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(ptr->sprite()));
 
 	delete ptr->pawn();
@@ -72,10 +72,10 @@ FlockController::~FlockController()
 // MEMBERS
 void FlockController::init()
 {
-	srand((unsigned int)time(NULL));
+	//srand((unsigned int)time(NULL));
 	hcts::Scene::inst().addTickable(this);
-	_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 150, 150), _randomVel(2.0f), 100.0f);
-	_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), 150, 150), _randomVel(2.0f), 100.0f);
+	_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 100, 100), _randomVel(2.0f), 100.0f);
+	_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), 250, 250), _randomVel(2.0f), 100.0f);
 }
 
 void FlockController::preTick()
@@ -85,7 +85,6 @@ void FlockController::preTick()
 
 void FlockController::tick()
 {
-
 }
 
 void FlockController::postTick()
@@ -100,10 +99,15 @@ void FlockController::postTick()
 		if (((*i)->collider()->flags() & HIT_BY_BULLET) == HIT_BY_BULLET) // the bullet is hit something
 		{
 			// DO SOMETHING to the current clock.
-			(*i)->sprite()->scale(0.8f);
-			(*i)->collider()->bounds().scale(0.8f);
-			(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
-			++i;
+			//(*i)->sprite()->scale(0.8f);
+			//(*i)->collider()->bounds().scale(0.8f);
+			//(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
+			//++i;
+
+			_destoryClock(*i);
+			delete *i;
+			i = d_clocks.erase(i);
+
 		}
 		else
 		{
@@ -111,7 +115,12 @@ void FlockController::postTick()
 		}
 	}
 
-
+	if (d_clocks.size() == 0)
+	{
+		// genetate two clcoks.
+		_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 150, 150), _randomVel(2.0f), 100.0f);
+		_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), 150, 150), _randomVel(2.0f), 100.0f);
+	}
 }
 
 void FlockController::cleanUp()
@@ -120,7 +129,6 @@ void FlockController::cleanUp()
 	{
 		_destoryClock(*i);
 	}
-	hcts::Scene::inst().removeTickable(this);
 }
 
 } // end namespace mygame

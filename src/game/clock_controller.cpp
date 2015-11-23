@@ -53,9 +53,9 @@ void ClockController::tick()
 					dir *= speed;
 
 					d_pawn->setVelocity(dir);
-
-					break;
 				}
+
+				break;
 
 				//hcts::Scene::inst().removeTickable(d_pawn);
 				//hcts::Scene::inst().removeDrawable(d_sprite);
