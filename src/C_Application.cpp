@@ -29,18 +29,19 @@ void C_Application::init()
 	hcts::Scene::inst().setRenderer(&d_render);
 
 	// Player
-	hcts::Scene::inst().addTickable(&d_playerContrl);
 	d_playerContrl.init();
+	hcts::Scene::inst().addTickable(&d_playerContrl);
 
 	// Clock
-	hcts::Scene::inst().addTickable(&d_flock);
 	d_flock.init();
+	hcts::Scene::inst().addTickable(&d_flock);
 
 	// imaginary walls.
 	d_wallsE.setFlags(STATIC_COLLIDER | WALL_COLLIDER);
 	d_wallsW.setFlags(STATIC_COLLIDER | WALL_COLLIDER);
 	d_wallsS.setFlags(STATIC_COLLIDER | WALL_COLLIDER);
 	d_wallsN.setFlags(STATIC_COLLIDER | WALL_COLLIDER);
+
 	hcts::Scene::inst().addCollider(&d_wallsE);
 	hcts::Scene::inst().addCollider(&d_wallsW);
 	hcts::Scene::inst().addCollider(&d_wallsS);

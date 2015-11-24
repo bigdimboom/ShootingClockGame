@@ -39,8 +39,6 @@ void BulletController::tick()
 			//}
 
 			d_collider->setFlags(d_collider->flags() | BULLET_HIT);
-
-			return;
 		}
 	}
 

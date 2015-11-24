@@ -54,11 +54,11 @@ hctg::CollidablePawn* ActorFactory::createCDPawn(hctm::Point2f pos, float width,
 void ActorFactory::destoryActor(hcts::Actor* ptr)
 {
 	assert(ptr);
-	for (auto i = d_actorList.begin(); i != d_actorList.end();)
+	for (auto i = d_actorList.begin(); i != d_actorList.end();++i)
 	{
 		if ((*i).second == ptr)
 		{
-			switch ((*i).first) // test types
+			switch (((*i).first)) // test types
 			{
 				case ActorType::BASIC_ACTOR:
 					break;
@@ -74,7 +74,7 @@ void ActorFactory::destoryActor(hcts::Actor* ptr)
 					break;
 			}
 			delete ptr;
-			i = d_actorList.erase(i);
+			d_actorList.erase(i);
 			return;
 		}
 	}

@@ -51,7 +51,7 @@ mygame::CannonSprite* SpriteFactory::createCannonSprite(hctm::Point2f position)
 void SpriteFactory::destorySprite(hctg::ASprite* ptr)
 {
 	assert(ptr);
-	for (auto i = d_spriteList.begin(); i != d_spriteList.end();)
+	for (auto i = d_spriteList.begin(); i != d_spriteList.end();++i)
 	{
 		if ((*i).second == ptr)
 		{
@@ -68,8 +68,8 @@ void SpriteFactory::destorySprite(hctg::ASprite* ptr)
 					hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(ptr));
 					break;
 			}
+			d_spriteList.erase(i);
 			delete ptr;
-			i = d_spriteList.erase(i);
 			return;
 		}
 	}

@@ -1,13 +1,9 @@
 // player_controller.cpp
 #include "player_controller.h"
 
-
-#include "bullet_sprite.h"
-#include "../engine/gameplay/collidable_pawn.h"
-#include "clock_sprite.h"
-
-#include "../engine/data/resource.h"
 #include "sprite_factory.h"
+#include "actor_factory.h"
+#include "../engine/data/resource.h"
 
 #include <assert.h>
 
@@ -19,17 +15,21 @@ void PlayerController::_fire()
 {
 	unsigned int cont = d_gun.size();
 
-	d_gun.push_back(new BulletController());
-
-	BulletController* bctrl = d_gun[d_gun.size() - 1];
+	BulletController* bctrl = new BulletController();
 
 	auto dir = d_head - d_position;
 	dir.normalize();
 
 	auto center = d_head + dir * 10.0f;
 
-	hctg::CollidablePawn* bulletPawn = new hctg::CollidablePawn(center, 5.0f, 5.0f);
-	bulletPawn->setVelocity(dir * 5.0f);
+	hctg::CollidablePawn* bulletPawn = mygame::ActorFactory::createCDPawn
+		(
+		center,
+		hctd::Resource::inst().getValue(hctd::BULLET_WIDTH),
+		hctd::Resource::inst().getValue(hctd::BULLET_LENGTH)
+		);
+
+	bulletPawn->setVelocity(dir * hctd::Resource::inst().getValue(hctd::BULLET_SPEED));
 	bulletPawn->setFlags(DYNAMIC_COLLIDER | BULLET_COLLIDER);
 
 	auto start = bulletPawn->bounds().downRightPoint();
@@ -41,9 +41,8 @@ void PlayerController::_fire()
 	bctrl->addSprite(bulletSprite);
 
 	hcts::Scene::inst().addTickable(bctrl);
-	hcts::Scene::inst().addTickable(bctrl->pawn());
-	hcts::Scene::inst().addCollider(bctrl->collider());
-	hcts::Scene::inst().addDrawable(bctrl->sprite());
+
+	d_gun.push_back(bctrl);
 }
 
 PlayerController::PlayerController()
@@ -123,22 +122,19 @@ void PlayerController::postTick()
 {
 	for (auto i = d_gun.begin(); i != d_gun.end();)
 	{
-		if ( ((*i)->collider()->flags() & BULLET_HIT ) == BULLET_HIT) // the bullet is hit something
+		if (((*i)->collider()->flags() & BULLET_HIT) == BULLET_HIT) // the bullet is hit something
 		{
 			BulletController* bctrl = (*i);
-			hcts::Scene::inst().removeTickable(bctrl);
-			hcts::Scene::inst().removeTickable(bctrl->pawn());
-			hcts::Scene::inst().removeCollider(bctrl->collider());
-			hcts::Scene::inst().removeDrawable(bctrl->sprite());
-
-			delete bctrl->pawn();
+			
+			mygame::ActorFactory::destoryActor(bctrl->pawn());
 			bctrl->removePawn();
 			bctrl->removeCollider();
-			delete bctrl->sprite();
+			mygame::SpriteFactory::destorySprite(bctrl->sprite());
 			bctrl->removeSprite();
 
-			delete bctrl;
+			hcts::Scene::inst().removeTickable(bctrl);
 
+			delete bctrl;
 			i = d_gun.erase(i);
 		}
 		else
@@ -150,9 +146,18 @@ void PlayerController::postTick()
 
 void PlayerController::cleanUp()
 {
-	for (auto i = d_gun.begin(); i != d_gun.end(); ++i)
+	for (auto i = d_gun.begin(); i != d_gun.end();)
 	{
-		delete *i;
+		BulletController* bctrl = (*i);
+
+		mygame::ActorFactory::destoryActor(bctrl->pawn());
+		mygame::SpriteFactory::destorySprite(bctrl->sprite());
+		bctrl->removePawn();
+		bctrl->removeCollider();
+		bctrl->removeSprite();
+
+		delete bctrl;
+		d_gun.erase(i);
 	}
 
 	mygame::SpriteFactory::destorySprite(d_sprite);
