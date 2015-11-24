@@ -14,7 +14,6 @@ class PlayerController : public hctg::AController
 {
 private:
 	hcte::EventListenerCallbacks d_eventHandlerInput;
-	hcte::EventListenerCallbacks d_eventHandlerHit;
 
 	const std::string kTurnLeft = "TURN_LEFT";
 	const std::string kTurnRight = "TURN_RIGHT";
@@ -26,6 +25,8 @@ private:
 
 	hctm::Point2f d_position;
 	hctm::Point2f d_head;
+	
+
 	std::vector<BulletController*> d_gun;
 
 	// HELPERS
@@ -39,7 +40,7 @@ public:
 	~PlayerController();
 
 	// MEMBERS
-	void init(hctm::Point2f pos, float max, float min, float delta);
+	void init();
 	void preTick() override;
 	void tick() override;
 	void postTick() override;

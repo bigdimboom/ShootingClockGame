@@ -5,6 +5,7 @@
 #include <windows.h>
 
 #include "C_Application.h"
+#include "engine\data\resource.h"
 
 
 // Global variables
@@ -15,9 +16,9 @@ using namespace hctg;
 C_Application::T_PressedKey g_PressedKeys = 0;
 
 
-const int k_ScreenWidth = 800;
-const int k_ScreenHeight = 600;
-const int k_FrameRate = 50;
+const int k_ScreenWidth = hctd::Resource::inst().getValue(hctd::SCREEN_WIDTH);
+const int k_ScreenHeight = hctd::Resource::inst().getValue(hctd::SCREEN_HEIGHT);
+const int k_FrameRate = hctd::Resource::inst().getValue(hctd::FRAME_RATE);
 
 
 //----------------------------

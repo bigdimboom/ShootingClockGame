@@ -30,10 +30,7 @@ void C_Application::init()
 
 	// Player
 	hcts::Scene::inst().addTickable(&d_playerContrl);
-	d_playerContrl.init(hctm::Point2f(m_ScreenWidth * 0.5f, m_ScreenHeight * 0.5f + 200.0f),
-						180.0f,
-						0.0f,
-						1.5f);
+	d_playerContrl.init();
 
 	// Clock
 	hcts::Scene::inst().addTickable(&d_flock);

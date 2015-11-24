@@ -6,6 +6,9 @@
 #include "../engine/gameplay/collidable_pawn.h"
 #include "clock_sprite.h"
 
+#include "../engine/data/resource.h"
+#include "sprite_factory.h"
+
 #include <assert.h>
 
 namespace mygame
@@ -61,14 +64,17 @@ PlayerController::~PlayerController()
 	hcte::EventBus::inst().deRegisterListener(ev, &d_eventHandlerInput);
 }
 
-void PlayerController::init(hctm::Point2f pos, float max, float min, float delta)
+void PlayerController::init()
 {
-	d_position = pos;
-	d_head = d_position;
-	d_head.setY(d_position.y() - 30.0f);
-	d_maxAngle = max;
-	d_minAngle = min;
-	d_deltaAngle = delta;
+	d_position = hctm::Point2f(hctd::Resource::inst().getValue(hctd::CANNON_START_POS_X),
+							   hctd::Resource::inst().getValue(hctd::CANNON_START_POS_Y));
+
+	d_head = hctm::Point2f(hctd::Resource::inst().getValue(hctd::CANNON_HEAD_START_POS_X),
+						   hctd::Resource::inst().getValue(hctd::CANNON_HEAD_START_POS_Y));
+
+	d_maxAngle = hctd::Resource::inst().getValue(hctd::CANNON_MAX_ANGLE);
+	d_minAngle = hctd::Resource::inst().getValue(hctd::CANNON_MIN_ANGLE);
+	d_deltaAngle = hctd::Resource::inst().getValue(hctd::CANNON_DELTA_ROTATION);
 
 	d_eventHandlerInput = [&](const hcte::IEvent & ev)
 	{
@@ -99,9 +105,7 @@ void PlayerController::init(hctm::Point2f pos, float max, float min, float delta
 		}
 	};
 
-	addSprite(new mygame::CannonSprite(d_position));
-	hcts::Scene::inst().addDrawable(d_sprite);
-	//hcts::Scene::inst().addTickable(this);
+	addSprite(mygame::SpriteFactory::createCannonSprite(d_position));
 }
 
 void PlayerController::preTick()
@@ -151,9 +155,7 @@ void PlayerController::cleanUp()
 		delete *i;
 	}
 
-	hcts::Scene::inst().removeDrawable(d_sprite);
-	//hcts::Scene::inst().removeTickable(this);
-	delete d_sprite;
+	mygame::SpriteFactory::destorySprite(d_sprite);
 	removeSprite();
 }
 
