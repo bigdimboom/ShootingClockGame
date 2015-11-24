@@ -24,6 +24,7 @@ namespace hctc
 #define S_WALL_COLLIDER   0x0040 // 1000000
 #define W_WALL_COLLIDER   0x0080 // 10000000
 #define E_WALL_COLLIDER   0x0100 // 100000000
+#define WALL_COLLIDER     0x0200 // 1000000000
 
 class ICollider
 {

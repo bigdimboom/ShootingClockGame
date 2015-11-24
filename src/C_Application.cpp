@@ -35,10 +35,10 @@ void C_Application::init()
     d_flock.init();
 
     // imaginary walls.
-    d_wallsE.setFlags(STATIC_COLLIDER | E_WALL_COLLIDER);
-    d_wallsW.setFlags(STATIC_COLLIDER | W_WALL_COLLIDER);
-    d_wallsS.setFlags(STATIC_COLLIDER | S_WALL_COLLIDER);
-    d_wallsN.setFlags(STATIC_COLLIDER | N_WALL_COLLIDER);
+    d_wallsE.setFlags(STATIC_COLLIDER | WALL_COLLIDER | E_WALL_COLLIDER);
+    d_wallsW.setFlags(STATIC_COLLIDER | WALL_COLLIDER | W_WALL_COLLIDER);
+    d_wallsS.setFlags(STATIC_COLLIDER | WALL_COLLIDER | S_WALL_COLLIDER);
+    d_wallsN.setFlags(STATIC_COLLIDER | WALL_COLLIDER | N_WALL_COLLIDER);
 
     hcts::Scene::inst().addCollider(&d_wallsE);
     hcts::Scene::inst().addCollider(&d_wallsW);
