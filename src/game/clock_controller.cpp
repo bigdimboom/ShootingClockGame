@@ -37,7 +37,7 @@ void ClockController::tick()
 				if ((cd->flags() & WALL_COLLIDER) == WALL_COLLIDER) // if target is a wall, negate velocity
 				{
 					d_pawn->setVelocity(-d_pawn->velocity());
-					//d_pawn->tick(); // one tick back
+					d_pawn->tick(); // one tick back
 				}
 				else
 				{

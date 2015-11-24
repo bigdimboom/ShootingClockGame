@@ -10,10 +10,10 @@ static const float k_PI = 3.1415926536f;
 C_Application::C_Application(int screenWidth, int screenHeight)
 	: m_ScreenWidth(screenWidth)
 	, m_ScreenHeight(screenHeight)
-	, d_wallsN(hctm::Point2f(m_ScreenWidth * 0.5f, 0.0f), (float)m_ScreenWidth, 2.0f)
-	, d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), 2.0f, (float)m_ScreenHeight)
-	, d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), 2.0f, (float)m_ScreenHeight)
-	, d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, 2.0f)
+	, d_wallsN(hctm::Point2f(m_ScreenWidth * 0.5f, 0.0f), (float)m_ScreenWidth, 5.0f)
+	, d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), 5.0f, (float)m_ScreenHeight)
+	, d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), 5.0f, (float)m_ScreenHeight)
+	, d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, 5.0f)
 {
 }
 

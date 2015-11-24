@@ -127,13 +127,12 @@ void PlayerController::postTick()
 			BulletController* bctrl = (*i);
 			
 			mygame::ActorFactory::destoryActor(bctrl->pawn());
+			mygame::SpriteFactory::destorySprite(bctrl->sprite());
 			bctrl->removePawn();
 			bctrl->removeCollider();
-			mygame::SpriteFactory::destorySprite(bctrl->sprite());
 			bctrl->removeSprite();
 
 			hcts::Scene::inst().removeTickable(bctrl);
-
 			delete bctrl;
 			i = d_gun.erase(i);
 		}
@@ -146,7 +145,7 @@ void PlayerController::postTick()
 
 void PlayerController::cleanUp()
 {
-	for (auto i = d_gun.begin(); i != d_gun.end();)
+	for (auto i = d_gun.begin(); i != d_gun.end();++i)
 	{
 		BulletController* bctrl = (*i);
 
@@ -155,6 +154,8 @@ void PlayerController::cleanUp()
 		bctrl->removePawn();
 		bctrl->removeCollider();
 		bctrl->removeSprite();
+
+		hcts::Scene::inst().removeTickable(bctrl);
 
 		delete bctrl;
 		d_gun.erase(i);
