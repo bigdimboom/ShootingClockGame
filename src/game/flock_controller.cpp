@@ -88,8 +88,12 @@ void FlockController::tick()
 		// genetate two clcoks.
 		float speed = hctd::Resource::inst().getValue(hctd::CLOCK_START_SPEED);
 		float width = hctd::Resource::inst().getValue(hctd::CLOCK_START_WIDTH);
-		_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), width, width), _randomVel(speed), width);
-		_createClock(_randomPos(hctm::Point2f(300.0f, 300.0f), width, width), _randomVel(speed), width);
+		_createClock(_randomPos(hctm::Point2f(width, width), width, width), _randomVel(-speed), width);
+		_createClock(_randomPos(hctm::Point2f(hctd::Resource::inst().getValue(hctd::SCREEN_WIDTH) * 0.5f, 
+											  hctd::Resource::inst().getValue(hctd::SCREEN_HEIGHT) * 0.5f), 
+											  width, width), 
+											  _randomVel(speed),
+											  width);
 	}
 }
 
@@ -125,7 +129,7 @@ void FlockController::postTick()
 				// child behavior
 				pos = (*i)->pawn()->positionXY();
 				vel = -((*i)->pawn()->velocity());
-				vel.setY(vel.y() * 1.1f); // set new clock velocity
+				vel.setY(vel.y() * 1.2f); // set new clock velocity
 
 				width = (*i)->collider()->bounds().width(); 
 				pos.setX(pos.x() - width * 0.5f); // set new clock position
