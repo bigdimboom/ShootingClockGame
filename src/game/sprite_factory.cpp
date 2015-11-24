@@ -64,10 +64,10 @@ void SpriteFactory::destorySprite(hctg::ASprite* ptr)
 
 hctg::ASprite* SpriteFactory::cloneSprite(SpriteType type, hctg::ASprite* ptr)
 {
-	switch (type)
-	{
+	//switch (type)
+	//{
 
-	}
+	//}
 	return nullptr;
 }
 

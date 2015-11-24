@@ -7,7 +7,7 @@ namespace hctd
 
 Resource::Resource()
 {
-	d_data[FRAME_RATE] = 60.0f;
+	d_data[FRAME_RATE] = 50.0f;
 	d_data[SCREEN_WIDTH] = 800.0f;
 	d_data[SCREEN_HEIGHT] = 600.0f;
 
