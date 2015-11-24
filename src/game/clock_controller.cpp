@@ -1,6 +1,7 @@
 // colock_controller.cpp
 #include "clock_controller.h"
 #include "../engine/scene/scene.h"
+#include "../engine/data/resource.h"
 #include <assert.h>
 
 namespace mygame
@@ -34,16 +35,75 @@ void ClockController::tick()
 					d_collider->setFlags(d_collider->flags() | HIT_BY_BULLET);
 					continue;
 				}
-				if ((cd->flags() & WALL_COLLIDER) == WALL_COLLIDER) // if target is a wall, negate velocity
+
+				d_pawn->setVelocity(-d_pawn->velocity());
+				d_pawn->tick(); // one tick back
+
+				if ((cd->flags() & N_WALL_COLLIDER) == N_WALL_COLLIDER) // if target is a north wall.
 				{
-					d_pawn->setVelocity(-d_pawn->velocity());
-					d_pawn->tick(); // one tick back
+					auto posN = hctm::Point2f(hctd::Resource::inst().getValue(hctd::SCREEN_WIDTH) * 0.5f, 
+											  0.0f);
+					auto posE = hctm::Point2f(hctd::Resource::inst().getValue(hctd::SCREEN_WIDTH), 
+											  hctd::Resource::inst().getValue(hctd::SCREEN_HEIGHT) * 0.5f);
+
+					auto dir = posE - posN; // from north to east
+
+					dir.normalize();
+					auto currentVel = d_pawn->velocity();
+					auto speed = currentVel.length();
+					dir *= speed;
+					d_pawn->setVelocity(dir);
+				}
+				else if ((cd->flags() & S_WALL_COLLIDER) == S_WALL_COLLIDER)
+				{
+					auto posS = hctm::Point2f(hctd::Resource::inst().getValue(hctd::SCREEN_WIDTH) * 0.5f,
+											  hctd::Resource::inst().getValue(hctd::SCREEN_HEIGHT));
+
+					auto posW = hctm::Point2f(0.0f,
+											  hctd::Resource::inst().getValue(hctd::SCREEN_HEIGHT) * 0.5f);
+
+					auto dir = posW - posS; // from s to w
+
+					dir.normalize();
+					auto currentVel = d_pawn->velocity();
+					auto speed = currentVel.length();
+					dir *= speed;
+					d_pawn->setVelocity(dir);
+
+				}
+				else if ((cd->flags() & W_WALL_COLLIDER) == W_WALL_COLLIDER) 
+				{
+					auto posW = hctm::Point2f(0.0f,
+											  hctd::Resource::inst().getValue(hctd::SCREEN_HEIGHT) * 0.5f);
+					auto posN = hctm::Point2f(hctd::Resource::inst().getValue(hctd::SCREEN_WIDTH) * 0.5f,
+											  0.0f);
+
+					auto dir = posN - posW;
+
+					dir.normalize();
+					auto currentVel = d_pawn->velocity();
+					auto speed = currentVel.length();
+					dir *= speed;
+					d_pawn->setVelocity(dir);
+
+				}
+				else if ((cd->flags() & E_WALL_COLLIDER) == E_WALL_COLLIDER)
+				{
+					auto posS = hctm::Point2f(hctd::Resource::inst().getValue(hctd::SCREEN_WIDTH) * 0.5f,
+											  hctd::Resource::inst().getValue(hctd::SCREEN_HEIGHT));
+					auto posE = hctm::Point2f(hctd::Resource::inst().getValue(hctd::SCREEN_WIDTH),
+											  hctd::Resource::inst().getValue(hctd::SCREEN_HEIGHT) * 0.5f);
+
+					auto dir = posS - posE;
+
+					dir.normalize();
+					auto currentVel = d_pawn->velocity();
+					auto speed = currentVel.length();
+					dir *= speed;
+					d_pawn->setVelocity(dir);
 				}
 				else
 				{
-					d_pawn->setVelocity(-d_pawn->velocity());
-					d_pawn->tick(); // one tick back
-
 					auto dir = d_collider->bounds().getCenter()
 						- cd->bounds().getCenter();
 					// reverse dirction

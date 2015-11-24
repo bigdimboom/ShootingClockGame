@@ -1,19 +1,19 @@
 #include "C_Application.h"
 #include "engine\gameplay\collidable_pawn.h"
+#include "engine\data\resource.h"
 
 namespace hctg
 {
 
 static const float k_PI = 3.1415926536f;
 
-
 C_Application::C_Application(int screenWidth, int screenHeight)
     : m_ScreenWidth(screenWidth)
     , m_ScreenHeight(screenHeight)
-    , d_wallsN(hctm::Point2f(m_ScreenWidth * 0.5f, 0.0f), (float)m_ScreenWidth, 5.0f)
-    , d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), 5.0f, (float)m_ScreenHeight)
-    , d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), 5.0f, (float)m_ScreenHeight)
-    , d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, 5.0f)
+    , d_wallsN(hctm::Point2f(m_ScreenWidth * 0.5f, 0.0f), (float)m_ScreenWidth, hctd::Resource::inst().getValue(hctd::WALL_THICKNESS))
+    , d_wallsW(hctm::Point2f(0.0f, m_ScreenHeight * 0.5f), hctd::Resource::inst().getValue(hctd::WALL_THICKNESS), (float)m_ScreenHeight)
+    , d_wallsE(hctm::Point2f((float)m_ScreenWidth, m_ScreenHeight * 0.5f), hctd::Resource::inst().getValue(hctd::WALL_THICKNESS), (float)m_ScreenHeight)
+    , d_wallsS(hctm::Point2f(m_ScreenWidth * 0.5f, (float)m_ScreenHeight), (float)m_ScreenWidth, hctd::Resource::inst().getValue(hctd::WALL_THICKNESS))
 {
 }
 
@@ -35,10 +35,10 @@ void C_Application::init()
     d_flock.init();
 
     // imaginary walls.
-    d_wallsE.setFlags(STATIC_COLLIDER | WALL_COLLIDER);
-    d_wallsW.setFlags(STATIC_COLLIDER | WALL_COLLIDER);
-    d_wallsS.setFlags(STATIC_COLLIDER | WALL_COLLIDER);
-    d_wallsN.setFlags(STATIC_COLLIDER | WALL_COLLIDER);
+    d_wallsE.setFlags(STATIC_COLLIDER | E_WALL_COLLIDER);
+    d_wallsW.setFlags(STATIC_COLLIDER | W_WALL_COLLIDER);
+    d_wallsS.setFlags(STATIC_COLLIDER | S_WALL_COLLIDER);
+    d_wallsN.setFlags(STATIC_COLLIDER | N_WALL_COLLIDER);
 
     hcts::Scene::inst().addCollider(&d_wallsE);
     hcts::Scene::inst().addCollider(&d_wallsW);
@@ -65,7 +65,7 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
         hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "TURN_RIGHT");
         hcte::EventBus::inst().enQueueEvent(ev);
     }
-    if ((pressedKeys & s_KeySpace) /*&& count == 3*/)
+    if ((pressedKeys & s_KeySpace) && count >= 1)
     {
         hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "FIRE");
         hcte::EventBus::inst().enQueueEvent(ev);

@@ -14,8 +14,8 @@ namespace mygame
 hctm::Point2f FlockController::_randomPos(hctm::Point2f start, float width, float height)
 {
 	hctm::Point2f ret;
-	int x = rand() % (int)width;
-	int y = rand() % (int)height;
+	int x = rand() % (int)width + 1;
+	int y = rand() % (int)height + 1;
 	ret.setX(start.x() + (float)x);
 	ret.setY(start.y() + (float)y);
 	return ret;
@@ -23,8 +23,8 @@ hctm::Point2f FlockController::_randomPos(hctm::Point2f start, float width, floa
 
 hctm::Point2f FlockController::_randomVel(float speed)
 {
-	int x = rand() % (int)10;
-	int y = rand() % (int)10;
+	int x = rand() % (int)10 + 1;
+	int y = rand() % (int)10 + 1;
 	hctm::Point2f ret((float)x, (float)y);
 	ret.normalize();
 	ret *= speed;
@@ -98,6 +98,12 @@ void FlockController::postTick()
 	// TODO:
 	// collsion check
 	// check if HIT_BY_BULLET
+
+	hctm::Point2f pos;
+	hctm::Point2f vel;
+	float width = 0.0f;
+	static int count = 0;
+
 	for (auto i = d_clocks.begin(); i != d_clocks.end();)
 	{
 		if (((*i)->collider()->flags() & HIT_BY_BULLET) == HIT_BY_BULLET) // the bullet is hit something
@@ -116,9 +122,27 @@ void FlockController::postTick()
 			}
 			else
 			{
-				(*i)->sprite()->scale(0.8f);
-				(*i)->collider()->bounds().scale(0.8f);
+				// child behavior
+				pos = (*i)->pawn()->positionXY();
+				vel = -((*i)->pawn()->velocity());
+				vel.setY(vel.y() * 1.1f); // set new clock velocity
+
+				width = (*i)->collider()->bounds().width(); 
+				pos.setX(pos.x() - width * 0.5f); // set new clock position
+
+				// father behavior
+				auto tmpPosFather = (*i)->pawn()->positionXY();
+				tmpPosFather.setX(tmpPosFather.x() + width * 0.5f);
+				(*i)->pawn()->setPosition(tmpPosFather); // set Father clock position.
+
+				(*i)->sprite()->scale(0.7f); // shrink father clock size
+				(*i)->collider()->bounds().scale(0.6f);
 				(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
+
+
+				width *= 0.3f; // set new child clock width
+
+				++i;
 			}
 
 		}
@@ -127,6 +151,12 @@ void FlockController::postTick()
 			++i;
 		}
 	}
+
+	if (width && d_clocks.size() <= hctd::Resource::inst().getValue(hctd::CLOCK_MAX_NUM))
+	{
+		_createClock(pos, vel, width);
+	}
+
 }
 
 void FlockController::cleanUp()
