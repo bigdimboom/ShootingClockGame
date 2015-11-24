@@ -30,7 +30,7 @@ hctg::Pawn* ActorFactory::createPawn(hctm::Point2f pos)
 {
 	hctg::Pawn* actor = new hctg::Pawn(pos);
 	d_actorList.push_back(std::make_pair(ActorType::BASIC_PAWN, actor));
-	hcts::Scene::inst().addTickable(actor);
+	//hcts::Scene::inst().addTickable(actor);
 	return actor;
 }
 
@@ -47,7 +47,7 @@ hctg::CollidablePawn* ActorFactory::createCDPawn(hctm::Point2f pos, float width,
 	hctg::CollidablePawn* actor = new hctg::CollidablePawn(pos, width, height);
 	d_actorList.push_back(std::make_pair(ActorType::COLLIDABLE_PAWN, actor));
 	hcts::Scene::inst().addCollider(actor);
-	hcts::Scene::inst().addTickable(actor);
+	//hcts::Scene::inst().addTickable(actor);
 	return actor;
 }
 
@@ -63,13 +63,13 @@ void ActorFactory::destoryActor(hcts::Actor* ptr)
 				case ActorType::BASIC_ACTOR:
 					break;
 				case ActorType::BASIC_PAWN:
-					hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(ptr));
+					//hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(ptr));
 					break;
 				case ActorType::COLLIDABLE_ACTOR:
 					hcts::Scene::inst().removeCollider(dynamic_cast<hctc::ICollider*>(ptr));
 					break;
 				case ActorType::COLLIDABLE_PAWN:
-					hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(ptr));
+					//hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(ptr));
 					hcts::Scene::inst().removeCollider(dynamic_cast<hctc::ICollider*>(ptr));
 					break;
 			}

@@ -37,6 +37,7 @@ void FlockController::_createClock(hctm::Point2f pos, hctm::Point2f vel, float w
 	d_clocks[i]->pawn()->setVelocity(vel);
 	d_clocks[i]->collider()->setFlags(DYNAMIC_COLLIDER | CLOCK_COLLIDER);
 
+
 	hcts::Scene::inst().addCollider(d_clocks[i]->collider());
 	hcts::Scene::inst().addDrawable(d_clocks[i]->sprite());
 	hcts::Scene::inst().addTickable(d_clocks[i]);
@@ -72,8 +73,7 @@ FlockController::~FlockController()
 // MEMBERS
 void FlockController::init()
 {
-	//srand((unsigned int)time(NULL));
-	hcts::Scene::inst().addTickable(this);
+	srand((unsigned int)time(NULL));
 	_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 100, 100), _randomVel(2.0f), 100.0f);
 	_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), 250, 250), _randomVel(2.0f), 100.0f);
 }

@@ -1,7 +1,7 @@
 // pawn.h
 #pragma once
 #include "../scene/actor.h"
-#include "../scene/itickable.h"
+//#include "../scene/itickable.h"
 // a pawn is a actor that 
 // can be processed by a controller.
 // controller doesn't responsible for deleteing controller's memory
@@ -10,7 +10,7 @@
 namespace hctg
 {
 
-class Pawn : public hcts::Actor, public hcts::ITickable
+class Pawn : public hcts::Actor /*public hcts::ITickable*/
 {
 protected:
 	hctm::Point2f d_vel;
@@ -37,9 +37,9 @@ public:
 	void setVelocity(hctm::Point2f velocity);
 
 	// MEMBER FUNCTIONS
-	virtual void preTick() override;
-	virtual void tick() override;
-	virtual void postTick() override;
+	//virtual void preTick() override;
+	virtual void tick(); // called in controller
+	//virtual void postTick() override;
 };
 
 } // end namespace hctg

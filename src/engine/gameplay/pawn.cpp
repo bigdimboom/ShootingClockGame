@@ -63,19 +63,19 @@ void Pawn::setVelocity(hctm::Point2f velocity)
 }
 
 // MEMBER FUNCTIONS
-void Pawn::preTick()
-{
-	//Do Nothing
-}
+//void Pawn::preTick()
+//{
+//	//Do Nothing
+//}
 
 void Pawn::tick()
 {
 	d_pos += d_vel;
 }
 
-void Pawn::postTick()
-{
-	//Do nothing.
-}
+//void Pawn::postTick()
+//{
+//	//Do nothing.
+//}
 
 } // end namespace hctg

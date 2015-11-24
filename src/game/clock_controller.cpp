@@ -56,11 +56,10 @@ void ClockController::tick()
 				}
 			}
 		}
-
-		d_pawn->tick();
-		d_collider->bounds().translate(d_pawn->positionXY() - d_sprite->position());
-		d_sprite->setPostion(d_pawn->positionXY());
 	}
+	d_pawn->tick();
+	d_collider->bounds().translate(d_pawn->positionXY() - d_sprite->position());
+	d_sprite->setPostion(d_pawn->positionXY());
 
 }
 
