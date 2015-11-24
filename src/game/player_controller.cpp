@@ -29,12 +29,12 @@ void PlayerController::_fire()
 	auto center = d_head + dir * 10.0f;
 
 	hctg::CollidablePawn* bulletPawn = new hctg::CollidablePawn(center, 5.0f, 5.0f);
-	auto start = bulletPawn->bounds().downRightPoint();
-	auto end = bulletPawn->bounds().topLeftPoint();
-
-	BulletSprite* bulletSprite = new BulletSprite(start, end);
 	bulletPawn->setVelocity(dir * 5.0f);
 	bulletPawn->setFlags(DYNAMIC_COLLIDER | BULLET_COLLIDER);
+
+	auto start = bulletPawn->bounds().downRightPoint();
+	auto end = bulletPawn->bounds().topLeftPoint();
+	BulletSprite* bulletSprite = mygame::SpriteFactory::createBulletSprite(start, end);
 
 	bctrl->addPawn(bulletPawn);
 	bctrl->addCollider(bulletPawn);

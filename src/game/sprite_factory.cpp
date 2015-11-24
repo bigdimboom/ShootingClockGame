@@ -1,14 +1,12 @@
 // sprite_factory.cpp
+
 #include "sprite_factory.h"
-#include "cannon_sprite.h"
-#include "clock_sprite.h"
-#include "bullet_sprite.h"
 
 #include "../engine/scene/itickable.h"
 #include "../engine/scene/scene.h"
 
+#include <assert.h>
 #include <list>
-#include <iostream>
 
 namespace mygame
 {
@@ -25,7 +23,7 @@ SpriteFactory::~SpriteFactory()
 {
 }
 
-mygame::BulletSprite* createBulletSprite(hctm::Point2f start, hctm::Point2f end)
+mygame::BulletSprite* SpriteFactory::createBulletSprite(hctm::Point2f start, hctm::Point2f end)
 {
 	BulletSprite* sprite = new mygame::BulletSprite(start, end);
 	hcts::Scene::inst().addDrawable(sprite);
@@ -33,7 +31,7 @@ mygame::BulletSprite* createBulletSprite(hctm::Point2f start, hctm::Point2f end)
 	return sprite;
 }
 
-mygame::ClockSprite* createClockSprite(hctm::Point2f center, float width)
+mygame::ClockSprite* SpriteFactory::createClockSprite(hctm::Point2f center, float width)
 {
 	ClockSprite* sprite = new mygame::ClockSprite(center, width, width);
 	hcts::Scene::inst().addDrawable(sprite);
@@ -52,6 +50,7 @@ mygame::CannonSprite* SpriteFactory::createCannonSprite(hctm::Point2f position)
 
 void SpriteFactory::destorySprite(hctg::ASprite* ptr)
 {
+	assert(ptr);
 	for (auto i = d_spriteList.begin(); i != d_spriteList.end();)
 	{
 		if ((*i).second == ptr)
