@@ -51,4 +51,32 @@ void BulletController::postTick()
 {
 }
 
+void BulletController::addToPipeline()
+{
+	if (d_sprite)
+	{
+		hcts::Scene::inst().addDrawable(d_sprite);
+	}
+	if (d_pawn)
+	{
+		hcts::Scene::inst().addCollider(dynamic_cast<hctc::ICollider*>(d_pawn));
+	}
+
+	hcts::Scene::inst().addTickable(this);
+}
+
+void BulletController::removeFromPipeline()
+{
+	if (d_sprite)
+	{
+		hcts::Scene::inst().removeDrawable(d_sprite);
+	}
+	if (d_pawn)
+	{
+		hcts::Scene::inst().removeCollider(dynamic_cast<hctc::ICollider*>(d_pawn));
+	}
+
+	hcts::Scene::inst().removeTickable(this);
+}
+
 } //end namespace mygame

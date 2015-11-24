@@ -21,7 +21,7 @@ Resource::Resource()
 	d_data[CANNON_MIN_ANGLE] = 0.0f;
 	d_data[CANNON_DELTA_ROTATION] = 5.0f;
 
-	d_data[BULLET_LENGTH] = 5.0f;
+	d_data[BULLET_LENGTH] = 3.0f;
 	d_data[BULLET_WIDTH] = 2.0f;
 	d_data[BULLET_SPEED] = 5.0f;
 

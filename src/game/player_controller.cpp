@@ -40,7 +40,7 @@ void PlayerController::_fire()
 	bctrl->addCollider(bulletPawn);
 	bctrl->addSprite(bulletSprite);
 
-	hcts::Scene::inst().addTickable(bctrl);
+	bctrl->addToPipeline();
 
 	d_gun.push_back(bctrl);
 }
@@ -105,6 +105,7 @@ void PlayerController::init()
 	};
 
 	addSprite(mygame::SpriteFactory::createCannonSprite(d_position));
+	addToPipeline();
 }
 
 void PlayerController::preTick()
@@ -126,13 +127,14 @@ void PlayerController::postTick()
 		{
 			BulletController* bctrl = (*i);
 			
+			bctrl->removeFromPipeline();
+
 			mygame::ActorFactory::destoryActor(bctrl->pawn());
 			mygame::SpriteFactory::destorySprite(bctrl->sprite());
 			bctrl->removePawn();
 			bctrl->removeCollider();
 			bctrl->removeSprite();
 
-			hcts::Scene::inst().removeTickable(bctrl);
 			delete bctrl;
 			i = d_gun.erase(i);
 		}
@@ -149,21 +151,43 @@ void PlayerController::cleanUp()
 	{
 		BulletController* bctrl = (*i);
 
+		bctrl->removeFromPipeline();
+
 		mygame::ActorFactory::destoryActor(bctrl->pawn());
 		mygame::SpriteFactory::destorySprite(bctrl->sprite());
 		bctrl->removePawn();
 		bctrl->removeCollider();
 		bctrl->removeSprite();
 
-		hcts::Scene::inst().removeTickable(bctrl);
-
 		delete bctrl;
 
 		*i = nullptr;
 	}
 	d_gun.clear();
+
+
+	removeFromPipeline(); 
 	mygame::SpriteFactory::destorySprite(d_sprite);
 	removeSprite();
+}
+
+void PlayerController::addToPipeline()
+{
+	if (d_sprite)
+	{
+		hcts::Scene::inst().addDrawable(d_sprite);
+	}
+
+	hcts::Scene::inst().addTickable(this);
+}
+
+void PlayerController::removeFromPipeline()
+{
+	if (d_sprite)
+	{
+		hcts::Scene::inst().removeDrawable(d_sprite);
+	}
+	hcts::Scene::inst().removeTickable(this);
 }
 
 } // end namespace mygame

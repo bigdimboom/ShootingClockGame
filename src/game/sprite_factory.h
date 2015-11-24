@@ -28,6 +28,8 @@ public:
 	
 	static void destorySprite(hctg::ASprite* ptr);
 
+	static hctg::ASprite* cloneSprite(SpriteType type, hctg::ASprite* ptr);
+
 };
 
 } // end namespace mygame

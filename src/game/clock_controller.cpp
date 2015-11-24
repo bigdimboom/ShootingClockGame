@@ -68,4 +68,34 @@ void ClockController::postTick()
 
 }
 
+void ClockController::addToPipeline()
+{
+	if (d_sprite)
+	{
+		hcts::Scene::inst().addDrawable(d_sprite);
+		hcts::Scene::inst().addTickable(dynamic_cast<hcts::ITickable*>(d_sprite));
+	}
+	if (d_pawn)
+	{
+		hcts::Scene::inst().addCollider(dynamic_cast<hctc::ICollider*>(d_pawn));
+	}
+
+	hcts::Scene::inst().addTickable(this);
+}
+
+void ClockController::removeFromPipeline()
+{
+	if (d_sprite)
+	{
+		hcts::Scene::inst().removeDrawable(d_sprite);
+		hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(d_sprite));
+	}
+	if (d_pawn)
+	{
+		hcts::Scene::inst().removeCollider(dynamic_cast<hctc::ICollider*>(d_pawn));
+	}
+
+	hcts::Scene::inst().removeTickable(this);
+}
+
 } // end namespace mygame

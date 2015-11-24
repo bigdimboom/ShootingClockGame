@@ -21,7 +21,8 @@ public:
 	virtual void tick() override;
 	virtual void postTick() override;
 
-	//const std::string kBulletHit = "BULLET_HIT";
+	void addToPipeline() override;
+	void removeFromPipeline() override;
 
 };
 

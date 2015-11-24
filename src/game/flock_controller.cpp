@@ -42,7 +42,7 @@ void FlockController::_createClock(hctm::Point2f pos, hctm::Point2f vel, float w
 	clockControl->pawn()->setVelocity(vel);
 	clockControl->collider()->setFlags(DYNAMIC_COLLIDER | CLOCK_COLLIDER);
 
-	hcts::Scene::inst().addTickable(clockControl);
+	clockControl->addToPipeline();
 
 	d_clocks.push_back(clockControl);
 }
@@ -51,13 +51,13 @@ void FlockController::_destoryClock(ClockController* ptr)
 {
 	assert(ptr);
 
+	ptr->removeFromPipeline();
+
 	mygame::ActorFactory::destoryActor(ptr->pawn());
 	mygame::SpriteFactory::destorySprite(ptr->sprite());
 	ptr->removePawn();
 	ptr->removeCollider();
 	ptr->removeSprite();
-
-	hcts::Scene::inst().removeTickable(ptr);
 }
 
 // CONSTRUCTOR
@@ -74,6 +74,7 @@ FlockController::~FlockController()
 // MEMBERS
 void FlockController::init()
 {
+	addToPipeline();
 }
 
 void FlockController::preTick()
@@ -107,16 +108,19 @@ void FlockController::postTick()
 			//(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
 			//++i;
 
-			(*i)->sprite()->scale(0.8f);
-			(*i)->collider()->bounds().scale(0.8f);
-			(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
-
 			if ((*i)->collider()->bounds().width() <= hctd::Resource::inst().getValue(hctd::CLOCK_MIN_WIDTH))
 			{
 				_destoryClock(*i);
 				delete *i;
 				i = d_clocks.erase(i);
 			}
+			else
+			{
+				(*i)->sprite()->scale(0.8f);
+				(*i)->collider()->bounds().scale(0.8f);
+				(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
+			}
+
 		}
 		else
 		{
@@ -132,6 +136,17 @@ void FlockController::cleanUp()
 		_destoryClock(*i);
 		delete *i;
 	}
+	removeFromPipeline();
+}
+
+void FlockController::addToPipeline()
+{
+	hcts::Scene::inst().addTickable(this);
+}
+
+void FlockController::removeFromPipeline()
+{
+	hcts::Scene::inst().removeTickable(this);
 }
 
 } // end namespace mygame

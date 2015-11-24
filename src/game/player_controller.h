@@ -46,6 +46,9 @@ public:
 	void postTick() override;
 	void cleanUp();
 
+	void addToPipeline() override;
+	void removeFromPipeline() override;
+
 };
 
 } // end namespace mygame

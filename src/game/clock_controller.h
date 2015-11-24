@@ -13,6 +13,9 @@ public:
 	void preTick() override;
 	void tick() override;
 	void postTick() override;
+
+	void addToPipeline() override;
+	void removeFromPipeline() override;
 };
 
 } // end namespace mygame

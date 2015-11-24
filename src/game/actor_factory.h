@@ -28,6 +28,9 @@ public:
 	static hctg::CollidableActor* createCDActor(hctm::Point2f pos, float width, float height);
 	static hctg::CollidablePawn* createCDPawn(hctm::Point2f pos, float width, float height);
 	static void destoryActor(hcts::Actor* actor);
+
+	static hctg::Pawn* clonePawn(ActorType type, hctg::Pawn* actor);
+
 };
 
 } // end namespace mygame
