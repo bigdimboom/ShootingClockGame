@@ -37,7 +37,7 @@ void ClockController::tick()
 				if ((cd->flags() & WALL_COLLIDER) == WALL_COLLIDER) // if target is a wall, negate velocity
 				{
 					d_pawn->setVelocity(-d_pawn->velocity());
-					d_pawn->tick(); // one tick back
+					//d_pawn->tick(); // one tick back
 				}
 				else
 				{
@@ -54,22 +54,6 @@ void ClockController::tick()
 
 					d_pawn->setVelocity(dir);
 				}
-
-				break;
-
-				//hcts::Scene::inst().removeTickable(d_pawn);
-				//hcts::Scene::inst().removeDrawable(d_sprite);
-				//hcts::Scene::inst().removeTickable(dynamic_cast<ITickable*>(d_sprite));
-				//hcts::Scene::inst().removeCollider(d_collider);
-
-				//delete d_sprite;
-				//delete d_pawn;
-
-				//removeCollider();
-				//removePawn();
-				//removeSprite();
-
-				//return;
 			}
 		}
 

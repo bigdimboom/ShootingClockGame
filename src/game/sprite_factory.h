@@ -1,6 +1,9 @@
 // sprite_factory.h
 #pragma once
 #include "../engine/gameplay/asprite.h"
+#include "../game/bullet_sprite.h"
+#include "../game/clock_sprite.h"
+#include "../game/cannon_sprite.h"
 
 namespace mygame
 {
@@ -19,7 +22,10 @@ public:
 	SpriteFactory();
 	~SpriteFactory();
 
-	static hctg::ASprite* createSprite(SpriteType type);
+	static mygame::BulletSprite* createBulletSprite(hctm::Point2f start, hctm::Point2f end);
+	static mygame::ClockSprite* createClockSprite(hctm::Point2f center, float width);
+	static mygame::CannonSprite* createCannonSprite(hctm::Point2f position);
+	
 	static void destorySprite(hctg::ASprite* ptr);
 
 };
