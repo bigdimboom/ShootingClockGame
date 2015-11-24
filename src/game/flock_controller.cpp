@@ -1,5 +1,8 @@
 // flock_controller.cpp
 #include "flock_controller.h"
+#include "actor_factory.h"
+#include "sprite_factory.h"
+
 #include <assert.h>
 #include <time.h>
 
@@ -29,35 +32,31 @@ hctm::Point2f FlockController::_randomVel(float speed)
 
 void FlockController::_createClock(hctm::Point2f pos, hctm::Point2f vel, float width)
 {
-	d_clocks.push_back(new ClockController);
-	int i = d_clocks.size() - 1;
-	d_clocks[i]->addPawn(new hctg::CollidablePawn(pos, width, width));
-	d_clocks[i]->addCollider(dynamic_cast<hctc::ICollider*>(d_clocks[i]->pawn()));
-	d_clocks[i]->addSprite(new mygame::ClockSprite(pos, width, width));
-	d_clocks[i]->pawn()->setVelocity(vel);
-	d_clocks[i]->collider()->setFlags(DYNAMIC_COLLIDER | CLOCK_COLLIDER);
+	ClockController* clockControl = new ClockController();
+	ClockSprite* clockSprite = mygame::SpriteFactory::createClockSprite(pos, width);
+	hctg::CollidablePawn* pawn = mygame::ActorFactory::createCDPawn(pos, width, width);
+	clockControl->addPawn(pawn);
+	clockControl->addCollider(pawn);
+	clockControl->addSprite(clockSprite);
+	clockControl->pawn()->setVelocity(vel);
+	clockControl->collider()->setFlags(DYNAMIC_COLLIDER | CLOCK_COLLIDER);
 
+	hcts::Scene::inst().addTickable(clockControl);
 
-	hcts::Scene::inst().addCollider(d_clocks[i]->collider());
-	hcts::Scene::inst().addDrawable(d_clocks[i]->sprite());
-	hcts::Scene::inst().addTickable(d_clocks[i]);
-	hcts::Scene::inst().addTickable(dynamic_cast<hcts::ITickable*>(d_clocks[i]->sprite()));
+	d_clocks.push_back(clockControl);
 }
 
 void FlockController::_destoryClock(ClockController* ptr)
 {
 	assert(ptr);
 
-	hcts::Scene::inst().removeTickable(ptr);
-	hcts::Scene::inst().removeCollider(ptr->collider());
-	hcts::Scene::inst().removeDrawable(ptr->sprite());
-	hcts::Scene::inst().removeTickable(dynamic_cast<hcts::ITickable*>(ptr->sprite()));
-
-	delete ptr->pawn();
+	mygame::ActorFactory::destoryActor(ptr->pawn());
+	mygame::SpriteFactory::destorySprite(ptr->sprite());
 	ptr->removePawn();
 	ptr->removeCollider();
-	delete ptr->sprite();
 	ptr->removeSprite();
+
+	hcts::Scene::inst().removeTickable(ptr);
 }
 
 // CONSTRUCTOR
@@ -73,7 +72,7 @@ FlockController::~FlockController()
 // MEMBERS
 void FlockController::init()
 {
-	srand((unsigned int)time(NULL));
+	//srand((unsigned int)time(NULL));
 	_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 100, 100), _randomVel(2.0f), 100.0f);
 	_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), 250, 250), _randomVel(2.0f), 100.0f);
 }
@@ -89,11 +88,9 @@ void FlockController::tick()
 
 void FlockController::postTick()
 {
-
 	// TODO:
 	// collsion check
 	// check if HIT_BY_BULLET
-
 	for (auto i = d_clocks.begin(); i != d_clocks.end();)
 	{
 		if (((*i)->collider()->flags() & HIT_BY_BULLET) == HIT_BY_BULLET) // the bullet is hit something
@@ -107,7 +104,6 @@ void FlockController::postTick()
 			_destoryClock(*i);
 			delete *i;
 			i = d_clocks.erase(i);
-
 		}
 		else
 		{
@@ -119,7 +115,7 @@ void FlockController::postTick()
 	{
 		// genetate two clcoks.
 		_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 150, 150), _randomVel(2.0f), 100.0f);
-		_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), 150, 150), _randomVel(2.0f), 100.0f);
+		_createClock(_randomPos(hctm::Point2f(150.0f, 200.0f), 150, 150), _randomVel(2.0f), 100.0f);
 	}
 }
 
@@ -128,6 +124,7 @@ void FlockController::cleanUp()
 	for (auto i = d_clocks.begin(); i != d_clocks.end(); ++i)
 	{
 		_destoryClock(*i);
+		delete *i;
 	}
 }
 
