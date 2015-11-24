@@ -158,9 +158,10 @@ void PlayerController::cleanUp()
 		hcts::Scene::inst().removeTickable(bctrl);
 
 		delete bctrl;
-		d_gun.erase(i);
-	}
 
+		*i = nullptr;
+	}
+	d_gun.clear();
 	mygame::SpriteFactory::destorySprite(d_sprite);
 	removeSprite();
 }

@@ -73,8 +73,6 @@ FlockController::~FlockController()
 void FlockController::init()
 {
 	//srand((unsigned int)time(NULL));
-	_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 100, 100), _randomVel(2.0f), 100.0f);
-	_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), 250, 250), _randomVel(2.0f), 100.0f);
 }
 
 void FlockController::preTick()
@@ -84,6 +82,12 @@ void FlockController::preTick()
 
 void FlockController::tick()
 {
+	if (d_clocks.size() == 0)
+	{
+		// genetate two clcoks.
+		_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 150, 150), _randomVel(2.0f), 100.0f);
+		_createClock(_randomPos(hctm::Point2f(150.0f, 200.0f), 150, 150), _randomVel(2.0f), 100.0f);
+	}
 }
 
 void FlockController::postTick()
@@ -100,7 +104,6 @@ void FlockController::postTick()
 			//(*i)->collider()->bounds().scale(0.8f);
 			//(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
 			//++i;
-
 			_destoryClock(*i);
 			delete *i;
 			i = d_clocks.erase(i);
@@ -109,13 +112,6 @@ void FlockController::postTick()
 		{
 			++i;
 		}
-	}
-
-	if (d_clocks.size() == 0)
-	{
-		// genetate two clcoks.
-		_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 150, 150), _randomVel(2.0f), 100.0f);
-		_createClock(_randomPos(hctm::Point2f(150.0f, 200.0f), 150, 150), _randomVel(2.0f), 100.0f);
 	}
 }
 
