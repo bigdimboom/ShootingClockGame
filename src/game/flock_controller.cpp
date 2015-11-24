@@ -2,6 +2,7 @@
 #include "flock_controller.h"
 #include "actor_factory.h"
 #include "sprite_factory.h"
+#include "../engine/data/resource.h"
 
 #include <assert.h>
 #include <time.h>
@@ -62,6 +63,7 @@ void FlockController::_destoryClock(ClockController* ptr)
 // CONSTRUCTOR
 FlockController::FlockController()
 {
+	srand((unsigned int)time(NULL));
 }
 
 // DESTRUCTOR
@@ -72,12 +74,10 @@ FlockController::~FlockController()
 // MEMBERS
 void FlockController::init()
 {
-	//srand((unsigned int)time(NULL));
 }
 
 void FlockController::preTick()
 {
-
 }
 
 void FlockController::tick()
@@ -85,8 +85,10 @@ void FlockController::tick()
 	if (d_clocks.size() == 0)
 	{
 		// genetate two clcoks.
-		_createClock(_randomPos(hctm::Point2f(200.0f, 300.0f), 150, 150), _randomVel(2.0f), 100.0f);
-		_createClock(_randomPos(hctm::Point2f(150.0f, 200.0f), 150, 150), _randomVel(2.0f), 100.0f);
+		float speed = hctd::Resource::inst().getValue(hctd::CLOCK_START_SPEED);
+		float width = hctd::Resource::inst().getValue(hctd::CLOCK_START_WIDTH);
+		_createClock(_randomPos(hctm::Point2f(150.0f, 150.0f), width, width), _randomVel(speed), width);
+		_createClock(_randomPos(hctm::Point2f(300.0f, 300.0f), width, width), _randomVel(speed), width);
 	}
 }
 
@@ -104,9 +106,17 @@ void FlockController::postTick()
 			//(*i)->collider()->bounds().scale(0.8f);
 			//(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
 			//++i;
-			_destoryClock(*i);
-			delete *i;
-			i = d_clocks.erase(i);
+
+			(*i)->sprite()->scale(0.8f);
+			(*i)->collider()->bounds().scale(0.8f);
+			(*i)->collider()->setFlags((*i)->collider()->flags() - HIT_BY_BULLET);
+
+			if ((*i)->collider()->bounds().width() <= hctd::Resource::inst().getValue(hctd::CLOCK_MIN_WIDTH))
+			{
+				_destoryClock(*i);
+				delete *i;
+				i = d_clocks.erase(i);
+			}
 		}
 		else
 		{

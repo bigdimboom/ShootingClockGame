@@ -55,6 +55,8 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 {
 	//Key processing
 
+	static int  count = 0;
+
 	if (pressedKeys & s_KeyLeft)
 	{
 		hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "TURN_LEFT");
@@ -65,10 +67,11 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 		hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "TURN_RIGHT");
 		hcte::EventBus::inst().enQueueEvent(ev);
 	}
-	if (pressedKeys & s_KeySpace)
+	if ((pressedKeys & s_KeySpace) && count >= 4)
 	{
 		hcte::BasicEvent ev(hcte::EventType::PLAYER_CMD, "FIRE");
 		hcte::EventBus::inst().enQueueEvent(ev);
+		count = 0;
 	}
 	if (pressedKeys & s_KeyUp)
 	{
@@ -76,6 +79,7 @@ void C_Application::handleInput(T_PressedKey pressedKeys)
 	if (pressedKeys & s_KeyDown)
 	{
 	}
+	count++;
 }
 
 void C_Application::tick()

@@ -13,7 +13,7 @@ namespace mygame
 // HELPERS
 void PlayerController::_fire()
 {
-	unsigned int cont = d_gun.size();
+	//unsigned int cont = d_gun.size();
 
 	BulletController* bctrl = new BulletController();
 
