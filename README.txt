@@ -1,5 +1,5 @@
 Hours:
-25 - 35 hours
+25 - 35 hours work
 
 Environment:
 Visual Studio 2013
