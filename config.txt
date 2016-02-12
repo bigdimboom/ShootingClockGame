@@ -1,0 +1,28 @@
+[Input]
+Left = 
+Right = 
+Fire = 
+
+[Player]
+PositionX =
+PositionY = 
+MaxAngle = 
+MinAngle =
+Sensitivity =
+
+[Bullet]
+Size =
+speed = 
+
+
+[Clock]
+RandSeed = 
+Speed = 
+MaxSize = 
+MinSize = 
+FrameRGB = 
+HrRGB = 
+MinRGB = 
+SecRGB = 
+
+[Debug]
