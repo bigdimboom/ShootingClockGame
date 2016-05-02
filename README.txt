@@ -3,3 +3,6 @@ Hours:
 
 Environment:
 Visual Studio 2013
+
+Press "Space" to Shoot
+Press "->" and "<-" to move 
